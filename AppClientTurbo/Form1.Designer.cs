@@ -55,11 +55,13 @@ namespace AppClientTurbo
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             // 
             // user
             // 
+            this.user.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.user.Location = new System.Drawing.Point(704, 40);
+            this.user.Location = new System.Drawing.Point(923, 53);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(169, 26);
             this.user.TabIndex = 0;
@@ -67,8 +69,9 @@ namespace AppClientTurbo
             // 
             // password
             // 
+            this.password.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password.Location = new System.Drawing.Point(704, 72);
+            this.password.Location = new System.Drawing.Point(923, 85);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(169, 26);
@@ -76,9 +79,10 @@ namespace AppClientTurbo
             // 
             // userauth
             // 
+            this.userauth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.userauth.BackColor = System.Drawing.SystemColors.Control;
             this.userauth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userauth.Location = new System.Drawing.Point(704, 104);
+            this.userauth.Location = new System.Drawing.Point(923, 117);
             this.userauth.Name = "userauth";
             this.userauth.Size = new System.Drawing.Size(79, 56);
             this.userauth.TabIndex = 2;
@@ -90,8 +94,9 @@ namespace AppClientTurbo
             // 
             this.adrServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.adrServer.Location = new System.Drawing.Point(96, 45);
+            this.adrServer.MaxLength = 15;
             this.adrServer.Name = "adrServer";
-            this.adrServer.Size = new System.Drawing.Size(124, 26);
+            this.adrServer.Size = new System.Drawing.Size(136, 26);
             this.adrServer.TabIndex = 3;
             this.adrServer.Text = "127.0.0.1";
             this.adrServer.TextChanged += new System.EventHandler(this.adrServer_TextChanged);
@@ -108,7 +113,7 @@ namespace AppClientTurbo
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(226, 48);
+            this.label2.Location = new System.Drawing.Point(238, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 5;
@@ -117,9 +122,10 @@ namespace AppClientTurbo
             // adrPort
             // 
             this.adrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adrPort.Location = new System.Drawing.Point(264, 45);
+            this.adrPort.Location = new System.Drawing.Point(276, 45);
+            this.adrPort.MaxLength = 5;
             this.adrPort.Name = "adrPort";
-            this.adrPort.Size = new System.Drawing.Size(33, 26);
+            this.adrPort.Size = new System.Drawing.Size(59, 26);
             this.adrPort.TabIndex = 6;
             this.adrPort.Text = "81";
             this.adrPort.TextChanged += new System.EventHandler(this.adrPort_TextChanged);
@@ -140,7 +146,7 @@ namespace AppClientTurbo
             this.request.Name = "request";
             this.request.Size = new System.Drawing.Size(291, 26);
             this.request.TabIndex = 10;
-            this.request.Text = "AuthService/getDataRef";
+            this.request.Text = "RepairService/getDataRef";
             // 
             // dataReq
             // 
@@ -168,13 +174,14 @@ namespace AppClientTurbo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.responseTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.responseTxt.Font = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.responseTxt.Location = new System.Drawing.Point(96, 229);
             this.responseTxt.MaxLength = 65536;
             this.responseTxt.Multiline = true;
             this.responseTxt.Name = "responseTxt";
             this.responseTxt.ReadOnly = true;
             this.responseTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.responseTxt.Size = new System.Drawing.Size(755, 327);
+            this.responseTxt.Size = new System.Drawing.Size(996, 367);
             this.responseTxt.TabIndex = 13;
             // 
             // label6
@@ -209,8 +216,9 @@ namespace AppClientTurbo
             // Clear
             // 
             this.Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Clear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Clear.Location = new System.Drawing.Point(96, 562);
+            this.Clear.Location = new System.Drawing.Point(96, 602);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(95, 32);
             this.Clear.TabIndex = 17;
@@ -220,8 +228,9 @@ namespace AppClientTurbo
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(668, 48);
+            this.label7.Location = new System.Drawing.Point(887, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 18;
@@ -229,8 +238,9 @@ namespace AppClientTurbo
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(646, 75);
+            this.label8.Location = new System.Drawing.Point(865, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 19;
@@ -238,9 +248,10 @@ namespace AppClientTurbo
             // 
             // onOff
             // 
+            this.onOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.onOff.Controls.Add(this.pictureBox2);
             this.onOff.Controls.Add(this.pictureBox1);
-            this.onOff.Location = new System.Drawing.Point(794, 104);
+            this.onOff.Location = new System.Drawing.Point(1013, 117);
             this.onOff.Name = "onOff";
             this.onOff.Size = new System.Drawing.Size(79, 56);
             this.onOff.TabIndex = 20;
@@ -284,7 +295,7 @@ namespace AppClientTurbo
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 640);
+            this.ClientSize = new System.Drawing.Size(1176, 680);
             this.Controls.Add(this.methodBox);
             this.Controls.Add(this.onOff);
             this.Controls.Add(this.label8);
@@ -305,6 +316,7 @@ namespace AppClientTurbo
             this.Controls.Add(this.userauth);
             this.Controls.Add(this.password);
             this.Controls.Add(this.user);
+            this.MinimumSize = new System.Drawing.Size(960, 500);
             this.Name = "Form1";
             this.Text = "AppClientTurbo";
             this.onOff.ResumeLayout(false);
