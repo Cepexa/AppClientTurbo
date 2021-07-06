@@ -55,7 +55,6 @@ namespace AppClientTurbo
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             // 
             // user
             // 
@@ -147,6 +146,7 @@ namespace AppClientTurbo
             this.request.Size = new System.Drawing.Size(291, 26);
             this.request.TabIndex = 10;
             this.request.Text = "RepairService/getDataRef";
+            this.request.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
             // dataReq
             // 
@@ -319,6 +319,8 @@ namespace AppClientTurbo
             this.MinimumSize = new System.Drawing.Size(960, 500);
             this.Name = "Form1";
             this.Text = "AppClientTurbo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.onOff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

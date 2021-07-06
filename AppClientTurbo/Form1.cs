@@ -18,6 +18,7 @@ namespace AppClientTurbo
         Req req;
         HttpResponseMessage response;
         string sessionId;
+        ToolTip t,t1;
         public Form1()
         {
             InitializeComponent();
@@ -164,6 +165,72 @@ namespace AppClientTurbo
             sessionId = null;
             pictureBox2.BackColor = Color.Red;
             pictureBox1.BackColor = Color.White;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            t = new ToolTip();
+            t.AutoPopDelay = 20000;
+            t.InitialDelay = 10;
+            t.ReshowDelay = 10;
+            update_ToolTip();
+            t1 = new ToolTip();
+            t1.AutoPopDelay = 20000;
+            t1.InitialDelay = 10;
+            t1.ReshowDelay = 10;
+            t1.SetToolTip(request, "--Подсказка:\n"+
+                "RepairService/getDataRef\n"+
+                "RepairService/getDataRef1\n"+
+                "userAuth/logout\n");
+        }
+        private void update_ToolTip()
+        {
+            if (request.Text == "RepairService/getDataRef")
+            {
+                t.SetToolTip(dataReq, @"--Подсказка:
+    {""aRef"":""Ref.Equipment.Classes""}         - Классификатор
+    {""aRef"":""Ref.Equipment.Groups""}         - Группы оборудования
+    {""aRef"":""Ref.Places.Objects""}                 - Объекты
+    {""aRef"":""Ref.Places.Places""}                   - Технические места
+    {""aRef"":""Ref.Places.Buildings""}              - Здания
+    {""aRef"":""Ref.Places.Departments""}        - Цеха
+    {""aRef"":""Ref.Places.Areas""}                     - Участки
+    {""aRef"":""Ref.Places.Flows""}                     - Производственные потоки
+    {""aRef"":""Ref.Places.Lines""}                      - Производственные линии
+    {""aRef"":""FlowCharts.FlowChartsTypes""}- Виды работ
+    {""aRef"":""FlowCharts.Operations""}          - Операции
+    {""aRef"":""FlowCharts.FlowCharts""}          - Технологические карты
+    {""aRef"":""FlowCharts.Norms""}                  - Нормативы
+    {""aRef"":""FlowCharts.WorkShift""}            - Длительность смен
+    {""aRef"":""Brigade.BrigadeTypes""}             - Типы бригад
+    {""aRef"":""Ref.Positions""}                            - Должности
+    {""aRef"":""Ref.Priority.Equipment""}           - Приоритеты оборудования
+    {""aRef"":""Ref.Priority.Repair""}                   - Приоритеты видов работ
+    {""aRef"":""Ref.Priority.Rating""}                   - Оценки приоритетов
+    {""aRef"":""Ref.Priority.Matrix""}                   - Матрицы приоритетов
+    {""aRef"":""Ref.Attributes.OrderType""}        - Типы заказов
+    {""aRef"":""Planes.PlanGroups""}                  - Группы планирования
+    {""aRef"":""Ref.UnitOrCurrency""}                - Единицы измерения
+    {""aRef"":""Ref.Attributes.DefectType""}      - Типы дефектов
+    {""aRef"":""Ref.Attributes.DefectLevel""}      - Уровни дефектов
+    {""aRef"":""Ref.Attributes.DefectReason""}  - Причины дефектов
+    {""aRef"":""Ref.Attributes.StateType""}          - Виды технических состояний
+    {""aRef"":""Ref.Attributes.Parameters""}       - Параметры оборудования");
+            }
+            else if (request.Text == "RepairService/getDataRef1")
+            {
+                t.SetToolTip(dataReq, @"--Подсказка:
+    {""aRef"":""Справочники.ТМЦ""}       - Запасные части");
+            }
+            else
+            {
+                t.SetToolTip(dataReq, @"--Подсказка:");
+            }
+        }
+
+        private void request_TextChanged(object sender, EventArgs e)
+        {
+            update_ToolTip();
         }
     }
 }
