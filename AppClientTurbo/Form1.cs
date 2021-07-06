@@ -169,6 +169,7 @@ namespace AppClientTurbo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.request.TextChanged += new System.EventHandler(this.request_TextChanged);
             t = new ToolTip();
             t.AutoPopDelay = 20000;
             t.InitialDelay = 10;

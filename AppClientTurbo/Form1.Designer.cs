@@ -145,8 +145,7 @@ namespace AppClientTurbo
             this.request.Name = "request";
             this.request.Size = new System.Drawing.Size(291, 26);
             this.request.TabIndex = 10;
-            this.request.Text = "RepairService/getDataRef";
-            this.request.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.request.Text = "RepairService/getDataRef";            
             // 
             // dataReq
             // 
