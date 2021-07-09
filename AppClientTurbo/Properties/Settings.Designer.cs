@@ -106,5 +106,17 @@ namespace AppClientTurbo.Properties {
                 this["password"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Refs {
+            get {
+                return ((string)(this["Refs"]));
+            }
+            set {
+                this["Refs"] = value;
+            }
+        }
     }
 }
