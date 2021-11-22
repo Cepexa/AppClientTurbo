@@ -29,6 +29,8 @@ namespace AppClientTurbo
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.user = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
             this.userauth = new System.Windows.Forms.Button();
@@ -53,7 +55,7 @@ namespace AppClientTurbo
             this.methodBox = new System.Windows.Forms.ComboBox();
             this.Refs = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.add = new System.Windows.Forms.Button();
+            this.saveCash = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -69,18 +71,31 @@ namespace AppClientTurbo
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.ForceBox = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.deleteCash = new System.Windows.Forms.Button();
+            this.jsonFile = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label15 = new System.Windows.Forms.Label();
             this.onOff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // user
             // 
             this.user.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.user.BackColor = System.Drawing.Color.LightSlateGray;
             this.user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.user.Location = new System.Drawing.Point(923, 53);
+            this.user.ForeColor = System.Drawing.Color.White;
+            this.user.Location = new System.Drawing.Point(997, 44);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(169, 26);
             this.user.TabIndex = 0;
@@ -90,8 +105,10 @@ namespace AppClientTurbo
             // password
             // 
             this.password.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.password.BackColor = System.Drawing.Color.LightSlateGray;
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password.Location = new System.Drawing.Point(923, 85);
+            this.password.ForeColor = System.Drawing.Color.White;
+            this.password.Location = new System.Drawing.Point(997, 76);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(169, 26);
@@ -101,11 +118,13 @@ namespace AppClientTurbo
             // userauth
             // 
             this.userauth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.userauth.BackColor = System.Drawing.SystemColors.Control;
+            this.userauth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.userauth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userauth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userauth.Location = new System.Drawing.Point(923, 117);
+            this.userauth.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.userauth.Location = new System.Drawing.Point(997, 118);
             this.userauth.Name = "userauth";
-            this.userauth.Size = new System.Drawing.Size(79, 56);
+            this.userauth.Size = new System.Drawing.Size(79, 37);
             this.userauth.TabIndex = 2;
             this.userauth.Text = "Вход";
             this.userauth.UseVisualStyleBackColor = false;
@@ -114,8 +133,10 @@ namespace AppClientTurbo
             // adrServer
             // 
             this.adrServer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.adrServer.BackColor = System.Drawing.Color.LightSlateGray;
             this.adrServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adrServer.Location = new System.Drawing.Point(853, 21);
+            this.adrServer.ForeColor = System.Drawing.Color.White;
+            this.adrServer.Location = new System.Drawing.Point(921, 12);
             this.adrServer.MaxLength = 15;
             this.adrServer.Name = "adrServer";
             this.adrServer.Size = new System.Drawing.Size(136, 26);
@@ -127,9 +148,11 @@ namespace AppClientTurbo
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(796, 24);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Linen;
+            this.label1.Location = new System.Drawing.Point(860, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(65, 18);
             this.label1.TabIndex = 4;
             this.label1.Text = "Сервер";
             // 
@@ -137,17 +160,21 @@ namespace AppClientTurbo
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(995, 24);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.Linen;
+            this.label2.Location = new System.Drawing.Point(1063, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(47, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "Порт";
             // 
             // adrPort
             // 
             this.adrPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.adrPort.BackColor = System.Drawing.Color.LightSlateGray;
             this.adrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adrPort.Location = new System.Drawing.Point(1033, 21);
+            this.adrPort.ForeColor = System.Drawing.Color.White;
+            this.adrPort.Location = new System.Drawing.Point(1107, 12);
             this.adrPort.MaxLength = 5;
             this.adrPort.Name = "adrPort";
             this.adrPort.Size = new System.Drawing.Size(59, 26);
@@ -158,106 +185,135 @@ namespace AppClientTurbo
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 98);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.Linen;
+            this.label3.Location = new System.Drawing.Point(5, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(59, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "Метод";
             // 
             // request
             // 
+            this.request.BackColor = System.Drawing.Color.LightSlateGray;
+            this.request.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.request.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.request.ForeColor = System.Drawing.Color.White;
             this.request.Location = new System.Drawing.Point(214, 93);
             this.request.Name = "request";
             this.request.Size = new System.Drawing.Size(291, 26);
             this.request.TabIndex = 10;
             this.request.Text = "RepairService/getDataRef";
+            this.request.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
             // dataReq
             // 
+            this.dataReq.BackColor = System.Drawing.Color.DimGray;
+            this.dataReq.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataReq.Location = new System.Drawing.Point(214, 124);
+            this.dataReq.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.dataReq.Location = new System.Drawing.Point(0, 0);
             this.dataReq.Multiline = true;
             this.dataReq.Name = "dataReq";
             this.dataReq.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataReq.Size = new System.Drawing.Size(420, 83);
+            this.dataReq.Size = new System.Drawing.Size(1049, 129);
             this.dataReq.TabIndex = 11;
             this.dataReq.Text = "{\"aRef\":\"FlowCharts.FlowChartsTypes\"}";
+            this.dataReq.TextChanged += new System.EventHandler(this.dataReq_TextChanged);
+            this.dataReq.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dataReq_MouseMove);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(115, 127);
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.Linen;
+            this.label5.Location = new System.Drawing.Point(112, 167);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.Size = new System.Drawing.Size(138, 18);
             this.label5.TabIndex = 12;
             this.label5.Text = "Данные запроса";
             // 
             // responseTxt
             // 
-            this.responseTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.responseTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.responseTxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.responseTxt.Font = new System.Drawing.Font("Stencil", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.responseTxt.Location = new System.Drawing.Point(96, 237);
+            this.responseTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.responseTxt.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.responseTxt.ForeColor = System.Drawing.Color.Lime;
+            this.responseTxt.Location = new System.Drawing.Point(0, 0);
             this.responseTxt.MaxLength = 65536;
+            this.responseTxt.MinimumSize = new System.Drawing.Size(4, 300);
             this.responseTxt.Multiline = true;
             this.responseTxt.Name = "responseTxt";
             this.responseTxt.ReadOnly = true;
             this.responseTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.responseTxt.Size = new System.Drawing.Size(996, 359);
+            this.responseTxt.Size = new System.Drawing.Size(1049, 340);
             this.responseTxt.TabIndex = 13;
+            this.responseTxt.MouseMove += new System.Windows.Forms.MouseEventHandler(this.responseTxt_MouseMove);
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(44, 266);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.Linen;
+            this.label6.Location = new System.Drawing.Point(54, 613);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.Size = new System.Drawing.Size(55, 18);
             this.label6.TabIndex = 14;
             this.label6.Text = "Ответ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(167, 98);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.Linen;
+            this.label4.Location = new System.Drawing.Point(143, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(65, 18);
             this.label4.TabIndex = 15;
             this.label4.Text = "Запрос";
             // 
             // send
             // 
+            this.send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.send.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.send.Location = new System.Drawing.Point(511, 81);
+            this.send.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.send.Location = new System.Drawing.Point(512, 86);
             this.send.Name = "send";
-            this.send.Size = new System.Drawing.Size(123, 38);
+            this.send.Size = new System.Drawing.Size(105, 34);
             this.send.TabIndex = 16;
             this.send.Text = "Отправить";
-            this.send.UseVisualStyleBackColor = true;
+            this.send.UseVisualStyleBackColor = false;
             this.send.Click += new System.EventHandler(this.send_Click);
             // 
             // Clear
             // 
             this.Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Clear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Clear.Location = new System.Drawing.Point(96, 602);
+            this.Clear.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Clear.Location = new System.Drawing.Point(12, 634);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(95, 32);
             this.Clear.TabIndex = 17;
             this.Clear.Text = "Очистить";
-            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.UseVisualStyleBackColor = false;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(887, 61);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.Linen;
+            this.label7.Location = new System.Drawing.Point(945, 50);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.Size = new System.Drawing.Size(46, 18);
             this.label7.TabIndex = 18;
             this.label7.Text = "user:";
             // 
@@ -265,9 +321,11 @@ namespace AppClientTurbo
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(865, 88);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.Color.Linen;
+            this.label8.Location = new System.Drawing.Point(905, 80);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.Size = new System.Drawing.Size(86, 18);
             this.label8.TabIndex = 19;
             this.label8.Text = "password:";
             // 
@@ -276,7 +334,8 @@ namespace AppClientTurbo
             this.onOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.onOff.Controls.Add(this.pictureBox2);
             this.onOff.Controls.Add(this.pictureBox1);
-            this.onOff.Location = new System.Drawing.Point(1013, 117);
+            this.onOff.ForeColor = System.Drawing.Color.White;
+            this.onOff.Location = new System.Drawing.Point(1087, 108);
             this.onOff.Name = "onOff";
             this.onOff.Size = new System.Drawing.Size(79, 56);
             this.onOff.TabIndex = 20;
@@ -303,6 +362,9 @@ namespace AppClientTurbo
             // 
             // methodBox
             // 
+            this.methodBox.BackColor = System.Drawing.Color.LightSlateGray;
+            this.methodBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.methodBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.methodBox.FormattingEnabled = true;
             this.methodBox.Items.AddRange(new object[] {
             "POST",
@@ -311,187 +373,146 @@ namespace AppClientTurbo
             "DELETE"});
             this.methodBox.Location = new System.Drawing.Point(70, 95);
             this.methodBox.Name = "methodBox";
-            this.methodBox.Size = new System.Drawing.Size(91, 21);
+            this.methodBox.Size = new System.Drawing.Size(68, 21);
             this.methodBox.TabIndex = 21;
             this.methodBox.Text = "POST";
             // 
             // Refs
             // 
+            this.Refs.BackColor = System.Drawing.Color.LightSlateGray;
+            this.Refs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Refs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Refs.ForeColor = System.Drawing.Color.White;
             this.Refs.FormattingEnabled = true;
-            this.Refs.Location = new System.Drawing.Point(214, 53);
+            this.Refs.Location = new System.Drawing.Point(159, 53);
             this.Refs.Name = "Refs";
-            this.Refs.Size = new System.Drawing.Size(291, 28);
+            this.Refs.Size = new System.Drawing.Size(386, 28);
             this.Refs.TabIndex = 22;
             this.Refs.Text = "-";
-            this.Refs.SelectedValueChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
+            this.Refs.SelectedIndexChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
+            this.Refs.TextChanged += new System.EventHandler(this.Refs_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(96, 59);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.Linen;
+            this.label9.Location = new System.Drawing.Point(5, 59);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 15);
+            this.label9.Size = new System.Drawing.Size(148, 18);
             this.label9.TabIndex = 23;
             this.label9.Text = "Что возвращаем?";
             // 
-            // add
+            // saveCash
             // 
-            this.add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.add.Location = new System.Drawing.Point(512, 53);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(25, 22);
-            this.add.TabIndex = 24;
-            this.add.Text = "Edit";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.saveCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.saveCash.Enabled = false;
+            this.saveCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.saveCash.ForeColor = System.Drawing.Color.Orange;
+            this.saveCash.Location = new System.Drawing.Point(551, 55);
+            this.saveCash.Name = "saveCash";
+            this.saveCash.Size = new System.Drawing.Size(66, 22);
+            this.saveCash.TabIndex = 24;
+            this.saveCash.Text = "Save";
+            this.saveCash.UseVisualStyleBackColor = false;
+            this.saveCash.Click += new System.EventHandler(this.saveCash_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Controls.Add(this.cancel);
-            this.groupBox1.Controls.Add(this.save);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Location = new System.Drawing.Point(543, 53);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(393, 470);
-            this.groupBox1.TabIndex = 25;
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Редактировать";
-            this.groupBox1.Visible = false;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(136, 20);
+            this.label14.Location = new System.Drawing.Point(0, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(149, 20);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "НОВАЯ ЗАПИСЬ";
+            this.label14.Size = new System.Drawing.Size(100, 23);
+            this.label14.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(53, 285);
+            this.button2.Location = new System.Drawing.Point(0, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 28);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "-";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.button1.Location = new System.Drawing.Point(53, 251);
+            this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 28);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
             // 
             // listBox1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(89, 251);
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(285, 160);
-            this.listBox1.TabIndex = 24;
+            this.listBox1.Size = new System.Drawing.Size(120, 96);
+            this.listBox1.TabIndex = 0;
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(317, 441);
+            this.cancel.Location = new System.Drawing.Point(0, 0);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(57, 23);
+            this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 0;
-            this.cancel.Text = "cancel";
-            this.cancel.UseVisualStyleBackColor = true;
-            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(256, 441);
+            this.save.Location = new System.Drawing.Point(0, 0);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(57, 23);
+            this.save.Size = new System.Drawing.Size(75, 23);
             this.save.TabIndex = 0;
-            this.save.Text = "save";
-            this.save.UseVisualStyleBackColor = true;
-            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(18, 46);
+            this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(112, 15);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Что возвращаем?";
+            this.label10.Size = new System.Drawing.Size(100, 23);
+            this.label10.TabIndex = 0;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(86, 83);
+            this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 13);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Запрос";
+            this.label11.Size = new System.Drawing.Size(100, 23);
+            this.label11.TabIndex = 0;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(37, 118);
+            this.label12.Location = new System.Drawing.Point(0, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Данные запроса";
+            this.label12.Size = new System.Drawing.Size(100, 23);
+            this.label12.TabIndex = 0;
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(136, 118);
-            this.textBox1.Multiline = true;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(251, 60);
-            this.textBox1.TabIndex = 11;
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // textBox3
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(136, 45);
+            this.textBox3.Location = new System.Drawing.Point(0, 0);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(251, 21);
-            this.textBox3.TabIndex = 10;
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(136, 79);
+            this.textBox2.Location = new System.Drawing.Point(0, 0);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(251, 21);
-            this.textBox2.TabIndex = 10;
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 0;
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(143, 194);
+            this.pictureBox3.Location = new System.Drawing.Point(214, 138);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(16, 16);
             this.pictureBox3.TabIndex = 26;
@@ -500,22 +521,126 @@ namespace AppClientTurbo
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(25, 194);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.ForeColor = System.Drawing.Color.Linen;
+            this.label13.Location = new System.Drawing.Point(44, 136);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 13);
+            this.label13.Size = new System.Drawing.Size(164, 18);
             this.label13.TabIndex = 27;
             this.label13.Text = "Обработка запроса";
+            // 
+            // ForceBox
+            // 
+            this.ForceBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ForceBox.AutoSize = true;
+            this.ForceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ForceBox.ForeColor = System.Drawing.Color.Linen;
+            this.ForceBox.Location = new System.Drawing.Point(959, 163);
+            this.ForceBox.Name = "ForceBox";
+            this.ForceBox.Size = new System.Drawing.Size(201, 22);
+            this.ForceBox.TabIndex = 28;
+            this.ForceBox.Text = "Принудительный вход";
+            this.ForceBox.UseVisualStyleBackColor = true;
+            this.ForceBox.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer1.Location = new System.Drawing.Point(113, 187);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dataReq);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.responseTxt);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(1053, 481);
+            this.splitContainer1.SplitterDistance = 133;
+            this.splitContainer1.TabIndex = 29;
+            this.splitContainer1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_MouseMove);
+            // 
+            // deleteCash
+            // 
+            this.deleteCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.deleteCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteCash.ForeColor = System.Drawing.Color.Orange;
+            this.deleteCash.Location = new System.Drawing.Point(623, 55);
+            this.deleteCash.Name = "deleteCash";
+            this.deleteCash.Size = new System.Drawing.Size(66, 22);
+            this.deleteCash.TabIndex = 24;
+            this.deleteCash.Text = "Delete";
+            this.deleteCash.UseVisualStyleBackColor = false;
+            this.deleteCash.Click += new System.EventHandler(this.deleteCash_Click);
+            // 
+            // jsonFile
+            // 
+            this.jsonFile.BackColor = System.Drawing.Color.LightSlateGray;
+            this.jsonFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.jsonFile.ForeColor = System.Drawing.Color.White;
+            this.jsonFile.Location = new System.Drawing.Point(134, 11);
+            this.jsonFile.Name = "jsonFile";
+            this.jsonFile.ReadOnly = true;
+            this.jsonFile.Size = new System.Drawing.Size(456, 24);
+            this.jsonFile.TabIndex = 30;
+            this.jsonFile.Text = "File.Json";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(585, 9);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(26, 27);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "...";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Файлы JSON|*.json";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(5, 15);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(129, 18);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Файл подкачки";
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1176, 680);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.jsonFile);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.ForceBox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.add);
+            this.Controls.Add(this.deleteCash);
+            this.Controls.Add(this.saveCash);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Refs);
             this.Controls.Add(this.methodBox);
@@ -525,29 +650,36 @@ namespace AppClientTurbo
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.send);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.responseTxt);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataReq);
             this.Controls.Add(this.request);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.adrPort);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.adrServer);
             this.Controls.Add(this.userauth);
             this.Controls.Add(this.password);
             this.Controls.Add(this.user);
-            this.MinimumSize = new System.Drawing.Size(960, 500);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.ForeColor = System.Drawing.Color.Linen;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(950, 500);
             this.Name = "Form1";
             this.Text = "AppClientTurbo";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.Move += new System.EventHandler(this.Form1_Move);
             this.onOff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,7 +711,7 @@ namespace AppClientTurbo
         private System.Windows.Forms.ComboBox methodBox;
         private System.Windows.Forms.ComboBox Refs;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button saveCash;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button cancel;
@@ -595,6 +727,14 @@ namespace AppClientTurbo
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox ForceBox;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button deleteCash;
+        private System.Windows.Forms.TextBox jsonFile;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label15;
     }
 }
 

@@ -10,66 +10,36 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Collections;
 using System.IO;
-
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace AppClientTurbo
 {
+    
     public partial class Form1 : Form
     {
         Req req;
+        int myTime = -1;
         HttpResponseMessage response;
         string sessionId=null;
-        List<string> listAll;
-        List<string> listRefs;
-        List<string> listRequest;
-        List<string> listDataReq;
-        List<string> listEdit;
-        List<string> listRefsEdit;
+        CashList cashList;
         public Form1()
         {
             InitializeComponent();
+            timer1.Start();
             adrServer.Text = Properties.Settings.Default.adrServer;
             adrPort.Text = Properties.Settings.Default.adrPort;
             methodBox.Text = Properties.Settings.Default.methodBox;
             user.Text = Properties.Settings.Default.user;
             password.Text = Properties.Settings.Default.password;
-            listRefs = new List<string>();
-            listAll = new List<string>();
-            listRequest = new List<string>();
-            listDataReq = new List<string>();
-            if (!File.Exists("File.txt")) File.Create("File.txt").Close();
-            listAll = File.ReadAllLines("File.txt").ToList();
-            updateRefs();
             Refs.Text = Properties.Settings.Default.Refs;
             dataReq.Text = Properties.Settings.Default.dataReq;
             request.Text = Properties.Settings.Default.request;
-        }
-        private void updateRefs()
-        {
-            listRefs.Clear();
-            listRequest.Clear();
-            listDataReq.Clear();
-            for (int i = 0; i < listAll.Count; ++i)
-            {
-                if ((i % 3) == 0)
-                {
-                    listRefs.Add(listAll[i]);
-                }
-                else if ((i % 3) == 1)
-                {
-                    listRequest.Add(listAll[i]);
-                }
-                else if ((i % 3) == 2)
-                {
-                    listDataReq.Add(listAll[i]);
-                }
-            }
-            
-            Refs.DataSource = null;
-            Refs.DataSource = listRefs;
+            jsonFile.Text = Properties.Settings.Default.file; 
+            loadCash();
         }
         
-        private async void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.dataReq = dataReq.Text;
             Properties.Settings.Default.request = request.Text;
@@ -79,16 +49,18 @@ namespace AppClientTurbo
             Properties.Settings.Default.user = user.Text;
             Properties.Settings.Default.password = password.Text;
             Properties.Settings.Default.Refs = Refs.Text;
+            Properties.Settings.Default.file = jsonFile.Text;
             Properties.Settings.Default.Save();
             logout(sender,e);
-            File.WriteAllLines("File.txt", listAll);
         }
-        static bool Click = true;
+        static bool myClick = true;
         private async void send_Click(object sender, EventArgs e)
         {
-            if (Click)
+            
+            if (myClick)
             {
-                Click = false; pictureBox3.BackColor = Color.Yellow;
+                myTime = 0;
+                myClick = false; pictureBox3.BackColor = Color.Yellow;
 
                 try
                 {
@@ -101,20 +73,36 @@ namespace AppClientTurbo
                         req.data = dataReq.Text;
                         req.request = request.Text;
                         req.content.Headers.Add("sessionID", sessionId);
-                        if (request.Text == "userAuth/logout") Off();
-                        try
+                        if (request.Text == "userAuth/logout")
                         {
+                            Off();
                             response = await req.postRequest(req);
-                            string responseString = await response.Content.ReadAsStringAsync();
-                            if (responseString == "<HTML><BODY><B>401 Unauthorized</B></BODY></HTML>") throw new Exception("Unauthorized");
-                            responseTxt.AppendText(responseString + Environment.NewLine);
                         }
-                        catch(Exception ex)
+                        else
                         {
+                            try
+                            {
+                                response = await req.postRequest(req);
+                                string responseString = await response.Content.ReadAsStringAsync();
+                                if (responseString == "<HTML><BODY><B>401 Unauthorized</B></BODY></HTML>") throw new Exception("Unauthorized");
+                                try
+                                {
+                                    responseTxt.Text = JToken.Parse(responseString).ToString(Formatting.Indented);
+                                }
+                                catch
+                                {
+                                    responseString = "[" + responseString + "]";
+                                    responseTxt.Text = JToken.Parse(responseString).ToString(Formatting.Indented);
+                                }
+                                responseTxt.AppendText(Environment.NewLine);
+                            }
+                            catch (Exception ex)
+                            {
 
-                            if (ex.Message== "Unauthorized") throw;
-                            responseTxt.AppendText("Не верный запрос!" + Environment.NewLine);
-                            
+                                if (ex.Message == "Unauthorized") throw;
+                                responseTxt.AppendText("Не верный запрос!" + Environment.NewLine);
+
+                            }
                         }
                     }
                 }
@@ -123,16 +111,26 @@ namespace AppClientTurbo
                     Off();
                     responseTxt.AppendText("Пожалуйста авторизуйтесь!" + Environment.NewLine);
                 }
-                Click = true; pictureBox3.BackColor = Color.White;
+                myClick = true; pictureBox3.BackColor = Color.White;
+                
             }
         }
         private async void userauth_Click(object sender, EventArgs e)
         {
-            if (Click&&(sessionId==null))
+            
+            if (myClick&&(sessionId==null))
             {
-                Click = false; pictureBox3.BackColor = Color.Yellow;
-                req = new Req(Req.Method.POST, @"{""user"": """ + user.Text + "\",\"password\":\"" + password.Text + "\"}",
-                    "userauth/login", adrServer.Text, adrPort.Text);//хардкод, возможно будет необходим более гибкий подход
+                myClick = false; pictureBox3.BackColor = Color.Yellow;
+                if (ForceBox.Checked)
+                {
+                    req = new Req(Req.Method.POST, @"{""user"": """ + user.Text + "\",\"password\":\"" + password.Text + "\",\"ForceLogin\":true}", 
+                        "userauth/login", adrServer.Text, adrPort.Text);//хардкод, возможно будет необходим более гибкий подход
+                }
+               else
+                {
+                    req = new Req(Req.Method.POST, @"{""user"": """ + user.Text + "\",\"password\":\"" + password.Text + "\"}",
+                       "userauth/login", adrServer.Text, adrPort.Text);//хардкод, возможно будет необходим более гибкий подход
+                }
                 try
                 {
                     response = await req.postRequest(req);
@@ -142,10 +140,26 @@ namespace AppClientTurbo
                         responseTxt.AppendText("Успешная авторизация!" + Environment.NewLine);
                         pictureBox2.BackColor = Color.White;
                         pictureBox1.BackColor = Color.Lime;
+                        ForceBox.Visible = false;
+                        ForceBox.Checked = false;
+                        if (timeWithoutClick)
+                        {
+                            timeWithoutClick = false;
+                            Refs.Text = bufRefs;
+                            request.Text = bufRequest;
+                            dataReq.Text = bufReq;
+                        }
+                        myTime = 0;
                     }
                     catch
                     {
+                        string str = await response.Content.ReadAsStringAsync();
                         responseTxt.AppendText("Не Авторизован!" + Environment.NewLine);
+                        responseTxt.AppendText(str + Environment.NewLine);
+                        if (str != "Неправильное имя пользователя или пароль")
+                        {
+                            ForceBox.Visible = true;
+                        }
                         Off();
                     }
                 }
@@ -154,18 +168,26 @@ namespace AppClientTurbo
                     responseTxt.AppendText("Проверьте адрес и порт сервера!" + Environment.NewLine);
                     Off();
                 }
-                Click = true; pictureBox3.BackColor = Color.White;
+                myClick = true; pictureBox3.BackColor = Color.White;
+                
             }
         }
         private void Clear_Click(object sender, EventArgs e)
         {
             responseTxt.Clear();
         }
+        string bufRefs;
+        string bufRequest;
+        string bufReq;
         private void logout(object sender, EventArgs e)
         {
+            myTime = -1;
             if (sessionId != null)
             {
-                Refs.Text = "-";
+                bufRefs = Refs.Text;
+                bufRequest = request.Text;
+                bufReq = dataReq.Text;
+                Refs.Text = "ВЫХОД";
                 request.Text = "userAuth/logout";
                 dataReq.Text = "";
                 send_Click(sender, e);
@@ -193,88 +215,125 @@ namespace AppClientTurbo
             pictureBox2.BackColor = Color.Red;
             pictureBox1.BackColor = Color.White;
         }
+        bool timeWithoutClick = false;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (myTime != -1) {
+                if (++myTime > 10000) 
+                {
+                    timeWithoutClick = true;
+                    logout(sender, e);
+                }
+            }
+        }
+
+        private void saveCash_Click(object sender, EventArgs e)
+        {
+            Cash cash = cashList.listCash.Find(x => x.Name == Refs.Text);
+            if (cash == null)
+                cashList.listCash.Add(new Cash(Refs.Text, methodBox.Text, request.Text, dataReq.Text));
+            else{ 
+                cash.Method = methodBox.Text; 
+                cash.Request = request.Text; 
+                cash.DataReq = dataReq.Text; 
+            }
+            cashList.save();
+            updateRef();
+        }
+        private void loadCash()
+        {
+            cashList = new CashList(jsonFile.Text);
+            if (cashList.listCash != null) updateRef();
+        }
+        private void updateRef()
+        {
+            Refs.Items.Clear();
+            foreach (var item in cashList.listCash)
+            {
+                Refs.Items.Add(item.Name);
+            }
+            saveCash.Enabled = false;
+            deleteCash.Enabled = true;
+        }
 
         private void Refs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for(int i = 0; i < listRefs.Count; ++i)
-            {
-                if (Refs.Text == listRefs[i])
-                {
-                    request.Text = listRequest[i];
-                    dataReq.Text = listDataReq[i];
-                    break;
-                }
-            }
-        }
-
-        private void save_Click(object sender, EventArgs e)
-        {
-            listAll = listEdit;
-            updateRefs();
-            groupBox1.Visible = false;
-        }
-
-        private void add_Click(object sender, EventArgs e)
-        {
-            listEdit = new List<string>(listAll);
-            listRefsEdit = new List<string>(listRefs);
-            listBox1.DataSource = listRefsEdit;
-            groupBox1.Visible = !groupBox1.Visible;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox3.Text == "")
-            {
-                MessageBox.Show("Задано пустое значение!");
-                return;
-            }
-            bool flag = true;
-            foreach(string el in listRefs)
-            {
-                if (textBox3.Text == el)
-                {
-                    MessageBox.Show("Запись уже существует!");
-                    flag = false;
-                    return;
-                }
-            }
-            if (flag)
-            {
-                listRefsEdit.Add(textBox3.Text);
-                listEdit.Add(textBox3.Text);
-                listEdit.Add(textBox2.Text);
-                listEdit.Add(textBox1.Text);
-                listBox1.DataSource = null;
-                listBox1.DataSource = listRefsEdit;
-                listBox1.SelectedItem = textBox3.Text;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
             try
             {
-                var str = listBox1.SelectedItem.ToString();
-                listRefsEdit.Remove(str);
-                listBox1.DataSource = null;
-                listBox1.DataSource = listRefsEdit;
-                for (int i = 0; i < listEdit.Count; ++i)
-                {
-                    if (listEdit[i] == str)
-                    {
-                        listEdit.RemoveAt(i + 2);
-                        listEdit.RemoveAt(i + 1);
-                        listEdit.RemoveAt(i);
-                        return;
-                    }
-                }
+                Cash cash = cashList.listCash.Find(x => x.Name == Refs.Text);
+                if (cash == null) { cash = cashList.listCash[0]; Refs.Text = cash.Name; }
+                methodBox.Text = cash.Method;
+                request.Text = cash.Request;
+                dataReq.Text = cash.DataReq;
+                saveCash.Enabled = false;
+                deleteCash.Enabled = true;
             }
-            catch { }
-        }
-        private void cancel_Click(object sender, EventArgs e)
-        {
-            groupBox1.Visible = false;
+            catch{}
         }
 
+        private void request_TextChanged(object sender, EventArgs e)
+        {
+            saveCash.Enabled = true;
+            deleteCash.Enabled = false;
+        }
+
+        private void dataReq_TextChanged(object sender, EventArgs e)
+        {
+            saveCash.Enabled = true;
+            deleteCash.Enabled = false;
+        }
+
+        private void Refs_TextChanged(object sender, EventArgs e)
+        {
+            saveCash.Enabled = true;
+            deleteCash.Enabled = false;
+        }
+
+        private void deleteCash_Click(object sender, EventArgs e)
+        {
+            new Form2(cashList.listCash,"Вы действительно хотите удалить запись из списка?",Refs.Text).ShowDialog();
+            Refs_SelectedIndexChanged(sender, e);
+            saveCash_Click(sender, e);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                jsonFile.Text = openFileDialog1.FileName;
+                loadCash();
+                Refs_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            if (timeWithoutClick) userauth_Click(sender, e);
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (timeWithoutClick) userauth_Click(sender, e);
+        }
+
+        private void Form1_Move(object sender, EventArgs e)
+        {
+            if (timeWithoutClick) userauth_Click(sender, e);
+        }
+
+        private void splitContainer1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (timeWithoutClick) userauth_Click(sender, e);
+        }
+
+        private void dataReq_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (timeWithoutClick) userauth_Click(sender, e);
+        }
+
+        private void responseTxt_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (timeWithoutClick) userauth_Click(sender, e);
+        }
     }
 }

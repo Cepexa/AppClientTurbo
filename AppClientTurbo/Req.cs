@@ -2,9 +2,46 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace AppClientTurbo
-{
+{   
+    class CashList
+    {
+        public List<Cash> listCash;
+        string path;
+        public CashList(string path)
+        {
+            if (path == "") { path = "File.JSon"; }
+            this.path = path;
+                if (!File.Exists(path)) File.Create(path).Close();
+            listCash = JsonConvert.DeserializeObject<List<Cash>>(File.ReadAllText(path));
+            if (listCash == null) listCash = new List<Cash>();
+            
+        }
+        public void save()
+        {
+            string json = JsonConvert.SerializeObject(listCash, Formatting.Indented);
+            File.WriteAllText(path, json);
+        }
+    }
+    class Cash
+    {
+        public string Name { get; set; }
+        public string Method { get; set; }
+        public string Request { get; set; }
+        public string DataReq { get; set; }
+        public Cash(string name, string method, string request, string dataReq)
+        {
+            Name = name;
+            Method = method;
+            Request = request;
+            DataReq = dataReq;
+        }
+    }
     class Req
     {
         public enum Method //скорее всего их больше, необходимо дополнить

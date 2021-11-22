@@ -118,5 +118,17 @@ namespace AppClientTurbo.Properties {
                 this["Refs"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string file {
+            get {
+                return ((string)(this["file"]));
+            }
+            set {
+                this["file"] = value;
+            }
+        }
     }
 }
