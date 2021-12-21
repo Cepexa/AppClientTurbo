@@ -33,19 +33,19 @@ namespace AppClientTurbo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.user = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
-            this.userauth = new System.Windows.Forms.Button();
+            this.userautBtn = new System.Windows.Forms.Button();
             this.adrServer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.adrPort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.request = new System.Windows.Forms.TextBox();
+            this.requestTB = new System.Windows.Forms.TextBox();
             this.dataReq = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.responseTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.send = new System.Windows.Forms.Button();
+            this.sendBtn = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@ namespace AppClientTurbo
             this.methodBox = new System.Windows.Forms.ComboBox();
             this.Refs = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.saveCash = new System.Windows.Forms.Button();
+            this.saveCashBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -74,11 +74,14 @@ namespace AppClientTurbo
             this.ForceBox = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.deleteCash = new System.Windows.Forms.Button();
+            this.deleteCashBtn = new System.Windows.Forms.Button();
             this.jsonFile = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label15 = new System.Windows.Forms.Label();
+            this.preRequestTB = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.onOff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -115,20 +118,20 @@ namespace AppClientTurbo
             this.password.TabIndex = 1;
             this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
-            // userauth
+            // userautBtn
             // 
-            this.userauth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.userauth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.userauth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userauth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userauth.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.userauth.Location = new System.Drawing.Point(997, 118);
-            this.userauth.Name = "userauth";
-            this.userauth.Size = new System.Drawing.Size(79, 37);
-            this.userauth.TabIndex = 2;
-            this.userauth.Text = "Вход";
-            this.userauth.UseVisualStyleBackColor = false;
-            this.userauth.Click += new System.EventHandler(this.userauth_Click);
+            this.userautBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.userautBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.userautBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userautBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userautBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.userautBtn.Location = new System.Drawing.Point(997, 118);
+            this.userautBtn.Name = "userautBtn";
+            this.userautBtn.Size = new System.Drawing.Size(79, 37);
+            this.userautBtn.TabIndex = 2;
+            this.userautBtn.Text = "Вход";
+            this.userautBtn.UseVisualStyleBackColor = false;
+            this.userautBtn.Click += new System.EventHandler(this.userauth_Click);
             // 
             // adrServer
             // 
@@ -187,24 +190,24 @@ namespace AppClientTurbo
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.Linen;
-            this.label3.Location = new System.Drawing.Point(5, 97);
+            this.label3.Location = new System.Drawing.Point(5, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "Метод";
             // 
-            // request
+            // requestTB
             // 
-            this.request.BackColor = System.Drawing.Color.LightSlateGray;
-            this.request.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.request.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.request.ForeColor = System.Drawing.Color.White;
-            this.request.Location = new System.Drawing.Point(214, 93);
-            this.request.Name = "request";
-            this.request.Size = new System.Drawing.Size(291, 26);
-            this.request.TabIndex = 10;
-            this.request.Text = "RepairService/getDataRef";
-            this.request.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.requestTB.BackColor = System.Drawing.Color.LightSlateGray;
+            this.requestTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.requestTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.requestTB.ForeColor = System.Drawing.Color.White;
+            this.requestTB.Location = new System.Drawing.Point(207, 133);
+            this.requestTB.Name = "requestTB";
+            this.requestTB.Size = new System.Drawing.Size(349, 26);
+            this.requestTB.TabIndex = 10;
+            this.requestTB.Text = "RepairService/getDataRef";
+            this.requestTB.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
             // dataReq
             // 
@@ -269,25 +272,25 @@ namespace AppClientTurbo
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.Linen;
-            this.label4.Location = new System.Drawing.Point(143, 98);
+            this.label4.Location = new System.Drawing.Point(136, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 18);
             this.label4.TabIndex = 15;
             this.label4.Text = "Запрос";
             // 
-            // send
+            // sendBtn
             // 
-            this.send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.send.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.send.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.send.Location = new System.Drawing.Point(512, 86);
-            this.send.Name = "send";
-            this.send.Size = new System.Drawing.Size(105, 34);
-            this.send.TabIndex = 16;
-            this.send.Text = "Отправить";
-            this.send.UseVisualStyleBackColor = false;
-            this.send.Click += new System.EventHandler(this.send_Click);
+            this.sendBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.sendBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sendBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.sendBtn.Location = new System.Drawing.Point(562, 125);
+            this.sendBtn.Name = "sendBtn";
+            this.sendBtn.Size = new System.Drawing.Size(105, 34);
+            this.sendBtn.TabIndex = 16;
+            this.sendBtn.Text = "Отправить";
+            this.sendBtn.UseVisualStyleBackColor = false;
+            this.sendBtn.Click += new System.EventHandler(this.send_Click);
             // 
             // Clear
             // 
@@ -371,7 +374,7 @@ namespace AppClientTurbo
             "GET",
             "PUT",
             "DELETE"});
-            this.methodBox.Location = new System.Drawing.Point(70, 95);
+            this.methodBox.Location = new System.Drawing.Point(8, 108);
             this.methodBox.Name = "methodBox";
             this.methodBox.Size = new System.Drawing.Size(68, 21);
             this.methodBox.TabIndex = 21;
@@ -384,9 +387,9 @@ namespace AppClientTurbo
             this.Refs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Refs.ForeColor = System.Drawing.Color.White;
             this.Refs.FormattingEnabled = true;
-            this.Refs.Location = new System.Drawing.Point(159, 53);
+            this.Refs.Location = new System.Drawing.Point(125, 53);
             this.Refs.Name = "Refs";
-            this.Refs.Size = new System.Drawing.Size(386, 28);
+            this.Refs.Size = new System.Drawing.Size(420, 28);
             this.Refs.TabIndex = 22;
             this.Refs.Text = "-";
             this.Refs.SelectedIndexChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
@@ -397,25 +400,25 @@ namespace AppClientTurbo
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.ForeColor = System.Drawing.Color.Linen;
-            this.label9.Location = new System.Drawing.Point(5, 59);
+            this.label9.Location = new System.Drawing.Point(5, 48);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(148, 18);
+            this.label9.Size = new System.Drawing.Size(114, 36);
             this.label9.TabIndex = 23;
-            this.label9.Text = "Что возвращаем?";
+            this.label9.Text = "Что\r\nвозвращаем?";
             // 
-            // saveCash
+            // saveCashBtn
             // 
-            this.saveCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.saveCash.Enabled = false;
-            this.saveCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveCash.ForeColor = System.Drawing.Color.Orange;
-            this.saveCash.Location = new System.Drawing.Point(551, 55);
-            this.saveCash.Name = "saveCash";
-            this.saveCash.Size = new System.Drawing.Size(66, 22);
-            this.saveCash.TabIndex = 24;
-            this.saveCash.Text = "Save";
-            this.saveCash.UseVisualStyleBackColor = false;
-            this.saveCash.Click += new System.EventHandler(this.saveCash_Click);
+            this.saveCashBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.saveCashBtn.Enabled = false;
+            this.saveCashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.saveCashBtn.ForeColor = System.Drawing.Color.Orange;
+            this.saveCashBtn.Location = new System.Drawing.Point(551, 55);
+            this.saveCashBtn.Name = "saveCashBtn";
+            this.saveCashBtn.Size = new System.Drawing.Size(66, 22);
+            this.saveCashBtn.TabIndex = 24;
+            this.saveCashBtn.Text = "Save";
+            this.saveCashBtn.UseVisualStyleBackColor = false;
+            this.saveCashBtn.Click += new System.EventHandler(this.saveCash_Click);
             // 
             // groupBox1
             // 
@@ -512,7 +515,7 @@ namespace AppClientTurbo
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(214, 138);
+            this.pictureBox3.Location = new System.Drawing.Point(84, 209);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(16, 16);
             this.pictureBox3.TabIndex = 26;
@@ -521,13 +524,14 @@ namespace AppClientTurbo
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
             this.label13.ForeColor = System.Drawing.Color.Linen;
-            this.label13.Location = new System.Drawing.Point(44, 136);
+            this.label13.Location = new System.Drawing.Point(14, 189);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(164, 18);
+            this.label13.Size = new System.Drawing.Size(95, 36);
             this.label13.TabIndex = 27;
-            this.label13.Text = "Обработка запроса";
+            this.label13.Text = "Обработка\r\nзапроса";
             // 
             // ForceBox
             // 
@@ -570,28 +574,28 @@ namespace AppClientTurbo
             this.splitContainer1.TabIndex = 29;
             this.splitContainer1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_MouseMove);
             // 
-            // deleteCash
+            // deleteCashBtn
             // 
-            this.deleteCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.deleteCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteCash.ForeColor = System.Drawing.Color.Orange;
-            this.deleteCash.Location = new System.Drawing.Point(623, 55);
-            this.deleteCash.Name = "deleteCash";
-            this.deleteCash.Size = new System.Drawing.Size(66, 22);
-            this.deleteCash.TabIndex = 24;
-            this.deleteCash.Text = "Delete";
-            this.deleteCash.UseVisualStyleBackColor = false;
-            this.deleteCash.Click += new System.EventHandler(this.deleteCash_Click);
+            this.deleteCashBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.deleteCashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteCashBtn.ForeColor = System.Drawing.Color.Orange;
+            this.deleteCashBtn.Location = new System.Drawing.Point(623, 55);
+            this.deleteCashBtn.Name = "deleteCashBtn";
+            this.deleteCashBtn.Size = new System.Drawing.Size(66, 22);
+            this.deleteCashBtn.TabIndex = 24;
+            this.deleteCashBtn.Text = "Delete";
+            this.deleteCashBtn.UseVisualStyleBackColor = false;
+            this.deleteCashBtn.Click += new System.EventHandler(this.deleteCash_Click);
             // 
             // jsonFile
             // 
             this.jsonFile.BackColor = System.Drawing.Color.LightSlateGray;
             this.jsonFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.jsonFile.ForeColor = System.Drawing.Color.White;
-            this.jsonFile.Location = new System.Drawing.Point(134, 11);
+            this.jsonFile.Location = new System.Drawing.Point(125, 11);
             this.jsonFile.Name = "jsonFile";
             this.jsonFile.ReadOnly = true;
-            this.jsonFile.Size = new System.Drawing.Size(456, 24);
+            this.jsonFile.Size = new System.Drawing.Size(465, 24);
             this.jsonFile.TabIndex = 30;
             this.jsonFile.Text = "File.Json";
             // 
@@ -619,11 +623,46 @@ namespace AppClientTurbo
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(5, 15);
+            this.label15.Location = new System.Drawing.Point(37, 2);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(129, 18);
+            this.label15.Size = new System.Drawing.Size(82, 36);
             this.label15.TabIndex = 32;
-            this.label15.Text = "Файл подкачки";
+            this.label15.Text = "Файл\r\nподкачки";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // preRequestTB
+            // 
+            this.preRequestTB.BackColor = System.Drawing.Color.LightSlateGray;
+            this.preRequestTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.preRequestTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.preRequestTB.ForeColor = System.Drawing.Color.White;
+            this.preRequestTB.Location = new System.Drawing.Point(207, 91);
+            this.preRequestTB.Name = "preRequestTB";
+            this.preRequestTB.Size = new System.Drawing.Size(349, 26);
+            this.preRequestTB.TabIndex = 10;
+            this.preRequestTB.Text = "RepairService/getDataRef";
+            this.preRequestTB.TextChanged += new System.EventHandler(this.request_TextChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.ForeColor = System.Drawing.Color.Linen;
+            this.label16.Location = new System.Drawing.Point(122, 89);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(79, 36);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Префикс\r\nзапроса";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(800, 171);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 13);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Status Code";
             // 
             // Form1
             // 
@@ -632,15 +671,16 @@ namespace AppClientTurbo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1176, 680);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.jsonFile);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ForceBox);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.deleteCash);
-            this.Controls.Add(this.saveCash);
+            this.Controls.Add(this.deleteCashBtn);
+            this.Controls.Add(this.saveCashBtn);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Refs);
             this.Controls.Add(this.methodBox);
@@ -648,14 +688,16 @@ namespace AppClientTurbo
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Clear);
-            this.Controls.Add(this.send);
+            this.Controls.Add(this.sendBtn);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.request);
+            this.Controls.Add(this.preRequestTB);
+            this.Controls.Add(this.requestTB);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.adrPort);
             this.Controls.Add(this.adrServer);
-            this.Controls.Add(this.userauth);
+            this.Controls.Add(this.userautBtn);
             this.Controls.Add(this.password);
             this.Controls.Add(this.user);
             this.Controls.Add(this.label15);
@@ -689,19 +731,19 @@ namespace AppClientTurbo
 
         private System.Windows.Forms.TextBox user;
         private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.Button userauth;
+        private System.Windows.Forms.Button userautBtn;
         private System.Windows.Forms.TextBox adrServer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox adrPort;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox request;
+        private System.Windows.Forms.TextBox requestTB;
         private System.Windows.Forms.TextBox dataReq;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox responseTxt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button send;
+        private System.Windows.Forms.Button sendBtn;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -711,7 +753,7 @@ namespace AppClientTurbo
         private System.Windows.Forms.ComboBox methodBox;
         private System.Windows.Forms.ComboBox Refs;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button saveCash;
+        private System.Windows.Forms.Button saveCashBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button cancel;
@@ -730,11 +772,14 @@ namespace AppClientTurbo
         private System.Windows.Forms.CheckBox ForceBox;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button deleteCash;
+        private System.Windows.Forms.Button deleteCashBtn;
         private System.Windows.Forms.TextBox jsonFile;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox preRequestTB;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }
 

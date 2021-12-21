@@ -130,5 +130,17 @@ namespace AppClientTurbo.Properties {
                 this["file"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string preRequest {
+            get {
+                return ((string)(this["preRequest"]));
+            }
+            set {
+                this["preRequest"] = value;
+            }
+        }
     }
 }

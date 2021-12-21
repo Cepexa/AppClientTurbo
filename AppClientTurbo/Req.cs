@@ -12,13 +12,22 @@ namespace AppClientTurbo
     class CashList
     {
         public List<Cash> listCash;
-        string path;
+        public string path { get; set; }
         public CashList(string path)
         {
             if (path == "") { path = "File.JSon"; }
             this.path = path;
-                if (!File.Exists(path)) File.Create(path).Close();
-            listCash = JsonConvert.DeserializeObject<List<Cash>>(File.ReadAllText(path));
+            try
+            {
+                if (!File.Exists(this.path)) File.Create(this.path).Close();
+            }
+            catch 
+            {
+                this.path = "File.JSon";
+                if (!File.Exists(this.path)) File.Create(this.path).Close();
+            }
+            
+            listCash = JsonConvert.DeserializeObject<List<Cash>>(File.ReadAllText(this.path));
             if (listCash == null) listCash = new List<Cash>();
             
         }
@@ -32,12 +41,14 @@ namespace AppClientTurbo
     {
         public string Name { get; set; }
         public string Method { get; set; }
+        public string PreRequest { get; set; }
         public string Request { get; set; }
         public string DataReq { get; set; }
-        public Cash(string name, string method, string request, string dataReq)
+        public Cash(string name, string method, string preRequest, string request, string dataReq)
         {
             Name = name;
             Method = method;
+            PreRequest = preRequest;
             Request = request;
             DataReq = dataReq;
         }
@@ -54,12 +65,14 @@ namespace AppClientTurbo
         public Method method;
         public Req(Method method = Req.Method.POST,
                    string data = "",
-                   string request = "userauth/login",
+                   string preRequest = "/api/xcom/userAuth/",
+                   string request = "login",
                    string adrS = "127.0.0.1",
                    string adrP = "81")
         {
             this.method = method;
             this.data = data;
+            this.preRequest = preRequest;
             this.request = request;
             this.adrServer = adrS;
             this.adrPort = adrP;
@@ -68,10 +81,12 @@ namespace AppClientTurbo
         string _adrServer;
         string _adrPort;
         string _request;
+        string _preRequest;
         string _data;
         StringContent _content;
         public string adrServer { get { return _adrServer; } set { _adrServer = value; } }
         public string adrPort { get { return _adrPort; } set { _adrPort = value; } }
+        public string preRequest { get { return _preRequest; } set { _preRequest = value; } }
         public string request { get { return _request; } set { _request = value; } }
         public string data
         {
@@ -87,21 +102,21 @@ namespace AppClientTurbo
         public StringContent content { get { return _content; } set { _content = value; } }
 
         private static readonly HttpClient client = new HttpClient();
-        public Task<HttpResponseMessage> postRequest(Req req)
+        public Task<HttpResponseMessage> postRequest()
         {
-            if (req.method == Req.Method.POST)
+            if (method == Req.Method.POST)
             {
-                return client.PostAsync(@"http://" + req.adrServer + ":" + req.adrPort + "/api/xcom/" + req.request, req.content);
+                return client.PostAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, content);
             }
-            else if (req.method == Req.Method.DELETE)
-            {
-                return null;//необходима реализация
-            }
-            else if (req.method == Req.Method.GET)
+            else if (method == Req.Method.DELETE)
             {
                 return null;//необходима реализация
             }
-            else if (req.method == Req.Method.PUT)
+            else if (method == Req.Method.GET)
+            {
+                return null;//необходима реализация
+            }
+            else if (method == Req.Method.PUT)
             {
                 return null;//необходима реализация
             }

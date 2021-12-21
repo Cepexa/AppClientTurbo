@@ -34,7 +34,8 @@ namespace AppClientTurbo
             password.Text = Properties.Settings.Default.password;
             Refs.Text = Properties.Settings.Default.Refs;
             dataReq.Text = Properties.Settings.Default.dataReq;
-            request.Text = Properties.Settings.Default.request;
+            requestTB.Text = Properties.Settings.Default.request;
+            preRequestTB.Text = Properties.Settings.Default.preRequest;
             jsonFile.Text = Properties.Settings.Default.file; 
             loadCash();
         }
@@ -42,7 +43,8 @@ namespace AppClientTurbo
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.dataReq = dataReq.Text;
-            Properties.Settings.Default.request = request.Text;
+            Properties.Settings.Default.preRequest = preRequestTB.Text;
+            Properties.Settings.Default.request = requestTB.Text;
             Properties.Settings.Default.adrServer = adrServer.Text;
             Properties.Settings.Default.adrPort = adrPort.Text;
             Properties.Settings.Default.methodBox = methodBox.Text;
@@ -51,9 +53,10 @@ namespace AppClientTurbo
             Properties.Settings.Default.Refs = Refs.Text;
             Properties.Settings.Default.file = jsonFile.Text;
             Properties.Settings.Default.Save();
-            logout(sender,e);
+            logout();
         }
         static bool myClick = true;
+        static bool myClick2 = true;
         private async void send_Click(object sender, EventArgs e)
         {
             
@@ -71,39 +74,11 @@ namespace AppClientTurbo
                         else if (methodBox.Text == "PUT") req.method = Req.Method.PUT;
                         else if (methodBox.Text == "DELETE") req.method = Req.Method.DELETE;
                         req.data = dataReq.Text;
-                        req.request = request.Text;
+                        req.preRequest = preRequestTB.Text;
+                        req.request = requestTB.Text;
                         req.content.Headers.Add("sessionID", sessionId);
-                        if (request.Text == "userAuth/logout")
-                        {
-                            Off();
-                            response = await req.postRequest(req);
-                        }
-                        else
-                        {
-                            try
-                            {
-                                response = await req.postRequest(req);
-                                string responseString = await response.Content.ReadAsStringAsync();
-                                if (responseString == "<HTML><BODY><B>401 Unauthorized</B></BODY></HTML>") throw new Exception("Unauthorized");
-                                try
-                                {
-                                    responseTxt.Text = JToken.Parse(responseString).ToString(Formatting.Indented);
-                                }
-                                catch
-                                {
-                                    responseString = "[" + responseString + "]";
-                                    responseTxt.Text = JToken.Parse(responseString).ToString(Formatting.Indented);
-                                }
-                                responseTxt.AppendText(Environment.NewLine);
-                            }
-                            catch (Exception ex)
-                            {
 
-                                if (ex.Message == "Unauthorized") throw;
-                                responseTxt.AppendText("Не верный запрос!" + Environment.NewLine);
-
-                            }
-                        }
+                        responseTxt.Text = await senderReq() + Environment.NewLine;
                     }
                 }
                 catch
@@ -117,97 +92,123 @@ namespace AppClientTurbo
         }
         private async void userauth_Click(object sender, EventArgs e)
         {
-            
-            if (myClick&&(sessionId==null))
-            {
-                myClick = false; pictureBox3.BackColor = Color.Yellow;
-                if (ForceBox.Checked)
-                {
-                    req = new Req(Req.Method.POST, @"{""user"": """ + user.Text + "\",\"password\":\"" + password.Text + "\",\"ForceLogin\":true}", 
-                        "userauth/login", adrServer.Text, adrPort.Text);//хардкод, возможно будет необходим более гибкий подход
-                }
-               else
-                {
-                    req = new Req(Req.Method.POST, @"{""user"": """ + user.Text + "\",\"password\":\"" + password.Text + "\"}",
-                       "userauth/login", adrServer.Text, adrPort.Text);//хардкод, возможно будет необходим более гибкий подход
-                }
-                try
-                {
-                    response = await req.postRequest(req);
-                    try
-                    {
-                        sessionId = response.Headers.GetValues("sessionId").Last().ToString();
-                        responseTxt.AppendText("Успешная авторизация!" + Environment.NewLine);
-                        pictureBox2.BackColor = Color.White;
-                        pictureBox1.BackColor = Color.Lime;
-                        ForceBox.Visible = false;
-                        ForceBox.Checked = false;
-                        if (timeWithoutClick)
-                        {
-                            timeWithoutClick = false;
-                            Refs.Text = bufRefs;
-                            request.Text = bufRequest;
-                            dataReq.Text = bufReq;
-                        }
-                        myTime = 0;
-                    }
-                    catch
-                    {
-                        string str = await response.Content.ReadAsStringAsync();
-                        responseTxt.AppendText("Не Авторизован!" + Environment.NewLine);
-                        responseTxt.AppendText(str + Environment.NewLine);
-                        if (str != "Неправильное имя пользователя или пароль")
-                        {
-                            ForceBox.Visible = true;
-                        }
-                        Off();
-                    }
-                }
-                catch
-                {
-                    responseTxt.AppendText("Проверьте адрес и порт сервера!" + Environment.NewLine);
-                    Off();
-                }
-                myClick = true; pictureBox3.BackColor = Color.White;
-                
+            if (myClick){
+                myTime = -1;
+                myClick = false;
+                pictureBox3.BackColor = Color.Yellow;
+                if (sessionId == null) await login(); else await logout();
+                myClick = true; 
+                pictureBox3.BackColor = Color.White;
             }
         }
         private void Clear_Click(object sender, EventArgs e)
         {
             responseTxt.Clear();
+            label17.Text = "Status Code";
         }
-        string bufRefs;
-        string bufRequest;
-        string bufReq;
-        private void logout(object sender, EventArgs e)
+        private async Task login()
         {
-            myTime = -1;
-            if (sessionId != null)
+            req = new Req(Req.Method.POST, @"{""user"": """ + user.Text + "\",\"password\":\"" + password.Text + ((ForceBox.Checked) ? "\",\"ForceLogin\":true}" : "\"}"),
+                                       "/api/xcom/userauth/", "login", adrServer.Text, adrPort.Text);
+            try
             {
-                bufRefs = Refs.Text;
-                bufRequest = request.Text;
-                bufReq = dataReq.Text;
-                Refs.Text = "ВЫХОД";
-                request.Text = "userAuth/logout";
-                dataReq.Text = "";
-                send_Click(sender, e);
+                response = await req.postRequest();
+                label17.Text = "Status Code -" + (int)response.StatusCode + " " + response.StatusCode + "-";
+                try
+                {
+                    sessionId = response.Headers.GetValues("sessionId").Last().ToString();
+                    responseTxt.AppendText("Успешная авторизация!" + Environment.NewLine);
+                    pictureBox2.BackColor = Color.White;
+                    pictureBox1.BackColor = Color.Lime;
+                    ForceBox.Visible = false;
+                    ForceBox.Checked = false;
+                    if (timeWithoutClick)
+                    {
+                        timeWithoutClick = false;
+                    }
+                    myTime = 0;
+                    userautBtn.Text = "Выход";
+                }
+                catch
+                {
+                    responseTxt.AppendText("Не Авторизован!" + Environment.NewLine);
+                    responseTxt.AppendText(await response.Content.ReadAsStringAsync() + Environment.NewLine);
+                    ForceBox.Visible = (response.StatusCode != System.Net.HttpStatusCode.Unauthorized);
+                    Off();
+                }
+            }
+            catch
+            {
+                responseTxt.AppendText("Проверьте адрес и порт сервера!" + Environment.NewLine);
+                label17.Text = "Status Code";
+                Off();
             }
         }
-        private void adrPort_TextChanged(object sender, EventArgs e)
+        private async Task logout()
         {
-            logout(sender, e);
+            if (myClick2)
+            {
+                myClick2 = false;
+                myTime = -1;
+                if (sessionId != null)
+                {
+                    req.method = Req.Method.POST;
+                    req.preRequest = "/api/xcom/userAuth/";
+                    req.request = "logout";
+                    req.data = "";
+                    req.content.Headers.Add("sessionID", sessionId);
+                    responseTxt.AppendText(await senderReq() + Environment.NewLine);
+                    Off();
+                    userautBtn.Text = "Вход";
+                }
+                myClick2 = true;
+            }
         }
-        private void adrServer_TextChanged(object sender, EventArgs e)
+        async Task<string> senderReq()
         {
-            logout(sender, e);
+            try
+            {
+                response = await req.postRequest();
+                label17.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + "-";
+                if ((req.preRequest + req.request == "/api/xcom/userAuth/logout") && response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return "Сессия завершена!";
+                }
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) return "Не Авторизован!";
+                string responseString = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    return JToken.Parse(responseString).ToString(Formatting.Indented);
+                }
+                catch
+                {
+                    responseString = "[" + responseString + "]";
+                    return JToken.Parse(responseString).ToString(Formatting.Indented);
+                }
+            }
+            catch
+            {
+                return "Не верный запрос!"; 
+            }
+            
+
         }
-        private void user_TextChanged(object sender, EventArgs e)
+
+        private async void adrPort_TextChanged(object sender, EventArgs e)
         {
-            logout(sender, e);
+            await logout();
         }
-        private void password_TextChanged(object sender, EventArgs e)
+        private async void adrServer_TextChanged(object sender, EventArgs e)
         {
-            logout(sender, e);
+            await logout();
+        }
+        private async void user_TextChanged(object sender, EventArgs e)
+        {
+            await logout();
+        }
+        private async void password_TextChanged(object sender, EventArgs e)
+        {
+            await logout();
         }
         private void Off()
         {
@@ -216,13 +217,13 @@ namespace AppClientTurbo
             pictureBox1.BackColor = Color.White;
         }
         bool timeWithoutClick = false;
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
             if (myTime != -1) {
                 if (++myTime > 10000) 
                 {
                     timeWithoutClick = true;
-                    logout(sender, e);
+                    await logout();
                 }
             }
         }
@@ -231,11 +232,12 @@ namespace AppClientTurbo
         {
             Cash cash = cashList.listCash.Find(x => x.Name == Refs.Text);
             if (cash == null)
-                cashList.listCash.Add(new Cash(Refs.Text, methodBox.Text, request.Text, dataReq.Text));
+                cashList.listCash.Add(new Cash(Refs.Text, methodBox.Text, preRequestTB.Text, requestTB.Text, dataReq.Text));
             else{ 
-                cash.Method = methodBox.Text; 
-                cash.Request = request.Text; 
-                cash.DataReq = dataReq.Text; 
+                cash.Method     = methodBox.Text; 
+                cash.PreRequest = preRequestTB.Text; 
+                cash.Request    = requestTB.Text; 
+                cash.DataReq    = dataReq.Text; 
             }
             cashList.save();
             updateRef();
@@ -244,6 +246,7 @@ namespace AppClientTurbo
         {
             cashList = new CashList(jsonFile.Text);
             if (cashList.listCash != null) updateRef();
+            jsonFile.Text = cashList.path;
         }
         private void updateRef()
         {
@@ -252,8 +255,8 @@ namespace AppClientTurbo
             {
                 Refs.Items.Add(item.Name);
             }
-            saveCash.Enabled = false;
-            deleteCash.Enabled = true;
+            saveCashBtn.Enabled = false;
+            deleteCashBtn.Enabled = true;
         }
 
         private void Refs_SelectedIndexChanged(object sender, EventArgs e)
@@ -263,30 +266,31 @@ namespace AppClientTurbo
                 Cash cash = cashList.listCash.Find(x => x.Name == Refs.Text);
                 if (cash == null) { cash = cashList.listCash[0]; Refs.Text = cash.Name; }
                 methodBox.Text = cash.Method;
-                request.Text = cash.Request;
+                preRequestTB.Text = cash.PreRequest;
+                requestTB.Text = cash.Request;
                 dataReq.Text = cash.DataReq;
-                saveCash.Enabled = false;
-                deleteCash.Enabled = true;
+                saveCashBtn.Enabled = false;
+                deleteCashBtn.Enabled = true;
             }
             catch{}
         }
 
         private void request_TextChanged(object sender, EventArgs e)
         {
-            saveCash.Enabled = true;
-            deleteCash.Enabled = false;
+            saveCashBtn.Enabled = true;
+            deleteCashBtn.Enabled = false;
         }
 
         private void dataReq_TextChanged(object sender, EventArgs e)
         {
-            saveCash.Enabled = true;
-            deleteCash.Enabled = false;
+            saveCashBtn.Enabled = true;
+            deleteCashBtn.Enabled = false;
         }
 
         private void Refs_TextChanged(object sender, EventArgs e)
         {
-            saveCash.Enabled = true;
-            deleteCash.Enabled = false;
+            saveCashBtn.Enabled = true;
+            deleteCashBtn.Enabled = false;
         }
 
         private void deleteCash_Click(object sender, EventArgs e)
