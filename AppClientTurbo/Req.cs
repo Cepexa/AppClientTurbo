@@ -14,11 +14,10 @@ namespace AppClientTurbo
         public List<Cash> listCash;
         public string path { get; set; }
         public CashList(string path)
-        {
-            if (path == "") { path = "File.JSon"; }
-            this.path = path;
+        {        
             try
             {
+                this.path = path;
                 if (!File.Exists(this.path)) File.Create(this.path).Close();
             }
             catch 
