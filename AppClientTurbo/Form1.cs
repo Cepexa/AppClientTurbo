@@ -33,7 +33,7 @@ namespace AppClientTurbo
             user.Text = Properties.Settings.Default.user;
             password.Text = Properties.Settings.Default.password;
             Refs.Text = Properties.Settings.Default.Refs;
-            dataReq.Text = Properties.Settings.Default.dataReq;
+            dataReqFctb.Text = Properties.Settings.Default.dataReq;
             requestTB.Text = Properties.Settings.Default.request;
             preRequestTB.Text = Properties.Settings.Default.preRequest;
             jsonFile.Text = Properties.Settings.Default.file; 
@@ -42,7 +42,7 @@ namespace AppClientTurbo
         
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Properties.Settings.Default.dataReq = dataReq.Text;
+            Properties.Settings.Default.dataReq = dataReqFctb.Text;
             Properties.Settings.Default.preRequest = preRequestTB.Text;
             Properties.Settings.Default.request = requestTB.Text;
             Properties.Settings.Default.adrServer = adrServer.Text;
@@ -63,8 +63,7 @@ namespace AppClientTurbo
             if (myClick)
             {
                 myTime = 0;
-                myClick = false; pictureBox3.BackColor = Color.Yellow;
-
+                setVisibility(false);
                 try
                 {
                     if (sessionId == null) throw new Exception("SessionId empty");
@@ -73,37 +72,42 @@ namespace AppClientTurbo
                         else if (methodBox.Text == "GET") req.method = Req.Method.GET;
                         else if (methodBox.Text == "PUT") req.method = Req.Method.PUT;
                         else if (methodBox.Text == "DELETE") req.method = Req.Method.DELETE;
-                        req.data = dataReq.Text;
+                        req.data = dataReqFctb.Text;
                         req.preRequest = preRequestTB.Text;
                         req.request = requestTB.Text;
                         req.content.Headers.Add("sessionID", sessionId);
 
-                        responseTxt.Text = await senderReq() + Environment.NewLine;
+                        responseFctb.Text = await senderReq() + Environment.NewLine;
                     }
                 }
                 catch
                 {
                     Off();
-                    responseTxt.AppendText("Пожалуйста авторизуйтесь!" + Environment.NewLine);
+                    label17.Text = "Status Code";
+                    responseFctb.Text="Пожалуйста авторизуйтесь!" + Environment.NewLine;
                 }
-                myClick = true; pictureBox3.BackColor = Color.White;
-                
+                setVisibility(true);
             }
         }
         private async void userauth_Click(object sender, EventArgs e)
         {
             if (myClick){
                 myTime = -1;
-                myClick = false;
-                pictureBox3.BackColor = Color.Yellow;
+                setVisibility(false);
                 if (sessionId == null) await login(); else await logout();
-                myClick = true; 
-                pictureBox3.BackColor = Color.White;
+                setVisibility(true);
             }
+        }
+        void setVisibility(bool flag)
+        {
+            myClick = flag;
+            label17.Visible = flag;
+            pictureBox3.BackColor = flag ? Color.White : Color.Yellow;
+
         }
         private void Clear_Click(object sender, EventArgs e)
         {
-            responseTxt.Clear();
+            responseFctb.Clear();
             label17.Text = "Status Code";
         }
         private async Task login()
@@ -117,7 +121,7 @@ namespace AppClientTurbo
                 try
                 {
                     sessionId = response.Headers.GetValues("sessionId").Last().ToString();
-                    responseTxt.AppendText("Успешная авторизация!" + Environment.NewLine);
+                    responseFctb.Text="Успешная авторизация!" + Environment.NewLine;
                     pictureBox2.BackColor = Color.White;
                     pictureBox1.BackColor = Color.Lime;
                     ForceBox.Visible = false;
@@ -131,15 +135,15 @@ namespace AppClientTurbo
                 }
                 catch
                 {
-                    responseTxt.AppendText("Не Авторизован!" + Environment.NewLine);
-                    responseTxt.AppendText(await response.Content.ReadAsStringAsync() + Environment.NewLine);
+                    responseFctb.Text="Не Авторизован!" + Environment.NewLine;
+                    responseFctb.AppendText(await response.Content.ReadAsStringAsync() + Environment.NewLine);
                     ForceBox.Visible = (response.StatusCode != System.Net.HttpStatusCode.Unauthorized);
                     Off();
                 }
             }
             catch
             {
-                responseTxt.AppendText("Проверьте адрес и порт сервера!" + Environment.NewLine);
+                responseFctb.Text="Проверьте адрес и порт сервера!" + Environment.NewLine;
                 label17.Text = "Status Code";
                 Off();
             }
@@ -157,9 +161,7 @@ namespace AppClientTurbo
                     req.request = "logout";
                     req.data = "";
                     req.content.Headers.Add("sessionID", sessionId);
-                    responseTxt.AppendText(await senderReq() + Environment.NewLine);
-                    Off();
-                    userautBtn.Text = "Вход";
+                    responseFctb.Text=await senderReq() + Environment.NewLine;
                 }
                 myClick2 = true;
             }
@@ -170,8 +172,10 @@ namespace AppClientTurbo
             {
                 response = await req.postRequest();
                 label17.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + "-";
-                if ((req.preRequest + req.request == "/api/xcom/userAuth/logout") && response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (((req.preRequest + req.request).ToLower() == "/api/xcom/userauth/logout") && response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    Off();
+                    userautBtn.Text = "Вход";
                     return "Сессия завершена!";
                 }
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) return "Не Авторизован!";
@@ -232,12 +236,12 @@ namespace AppClientTurbo
         {
             Cash cash = cashList.listCash.Find(x => x.Name == Refs.Text);
             if (cash == null)
-                cashList.listCash.Add(new Cash(Refs.Text, methodBox.Text, preRequestTB.Text, requestTB.Text, dataReq.Text));
+                cashList.listCash.Add(new Cash(Refs.Text, methodBox.Text, preRequestTB.Text, requestTB.Text, dataReqFctb.Text));
             else{ 
                 cash.Method     = methodBox.Text; 
                 cash.PreRequest = preRequestTB.Text; 
                 cash.Request    = requestTB.Text; 
-                cash.DataReq    = dataReq.Text; 
+                cash.DataReq    = dataReqFctb.Text; 
             }
             cashList.save();
             updateRef();
@@ -268,7 +272,7 @@ namespace AppClientTurbo
                 methodBox.Text = cash.Method;
                 preRequestTB.Text = cash.PreRequest;
                 requestTB.Text = cash.Request;
-                dataReq.Text = cash.DataReq;
+                dataReqFctb.Text = cash.DataReq;
                 saveCashBtn.Enabled = false;
                 deleteCashBtn.Enabled = true;
             }
