@@ -41,100 +41,95 @@ namespace AppClientTurbo
             this.labelКоллекции = new System.Windows.Forms.Label();
             this.labelПрефикс = new System.Windows.Forms.Label();
             this.labelStatusCode = new System.Windows.Forms.Label();
-            this.user = new System.Windows.Forms.TextBox();
-            this.password = new System.Windows.Forms.TextBox();
-            this.userautBtn = new System.Windows.Forms.Button();
-            this.adrServer = new System.Windows.Forms.TextBox();
-            this.adrPort = new System.Windows.Forms.TextBox();
-            this.requestTB = new System.Windows.Forms.TextBox();
-            this.sendBtn = new System.Windows.Forms.Button();
+            this.tbUser = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.btnUseraut = new System.Windows.Forms.Button();
+            this.tbAdrServer = new System.Windows.Forms.TextBox();
+            this.tbAdrPort = new System.Windows.Forms.TextBox();
+            this.tbRequest = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.onOff = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ForceBox = new System.Windows.Forms.CheckBox();
-            this.methodBox = new System.Windows.Forms.ComboBox();
-            this.Refs = new System.Windows.Forms.ComboBox();
-            this.saveCashBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.cancel = new System.Windows.Forms.Button();
-            this.save = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.grBOnOff = new System.Windows.Forms.GroupBox();
+            this.pictBoxOff = new System.Windows.Forms.PictureBox();
+            this.pictBoxOn = new System.Windows.Forms.PictureBox();
+            this.checkBoxForce = new System.Windows.Forms.CheckBox();
+            this.comboBoxMethod = new System.Windows.Forms.ComboBox();
+            this.comboBoxRefs = new System.Windows.Forms.ComboBox();
+            this.btnSaveCash = new System.Windows.Forms.Button();
+            this.pictBoxОбработкаЗапроса = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grBДанныеЗапроса = new System.Windows.Forms.GroupBox();
-            this.dataReqFctb = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.fctbDataReq = new FastColoredTextBoxNS.FastColoredTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.responseFctb = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.deleteCashBtn = new System.Windows.Forms.Button();
-            this.preRequestTB = new System.Windows.Forms.TextBox();
+            this.fctbResponse = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.btnDeleteCash = new System.Windows.Forms.Button();
+            this.tbPreRequest = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelИмя = new System.Windows.Forms.Panel();
             this.labelИмя = new System.Windows.Forms.Label();
-            this.nameTb = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.refreshBtn = new System.Windows.Forms.Button();
-            this.extBtn = new System.Windows.Forms.Button();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.panelКоллекции = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnExt = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this._treeViewServ = new System.Windows.Forms.TreeView();
+            this.treeViewServ = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.каталогToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.коллекциюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вырезатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ПереименоватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemСоздать = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemКаталог = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemКоллекцию = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemВставить = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemВырезать = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemКопировать = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemПереименовать = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemУдалить = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this._treeViewLoc = new System.Windows.Forms.TreeView();
+            this.treeViewLoc = new System.Windows.Forms.TreeView();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.listView = new System.Windows.Forms.ListView();
+            this.colHeaderFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeaderFullPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.tbJsonFile = new System.Windows.Forms.TextBox();
+            this.btnExtCancel = new System.Windows.Forms.Button();
+            this.btnExtOk = new System.Windows.Forms.Button();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnOpenFDServ = new System.Windows.Forms.Button();
+            this.btnDefaultServ = new System.Windows.Forms.Button();
+            this.tbPathServ = new System.Windows.Forms.TextBox();
+            this.labelПуть = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnOpenFDLoc = new System.Windows.Forms.Button();
+            this.btnDefaultLoc = new System.Windows.Forms.Button();
+            this.tbPathLoc = new System.Windows.Forms.TextBox();
+            this.labelПуть2 = new System.Windows.Forms.Label();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.grBЗапросыВКоллекции = new System.Windows.Forms.GroupBox();
-            this.folderBD = new System.Windows.Forms.FolderBrowserDialog();
-            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.labelПуть2 = new System.Windows.Forms.Label();
-            this.pathLocTb = new System.Windows.Forms.TextBox();
-            this.defaultLocBtn = new System.Windows.Forms.Button();
-            this.openFDLocBtn = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.labelПуть = new System.Windows.Forms.Label();
-            this.pathServTb = new System.Windows.Forms.TextBox();
-            this.defaultServBtn = new System.Windows.Forms.Button();
-            this.openFDServBtn = new System.Windows.Forms.Button();
-            this.extOkBtn = new System.Windows.Forms.Button();
-            this.extCancelBtn = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.jsonFile = new System.Windows.Forms.TextBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this._listView = new System.Windows.Forms.ListView();
-            this.file = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fullPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.onOff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.grBOnOff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxОбработкаЗапроса)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grBДанныеЗапроса.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataReqFctb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fctbDataReq)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.responseFctb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fctbResponse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelИмя.SuspendLayout();
+            this.panelКоллекции.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -142,6 +137,18 @@ namespace AppClientTurbo
             this.groupBox3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
             this.splitContainer7.Panel1.SuspendLayout();
             this.splitContainer7.Panel2.SuspendLayout();
@@ -151,18 +158,6 @@ namespace AppClientTurbo
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
             this.grBЗапросыВКоллекции.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
-            this.splitContainer5.Panel1.SuspendLayout();
-            this.splitContainer5.Panel2.SuspendLayout();
-            this.splitContainer5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelСервер
@@ -233,6 +228,7 @@ namespace AppClientTurbo
             // 
             // labelОбработкаЗапроса
             // 
+            this.labelОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelОбработкаЗапроса.AutoSize = true;
             this.labelОбработкаЗапроса.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelОбработкаЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
@@ -277,96 +273,99 @@ namespace AppClientTurbo
             this.labelStatusCode.TabIndex = 33;
             this.labelStatusCode.Text = "Status Code";
             // 
-            // user
+            // tbUser
             // 
-            this.user.BackColor = System.Drawing.Color.LightSlateGray;
-            this.user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.user.ForeColor = System.Drawing.Color.White;
-            this.user.Location = new System.Drawing.Point(173, 50);
-            this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(169, 26);
-            this.user.TabIndex = 0;
-            this.user.Text = "Пользователь";
-            this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
+            this.tbUser.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbUser.ForeColor = System.Drawing.Color.White;
+            this.tbUser.Location = new System.Drawing.Point(173, 50);
+            this.tbUser.Name = "tbUser";
+            this.tbUser.Size = new System.Drawing.Size(169, 26);
+            this.tbUser.TabIndex = 0;
+            this.tbUser.Text = "Пользователь";
+            this.tbUser.TextChanged += new System.EventHandler(this.user_TextChanged);
             // 
-            // password
+            // tbPassword
             // 
-            this.password.BackColor = System.Drawing.Color.LightSlateGray;
-            this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password.ForeColor = System.Drawing.Color.White;
-            this.password.Location = new System.Drawing.Point(173, 80);
-            this.password.Name = "password";
-            this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(169, 26);
-            this.password.TabIndex = 1;
-            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
+            this.tbPassword.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPassword.ForeColor = System.Drawing.Color.White;
+            this.tbPassword.Location = new System.Drawing.Point(173, 80);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(169, 26);
+            this.tbPassword.TabIndex = 1;
+            this.tbPassword.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
-            // userautBtn
+            // btnUseraut
             // 
-            this.userautBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.userautBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userautBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userautBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.userautBtn.Location = new System.Drawing.Point(173, 112);
-            this.userautBtn.Name = "userautBtn";
-            this.userautBtn.Size = new System.Drawing.Size(79, 37);
-            this.userautBtn.TabIndex = 2;
-            this.userautBtn.Text = "Вход";
-            this.userautBtn.UseVisualStyleBackColor = false;
-            this.userautBtn.Click += new System.EventHandler(this.userauth_Click);
+            this.btnUseraut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnUseraut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUseraut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnUseraut.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnUseraut.Location = new System.Drawing.Point(173, 112);
+            this.btnUseraut.Name = "btnUseraut";
+            this.btnUseraut.Size = new System.Drawing.Size(79, 37);
+            this.btnUseraut.TabIndex = 2;
+            this.btnUseraut.Text = "Вход";
+            this.btnUseraut.UseVisualStyleBackColor = false;
+            this.btnUseraut.Click += new System.EventHandler(this.userauth_Click);
             // 
-            // adrServer
+            // tbAdrServer
             // 
-            this.adrServer.BackColor = System.Drawing.Color.LightSlateGray;
-            this.adrServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adrServer.ForeColor = System.Drawing.Color.White;
-            this.adrServer.Location = new System.Drawing.Point(88, 19);
-            this.adrServer.MaxLength = 15;
-            this.adrServer.Name = "adrServer";
-            this.adrServer.Size = new System.Drawing.Size(136, 26);
-            this.adrServer.TabIndex = 3;
-            this.adrServer.Text = "127.0.0.1";
-            this.adrServer.TextChanged += new System.EventHandler(this.adrServer_TextChanged);
+            this.tbAdrServer.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAdrServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbAdrServer.ForeColor = System.Drawing.Color.White;
+            this.tbAdrServer.Location = new System.Drawing.Point(88, 19);
+            this.tbAdrServer.MaxLength = 15;
+            this.tbAdrServer.Name = "tbAdrServer";
+            this.tbAdrServer.Size = new System.Drawing.Size(136, 26);
+            this.tbAdrServer.TabIndex = 3;
+            this.tbAdrServer.Text = "127.0.0.1";
+            this.tbAdrServer.TextChanged += new System.EventHandler(this.adrServer_TextChanged);
             // 
-            // adrPort
+            // tbAdrPort
             // 
-            this.adrPort.BackColor = System.Drawing.Color.LightSlateGray;
-            this.adrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adrPort.ForeColor = System.Drawing.Color.White;
-            this.adrPort.Location = new System.Drawing.Point(283, 19);
-            this.adrPort.MaxLength = 5;
-            this.adrPort.Name = "adrPort";
-            this.adrPort.Size = new System.Drawing.Size(59, 26);
-            this.adrPort.TabIndex = 6;
-            this.adrPort.Text = "81";
-            this.adrPort.TextChanged += new System.EventHandler(this.adrPort_TextChanged);
+            this.tbAdrPort.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAdrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbAdrPort.ForeColor = System.Drawing.Color.White;
+            this.tbAdrPort.Location = new System.Drawing.Point(283, 19);
+            this.tbAdrPort.MaxLength = 5;
+            this.tbAdrPort.Name = "tbAdrPort";
+            this.tbAdrPort.Size = new System.Drawing.Size(59, 26);
+            this.tbAdrPort.TabIndex = 6;
+            this.tbAdrPort.Text = "81";
+            this.tbAdrPort.TextChanged += new System.EventHandler(this.adrPort_TextChanged);
             // 
-            // requestTB
+            // tbRequest
             // 
-            this.requestTB.BackColor = System.Drawing.Color.LightSlateGray;
-            this.requestTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.requestTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.requestTB.ForeColor = System.Drawing.Color.White;
-            this.requestTB.Location = new System.Drawing.Point(91, 114);
-            this.requestTB.Name = "requestTB";
-            this.requestTB.Size = new System.Drawing.Size(376, 26);
-            this.requestTB.TabIndex = 10;
-            this.requestTB.Text = "RepairService/getDataRef";
-            this.requestTB.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.tbRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbRequest.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbRequest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbRequest.ForeColor = System.Drawing.Color.White;
+            this.tbRequest.Location = new System.Drawing.Point(91, 114);
+            this.tbRequest.Name = "tbRequest";
+            this.tbRequest.Size = new System.Drawing.Size(376, 26);
+            this.tbRequest.TabIndex = 10;
+            this.tbRequest.Text = "Select";
+            this.tbRequest.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
-            // sendBtn
+            // btnSend
             // 
-            this.sendBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.sendBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sendBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.sendBtn.Location = new System.Drawing.Point(473, 107);
-            this.sendBtn.Name = "sendBtn";
-            this.sendBtn.Size = new System.Drawing.Size(92, 34);
-            this.sendBtn.TabIndex = 16;
-            this.sendBtn.Text = "Отправить\r\n";
-            this.sendBtn.UseVisualStyleBackColor = false;
-            this.sendBtn.Click += new System.EventHandler(this.send_Click);
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSend.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnSend.Location = new System.Drawing.Point(473, 107);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(92, 34);
+            this.btnSend.TabIndex = 16;
+            this.btnSend.Text = "Отправить\r\n";
+            this.btnSend.UseVisualStyleBackColor = false;
+            this.btnSend.Click += new System.EventHandler(this.send_Click);
             // 
             // btnClear
             // 
@@ -376,7 +375,7 @@ namespace AppClientTurbo
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnClear.Location = new System.Drawing.Point(835, 303);
+            this.btnClear.Location = new System.Drawing.Point(822, 303);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(101, 31);
             this.btnClear.TabIndex = 17;
@@ -384,153 +383,122 @@ namespace AppClientTurbo
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.Clear_Click);
             // 
-            // onOff
+            // grBOnOff
             // 
-            this.onOff.Controls.Add(this.pictureBox2);
-            this.onOff.Controls.Add(this.pictureBox1);
-            this.onOff.Controls.Add(this.ForceBox);
-            this.onOff.Controls.Add(this.labelСервер);
-            this.onOff.Controls.Add(this.userautBtn);
-            this.onOff.Controls.Add(this.adrPort);
-            this.onOff.Controls.Add(this.labelPswrd);
-            this.onOff.Controls.Add(this.adrServer);
-            this.onOff.Controls.Add(this.labelПорт);
-            this.onOff.Controls.Add(this.user);
-            this.onOff.Controls.Add(this.password);
-            this.onOff.Controls.Add(this.labelUser);
-            this.onOff.Dock = System.Windows.Forms.DockStyle.Right;
-            this.onOff.ForeColor = System.Drawing.Color.Linen;
-            this.onOff.Location = new System.Drawing.Point(0, 0);
-            this.onOff.Name = "onOff";
-            this.onOff.Size = new System.Drawing.Size(371, 160);
-            this.onOff.TabIndex = 20;
-            this.onOff.TabStop = false;
-            this.onOff.Text = "On/Off";
+            this.grBOnOff.Controls.Add(this.pictBoxOff);
+            this.grBOnOff.Controls.Add(this.pictBoxOn);
+            this.grBOnOff.Controls.Add(this.checkBoxForce);
+            this.grBOnOff.Controls.Add(this.labelСервер);
+            this.grBOnOff.Controls.Add(this.btnUseraut);
+            this.grBOnOff.Controls.Add(this.tbAdrPort);
+            this.grBOnOff.Controls.Add(this.labelPswrd);
+            this.grBOnOff.Controls.Add(this.tbAdrServer);
+            this.grBOnOff.Controls.Add(this.labelПорт);
+            this.grBOnOff.Controls.Add(this.tbUser);
+            this.grBOnOff.Controls.Add(this.tbPassword);
+            this.grBOnOff.Controls.Add(this.labelUser);
+            this.grBOnOff.Dock = System.Windows.Forms.DockStyle.Right;
+            this.grBOnOff.ForeColor = System.Drawing.Color.Linen;
+            this.grBOnOff.Location = new System.Drawing.Point(0, 0);
+            this.grBOnOff.Name = "grBOnOff";
+            this.grBOnOff.Size = new System.Drawing.Size(371, 160);
+            this.grBOnOff.TabIndex = 20;
+            this.grBOnOff.TabStop = false;
+            this.grBOnOff.Text = "On/Off";
             // 
-            // pictureBox2
+            // pictBoxOff
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Red;
-            this.pictureBox2.Location = new System.Drawing.Point(292, 112);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
+            this.pictBoxOff.BackColor = System.Drawing.Color.Red;
+            this.pictBoxOff.Location = new System.Drawing.Point(292, 112);
+            this.pictBoxOff.Name = "pictBoxOff";
+            this.pictBoxOff.Size = new System.Drawing.Size(28, 29);
+            this.pictBoxOff.TabIndex = 22;
+            this.pictBoxOff.TabStop = false;
             // 
-            // pictureBox1
+            // pictBoxOn
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(258, 112);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 29);
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
+            this.pictBoxOn.BackColor = System.Drawing.Color.White;
+            this.pictBoxOn.Location = new System.Drawing.Point(258, 112);
+            this.pictBoxOn.Name = "pictBoxOn";
+            this.pictBoxOn.Size = new System.Drawing.Size(28, 29);
+            this.pictBoxOn.TabIndex = 21;
+            this.pictBoxOn.TabStop = false;
             // 
-            // ForceBox
+            // checkBoxForce
             // 
-            this.ForceBox.AutoSize = true;
-            this.ForceBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ForceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ForceBox.ForeColor = System.Drawing.Color.Linen;
-            this.ForceBox.Location = new System.Drawing.Point(8, 110);
-            this.ForceBox.Name = "ForceBox";
-            this.ForceBox.Size = new System.Drawing.Size(159, 40);
-            this.ForceBox.TabIndex = 28;
-            this.ForceBox.Text = "Принудительный\r\nвход";
-            this.ForceBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ForceBox.UseVisualStyleBackColor = true;
-            this.ForceBox.Visible = false;
+            this.checkBoxForce.AutoSize = true;
+            this.checkBoxForce.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxForce.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxForce.ForeColor = System.Drawing.Color.Linen;
+            this.checkBoxForce.Location = new System.Drawing.Point(8, 110);
+            this.checkBoxForce.Name = "checkBoxForce";
+            this.checkBoxForce.Size = new System.Drawing.Size(159, 40);
+            this.checkBoxForce.TabIndex = 28;
+            this.checkBoxForce.Text = "Принудительный\r\nвход";
+            this.checkBoxForce.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxForce.UseVisualStyleBackColor = true;
+            this.checkBoxForce.Visible = false;
             // 
-            // methodBox
+            // comboBoxMethod
             // 
-            this.methodBox.BackColor = System.Drawing.Color.LightSlateGray;
-            this.methodBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.methodBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.methodBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.methodBox.FormattingEnabled = true;
-            this.methodBox.Items.AddRange(new object[] {
+            this.comboBoxMethod.BackColor = System.Drawing.Color.LightSlateGray;
+            this.comboBoxMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxMethod.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBoxMethod.FormattingEnabled = true;
+            this.comboBoxMethod.Items.AddRange(new object[] {
             "POST",
             "GET",
             "PUT",
             "DELETE"});
-            this.methodBox.Location = new System.Drawing.Point(91, 56);
-            this.methodBox.Name = "methodBox";
-            this.methodBox.Size = new System.Drawing.Size(76, 24);
-            this.methodBox.TabIndex = 21;
-            this.methodBox.Text = "POST";
+            this.comboBoxMethod.Location = new System.Drawing.Point(91, 56);
+            this.comboBoxMethod.Name = "comboBoxMethod";
+            this.comboBoxMethod.Size = new System.Drawing.Size(76, 24);
+            this.comboBoxMethod.TabIndex = 21;
+            this.comboBoxMethod.Text = "POST";
             // 
-            // Refs
+            // comboBoxRefs
             // 
-            this.Refs.BackColor = System.Drawing.Color.LightSlateGray;
-            this.Refs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Refs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Refs.ForeColor = System.Drawing.Color.White;
-            this.Refs.FormattingEnabled = true;
-            this.Refs.Location = new System.Drawing.Point(6, 25);
-            this.Refs.Name = "Refs";
-            this.Refs.Size = new System.Drawing.Size(461, 28);
-            this.Refs.TabIndex = 22;
-            this.Refs.Text = "-";
-            this.Refs.SelectedIndexChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
-            this.Refs.TextChanged += new System.EventHandler(this.Refs_TextChanged);
+            this.comboBoxRefs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxRefs.BackColor = System.Drawing.Color.LightSlateGray;
+            this.comboBoxRefs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxRefs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxRefs.ForeColor = System.Drawing.Color.White;
+            this.comboBoxRefs.FormattingEnabled = true;
+            this.comboBoxRefs.Location = new System.Drawing.Point(6, 25);
+            this.comboBoxRefs.Name = "comboBoxRefs";
+            this.comboBoxRefs.Size = new System.Drawing.Size(461, 28);
+            this.comboBoxRefs.TabIndex = 22;
+            this.comboBoxRefs.Text = "-";
+            this.comboBoxRefs.SelectedIndexChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
+            this.comboBoxRefs.TextChanged += new System.EventHandler(this.Refs_TextChanged);
             // 
-            // saveCashBtn
+            // btnSaveCash
             // 
-            this.saveCashBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.saveCashBtn.Enabled = false;
-            this.saveCashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveCashBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveCashBtn.ForeColor = System.Drawing.Color.Orange;
-            this.saveCashBtn.Location = new System.Drawing.Point(329, 59);
-            this.saveCashBtn.Name = "saveCashBtn";
-            this.saveCashBtn.Size = new System.Drawing.Size(66, 22);
-            this.saveCashBtn.TabIndex = 24;
-            this.saveCashBtn.Text = "Save";
-            this.saveCashBtn.UseVisualStyleBackColor = false;
-            this.saveCashBtn.Click += new System.EventHandler(this.saveCash_Click);
+            this.btnSaveCash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSaveCash.Enabled = false;
+            this.btnSaveCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSaveCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSaveCash.ForeColor = System.Drawing.Color.Orange;
+            this.btnSaveCash.Location = new System.Drawing.Point(329, 59);
+            this.btnSaveCash.Name = "btnSaveCash";
+            this.btnSaveCash.Size = new System.Drawing.Size(66, 22);
+            this.btnSaveCash.TabIndex = 24;
+            this.btnSaveCash.Text = "Save";
+            this.btnSaveCash.UseVisualStyleBackColor = false;
+            this.btnSaveCash.Click += new System.EventHandler(this.saveCash_Click);
             // 
-            // button2
+            // pictBoxОбработкаЗапроса
             // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 0;
-            // 
-            // cancel
-            // 
-            this.cancel.Location = new System.Drawing.Point(0, 0);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(75, 23);
-            this.cancel.TabIndex = 0;
-            // 
-            // save
-            // 
-            this.save.Location = new System.Drawing.Point(0, 0);
-            this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(75, 23);
-            this.save.TabIndex = 0;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(500, 54);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 28);
-            this.pictureBox3.TabIndex = 26;
-            this.pictureBox3.TabStop = false;
+            this.pictBoxОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictBoxОбработкаЗапроса.BackColor = System.Drawing.Color.White;
+            this.pictBoxОбработкаЗапроса.Location = new System.Drawing.Point(500, 54);
+            this.pictBoxОбработкаЗапроса.Name = "pictBoxОбработкаЗапроса";
+            this.pictBoxОбработкаЗапроса.Size = new System.Drawing.Size(31, 28);
+            this.pictBoxОбработкаЗапроса.TabIndex = 26;
+            this.pictBoxОбработкаЗапроса.TabStop = false;
             // 
             // timer1
             // 
@@ -561,7 +529,7 @@ namespace AppClientTurbo
             // grBДанныеЗапроса
             // 
             this.grBДанныеЗапроса.Controls.Add(this.labelStatusCode);
-            this.grBДанныеЗапроса.Controls.Add(this.dataReqFctb);
+            this.grBДанныеЗапроса.Controls.Add(this.fctbDataReq);
             this.grBДанныеЗапроса.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grBДанныеЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.grBДанныеЗапроса.ForeColor = System.Drawing.Color.Linen;
@@ -572,9 +540,9 @@ namespace AppClientTurbo
             this.grBДанныеЗапроса.TabStop = false;
             this.grBДанныеЗапроса.Text = "Данные запроса";
             // 
-            // dataReqFctb
+            // fctbDataReq
             // 
-            this.dataReqFctb.AutoCompleteBracketsList = new char[] {
+            this.fctbDataReq.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
         '{',
@@ -585,43 +553,43 @@ namespace AppClientTurbo
         '\"',
         '\'',
         '\''};
-            this.dataReqFctb.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
-            this.dataReqFctb.AutoScrollMinSize = new System.Drawing.Size(31, 19);
-            this.dataReqFctb.BackBrush = null;
-            this.dataReqFctb.BackColor = System.Drawing.SystemColors.Info;
-            this.dataReqFctb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataReqFctb.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
-            this.dataReqFctb.CaretColor = System.Drawing.Color.Lime;
-            this.dataReqFctb.CharHeight = 19;
-            this.dataReqFctb.CharWidth = 10;
-            this.dataReqFctb.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dataReqFctb.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.dataReqFctb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataReqFctb.Font = new System.Drawing.Font("Courier New", 12.75F);
-            this.dataReqFctb.ForeColor = System.Drawing.Color.Black;
-            this.dataReqFctb.IndentBackColor = System.Drawing.Color.Gray;
-            this.dataReqFctb.IsReplaceMode = false;
-            this.dataReqFctb.Language = FastColoredTextBoxNS.Language.JSON;
-            this.dataReqFctb.LeftBracket = '[';
-            this.dataReqFctb.LeftBracket2 = '{';
-            this.dataReqFctb.LineNumberColor = System.Drawing.Color.PaleTurquoise;
-            this.dataReqFctb.Location = new System.Drawing.Point(3, 22);
-            this.dataReqFctb.Name = "dataReqFctb";
-            this.dataReqFctb.Paddings = new System.Windows.Forms.Padding(0);
-            this.dataReqFctb.RightBracket = ']';
-            this.dataReqFctb.RightBracket2 = '}';
-            this.dataReqFctb.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataReqFctb.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("dataReqFctb.ServiceColors")));
-            this.dataReqFctb.Size = new System.Drawing.Size(940, 135);
-            this.dataReqFctb.TabIndex = 34;
-            this.dataReqFctb.Zoom = 100;
-            this.dataReqFctb.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.dataReqFctb_TextChanged);
-            this.dataReqFctb.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dataReq_MouseMove);
+            this.fctbDataReq.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
+            this.fctbDataReq.AutoScrollMinSize = new System.Drawing.Size(31, 19);
+            this.fctbDataReq.BackBrush = null;
+            this.fctbDataReq.BackColor = System.Drawing.SystemColors.Info;
+            this.fctbDataReq.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fctbDataReq.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.fctbDataReq.CaretColor = System.Drawing.Color.Lime;
+            this.fctbDataReq.CharHeight = 19;
+            this.fctbDataReq.CharWidth = 10;
+            this.fctbDataReq.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fctbDataReq.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fctbDataReq.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fctbDataReq.Font = new System.Drawing.Font("Courier New", 12.75F);
+            this.fctbDataReq.ForeColor = System.Drawing.Color.Black;
+            this.fctbDataReq.IndentBackColor = System.Drawing.Color.Gray;
+            this.fctbDataReq.IsReplaceMode = false;
+            this.fctbDataReq.Language = FastColoredTextBoxNS.Language.JSON;
+            this.fctbDataReq.LeftBracket = '[';
+            this.fctbDataReq.LeftBracket2 = '{';
+            this.fctbDataReq.LineNumberColor = System.Drawing.Color.PaleTurquoise;
+            this.fctbDataReq.Location = new System.Drawing.Point(3, 22);
+            this.fctbDataReq.Name = "fctbDataReq";
+            this.fctbDataReq.Paddings = new System.Windows.Forms.Padding(0);
+            this.fctbDataReq.RightBracket = ']';
+            this.fctbDataReq.RightBracket2 = '}';
+            this.fctbDataReq.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.fctbDataReq.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fctbDataReq.ServiceColors")));
+            this.fctbDataReq.Size = new System.Drawing.Size(940, 135);
+            this.fctbDataReq.TabIndex = 34;
+            this.fctbDataReq.Zoom = 100;
+            this.fctbDataReq.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.dataReqFctb_TextChanged);
+            this.fctbDataReq.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dataReq_MouseMove);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.responseFctb);
+            this.groupBox2.Controls.Add(this.fctbResponse);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.ForeColor = System.Drawing.Color.Linen;
@@ -632,9 +600,9 @@ namespace AppClientTurbo
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ответ";
             // 
-            // responseFctb
+            // fctbResponse
             // 
-            this.responseFctb.AutoCompleteBracketsList = new char[] {
+            this.fctbResponse.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
         '{',
@@ -645,77 +613,79 @@ namespace AppClientTurbo
         '\"',
         '\'',
         '\''};
-            this.responseFctb.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
-            this.responseFctb.AutoScrollMinSize = new System.Drawing.Size(31, 19);
-            this.responseFctb.BackBrush = null;
-            this.responseFctb.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.responseFctb.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.responseFctb.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
-            this.responseFctb.CaretColor = System.Drawing.Color.Lime;
-            this.responseFctb.CharHeight = 19;
-            this.responseFctb.CharWidth = 10;
-            this.responseFctb.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.responseFctb.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.responseFctb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.responseFctb.Font = new System.Drawing.Font("Courier New", 12.75F);
-            this.responseFctb.ForeColor = System.Drawing.Color.Black;
-            this.responseFctb.IndentBackColor = System.Drawing.Color.Gray;
-            this.responseFctb.IsReplaceMode = false;
-            this.responseFctb.Language = FastColoredTextBoxNS.Language.JSON;
-            this.responseFctb.LeftBracket = '[';
-            this.responseFctb.LeftBracket2 = '{';
-            this.responseFctb.LineNumberColor = System.Drawing.Color.Cyan;
-            this.responseFctb.Location = new System.Drawing.Point(3, 22);
-            this.responseFctb.Name = "responseFctb";
-            this.responseFctb.Paddings = new System.Windows.Forms.Padding(0);
-            this.responseFctb.ReadOnly = true;
-            this.responseFctb.RightBracket = ']';
-            this.responseFctb.RightBracket2 = '}';
-            this.responseFctb.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.responseFctb.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("responseFctb.ServiceColors")));
-            this.responseFctb.Size = new System.Drawing.Size(940, 319);
-            this.responseFctb.TabIndex = 34;
-            this.responseFctb.Zoom = 100;
-            this.responseFctb.MouseMove += new System.Windows.Forms.MouseEventHandler(this.responseTxt_MouseMove);
+            this.fctbResponse.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
+            this.fctbResponse.AutoScrollMinSize = new System.Drawing.Size(31, 19);
+            this.fctbResponse.BackBrush = null;
+            this.fctbResponse.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.fctbResponse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fctbResponse.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.fctbResponse.CaretColor = System.Drawing.Color.Lime;
+            this.fctbResponse.CharHeight = 19;
+            this.fctbResponse.CharWidth = 10;
+            this.fctbResponse.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fctbResponse.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fctbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fctbResponse.Font = new System.Drawing.Font("Courier New", 12.75F);
+            this.fctbResponse.ForeColor = System.Drawing.Color.Black;
+            this.fctbResponse.IndentBackColor = System.Drawing.Color.Gray;
+            this.fctbResponse.IsReplaceMode = false;
+            this.fctbResponse.Language = FastColoredTextBoxNS.Language.JSON;
+            this.fctbResponse.LeftBracket = '[';
+            this.fctbResponse.LeftBracket2 = '{';
+            this.fctbResponse.LineNumberColor = System.Drawing.Color.Cyan;
+            this.fctbResponse.Location = new System.Drawing.Point(3, 22);
+            this.fctbResponse.Name = "fctbResponse";
+            this.fctbResponse.Paddings = new System.Windows.Forms.Padding(0);
+            this.fctbResponse.ReadOnly = true;
+            this.fctbResponse.RightBracket = ']';
+            this.fctbResponse.RightBracket2 = '}';
+            this.fctbResponse.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.fctbResponse.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fctbResponse.ServiceColors")));
+            this.fctbResponse.Size = new System.Drawing.Size(940, 319);
+            this.fctbResponse.TabIndex = 34;
+            this.fctbResponse.Zoom = 100;
+            this.fctbResponse.MouseMove += new System.Windows.Forms.MouseEventHandler(this.responseTxt_MouseMove);
             // 
-            // deleteCashBtn
+            // btnDeleteCash
             // 
-            this.deleteCashBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.deleteCashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteCashBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteCashBtn.ForeColor = System.Drawing.Color.Orange;
-            this.deleteCashBtn.Location = new System.Drawing.Point(401, 59);
-            this.deleteCashBtn.Name = "deleteCashBtn";
-            this.deleteCashBtn.Size = new System.Drawing.Size(66, 22);
-            this.deleteCashBtn.TabIndex = 24;
-            this.deleteCashBtn.Text = "Delete";
-            this.deleteCashBtn.UseVisualStyleBackColor = false;
-            this.deleteCashBtn.Click += new System.EventHandler(this.deleteCash_Click);
+            this.btnDeleteCash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDeleteCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeleteCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnDeleteCash.ForeColor = System.Drawing.Color.Orange;
+            this.btnDeleteCash.Location = new System.Drawing.Point(401, 59);
+            this.btnDeleteCash.Name = "btnDeleteCash";
+            this.btnDeleteCash.Size = new System.Drawing.Size(66, 22);
+            this.btnDeleteCash.TabIndex = 24;
+            this.btnDeleteCash.Text = "Delete";
+            this.btnDeleteCash.UseVisualStyleBackColor = false;
+            this.btnDeleteCash.Click += new System.EventHandler(this.deleteCash_Click);
             // 
-            // preRequestTB
+            // tbPreRequest
             // 
-            this.preRequestTB.BackColor = System.Drawing.Color.LightSlateGray;
-            this.preRequestTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.preRequestTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.preRequestTB.ForeColor = System.Drawing.Color.White;
-            this.preRequestTB.Location = new System.Drawing.Point(91, 84);
-            this.preRequestTB.Name = "preRequestTB";
-            this.preRequestTB.Size = new System.Drawing.Size(376, 26);
-            this.preRequestTB.TabIndex = 10;
-            this.preRequestTB.Text = "RepairService/getDataRef";
-            this.preRequestTB.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.tbPreRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPreRequest.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbPreRequest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPreRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPreRequest.ForeColor = System.Drawing.Color.White;
+            this.tbPreRequest.Location = new System.Drawing.Point(91, 84);
+            this.tbPreRequest.Name = "tbPreRequest";
+            this.tbPreRequest.Size = new System.Drawing.Size(376, 26);
+            this.tbPreRequest.TabIndex = 10;
+            this.tbPreRequest.Text = "/api/xcom/RepairService/";
+            this.tbPreRequest.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.panel1);
-            this.splitContainer2.Panel1.Controls.Add(this.panel2);
+            this.splitContainer2.Panel1.Controls.Add(this.panelИмя);
+            this.splitContainer2.Panel1.Controls.Add(this.panelКоллекции);
             this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
             this.splitContainer2.Panel1MinSize = 200;
             // 
@@ -728,17 +698,17 @@ namespace AppClientTurbo
             this.splitContainer2.SplitterDistance = 201;
             this.splitContainer2.TabIndex = 33;
             // 
-            // panel1
+            // panelИмя
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.labelИмя);
-            this.panel1.Controls.Add(this.nameTb);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 36);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 34);
-            this.panel1.TabIndex = 5;
-            this.panel1.Visible = false;
+            this.panelИмя.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelИмя.Controls.Add(this.labelИмя);
+            this.panelИмя.Controls.Add(this.tbName);
+            this.panelИмя.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelИмя.Location = new System.Drawing.Point(0, 36);
+            this.panelИмя.Name = "panelИмя";
+            this.panelИмя.Size = new System.Drawing.Size(201, 34);
+            this.panelИмя.TabIndex = 5;
+            this.panelИмя.Visible = false;
             // 
             // labelИмя
             // 
@@ -749,52 +719,52 @@ namespace AppClientTurbo
             this.labelИмя.TabIndex = 1;
             this.labelИмя.Text = "Имя";
             // 
-            // nameTb
+            // tbName
             // 
-            this.nameTb.Location = new System.Drawing.Point(41, 4);
-            this.nameTb.Name = "nameTb";
-            this.nameTb.Size = new System.Drawing.Size(154, 20);
-            this.nameTb.TabIndex = 0;
-            this.nameTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nameTb_KeyDown);
-            this.nameTb.Leave += new System.EventHandler(this.nameTb_Leave);
+            this.tbName.Location = new System.Drawing.Point(41, 4);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(154, 20);
+            this.tbName.TabIndex = 0;
+            this.tbName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nameTb_KeyDown);
+            this.tbName.Leave += new System.EventHandler(this.nameTb_Leave);
             // 
-            // panel2
+            // panelКоллекции
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.panel2.Controls.Add(this.refreshBtn);
-            this.panel2.Controls.Add(this.extBtn);
-            this.panel2.Controls.Add(this.labelКоллекции);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(201, 36);
-            this.panel2.TabIndex = 0;
+            this.panelКоллекции.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panelКоллекции.Controls.Add(this.btnRefresh);
+            this.panelКоллекции.Controls.Add(this.btnExt);
+            this.panelКоллекции.Controls.Add(this.labelКоллекции);
+            this.panelКоллекции.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelКоллекции.Location = new System.Drawing.Point(0, 0);
+            this.panelКоллекции.Name = "panelКоллекции";
+            this.panelКоллекции.Size = new System.Drawing.Size(201, 36);
+            this.panelКоллекции.TabIndex = 0;
             // 
-            // refreshBtn
+            // btnRefresh
             // 
-            this.refreshBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.refreshBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.refreshBtn.FlatAppearance.BorderSize = 0;
-            this.refreshBtn.Image = ((System.Drawing.Image)(resources.GetObject("refreshBtn.Image")));
-            this.refreshBtn.Location = new System.Drawing.Point(137, 6);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(26, 26);
-            this.refreshBtn.TabIndex = 0;
-            this.refreshBtn.UseVisualStyleBackColor = false;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(137, 6);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(26, 26);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
-            // extBtn
+            // btnExt
             // 
-            this.extBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.extBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.extBtn.FlatAppearance.BorderSize = 0;
-            this.extBtn.Image = ((System.Drawing.Image)(resources.GetObject("extBtn.Image")));
-            this.extBtn.Location = new System.Drawing.Point(169, 6);
-            this.extBtn.Name = "extBtn";
-            this.extBtn.Size = new System.Drawing.Size(26, 26);
-            this.extBtn.TabIndex = 0;
-            this.extBtn.UseVisualStyleBackColor = false;
-            this.extBtn.Click += new System.EventHandler(this.extBtn_Click);
+            this.btnExt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExt.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExt.FlatAppearance.BorderSize = 0;
+            this.btnExt.Image = ((System.Drawing.Image)(resources.GetObject("btnExt.Image")));
+            this.btnExt.Location = new System.Drawing.Point(169, 6);
+            this.btnExt.Name = "btnExt";
+            this.btnExt.Size = new System.Drawing.Size(26, 26);
+            this.btnExt.TabIndex = 0;
+            this.btnExt.UseVisualStyleBackColor = false;
+            this.btnExt.Click += new System.EventHandler(this.extBtn_Click);
             // 
             // splitContainer3
             // 
@@ -818,7 +788,7 @@ namespace AppClientTurbo
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this._treeViewServ);
+            this.groupBox3.Controls.Add(this.treeViewServ);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.ForeColor = System.Drawing.Color.Linen;
@@ -829,94 +799,94 @@ namespace AppClientTurbo
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Общие Коллекции";
             // 
-            // _treeViewServ
+            // treeViewServ
             // 
-            this._treeViewServ.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this._treeViewServ.ContextMenuStrip = this.contextMenuStrip1;
-            this._treeViewServ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._treeViewServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._treeViewServ.Location = new System.Drawing.Point(3, 22);
-            this._treeViewServ.Name = "_treeViewServ";
-            this._treeViewServ.Size = new System.Drawing.Size(195, 267);
-            this._treeViewServ.TabIndex = 4;
-            this._treeViewServ.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
-            this._treeViewServ.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
-            this._treeViewServ.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewServ_MouseUp);
+            this.treeViewServ.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.treeViewServ.ContextMenuStrip = this.contextMenuStrip1;
+            this.treeViewServ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treeViewServ.Location = new System.Drawing.Point(3, 22);
+            this.treeViewServ.Name = "treeViewServ";
+            this.treeViewServ.Size = new System.Drawing.Size(195, 267);
+            this.treeViewServ.TabIndex = 4;
+            this.treeViewServ.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
+            this.treeViewServ.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
+            this.treeViewServ.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewServ_MouseUp);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьToolStripMenuItem,
-            this.вставитьToolStripMenuItem,
-            this.вырезатьToolStripMenuItem,
-            this.копироватьToolStripMenuItem,
-            this.ПереименоватьToolStripMenuItem,
-            this.удалитьToolStripMenuItem});
+            this.toolStripMenuItemСоздать,
+            this.toolStripMenuItemВставить,
+            this.toolStripMenuItemВырезать,
+            this.toolStripMenuItemКопировать,
+            this.toolStripMenuItemПереименовать,
+            this.toolStripMenuItemУдалить});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(162, 136);
             // 
-            // создатьToolStripMenuItem
+            // toolStripMenuItemСоздать
             // 
-            this.создатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.каталогToolStripMenuItem,
-            this.коллекциюToolStripMenuItem});
-            this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.создатьToolStripMenuItem.Text = "Создать";
+            this.toolStripMenuItemСоздать.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemКаталог,
+            this.toolStripMenuItemКоллекцию});
+            this.toolStripMenuItemСоздать.Name = "toolStripMenuItemСоздать";
+            this.toolStripMenuItemСоздать.Size = new System.Drawing.Size(161, 22);
+            this.toolStripMenuItemСоздать.Text = "Создать";
             // 
-            // каталогToolStripMenuItem
+            // toolStripMenuItemКаталог
             // 
-            this.каталогToolStripMenuItem.Name = "каталогToolStripMenuItem";
-            this.каталогToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.каталогToolStripMenuItem.Text = "Каталог";
-            this.каталогToolStripMenuItem.Click += new System.EventHandler(this.каталогToolStripMenuItem_Click);
+            this.toolStripMenuItemКаталог.Name = "toolStripMenuItemКаталог";
+            this.toolStripMenuItemКаталог.Size = new System.Drawing.Size(138, 22);
+            this.toolStripMenuItemКаталог.Text = "Каталог";
+            this.toolStripMenuItemКаталог.Click += new System.EventHandler(this.каталогToolStripMenuItem_Click);
             // 
-            // коллекциюToolStripMenuItem
+            // toolStripMenuItemКоллекцию
             // 
-            this.коллекциюToolStripMenuItem.Name = "коллекциюToolStripMenuItem";
-            this.коллекциюToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.коллекциюToolStripMenuItem.Text = "Коллекцию";
-            this.коллекциюToolStripMenuItem.Click += new System.EventHandler(this.коллекциюToolStripMenuItem_Click);
+            this.toolStripMenuItemКоллекцию.Name = "toolStripMenuItemКоллекцию";
+            this.toolStripMenuItemКоллекцию.Size = new System.Drawing.Size(138, 22);
+            this.toolStripMenuItemКоллекцию.Text = "Коллекцию";
+            this.toolStripMenuItemКоллекцию.Click += new System.EventHandler(this.коллекциюToolStripMenuItem_Click);
             // 
-            // вставитьToolStripMenuItem
+            // toolStripMenuItemВставить
             // 
-            this.вставитьToolStripMenuItem.Enabled = false;
-            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.вставитьToolStripMenuItem.Text = "Вставить";
-            this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
+            this.toolStripMenuItemВставить.Enabled = false;
+            this.toolStripMenuItemВставить.Name = "toolStripMenuItemВставить";
+            this.toolStripMenuItemВставить.Size = new System.Drawing.Size(161, 22);
+            this.toolStripMenuItemВставить.Text = "Вставить";
+            this.toolStripMenuItemВставить.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
-            // вырезатьToolStripMenuItem
+            // toolStripMenuItemВырезать
             // 
-            this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
-            this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.вырезатьToolStripMenuItem.Text = "Вырезать";
-            this.вырезатьToolStripMenuItem.Click += new System.EventHandler(this.вырезатьToolStripMenuItem_Click);
+            this.toolStripMenuItemВырезать.Name = "toolStripMenuItemВырезать";
+            this.toolStripMenuItemВырезать.Size = new System.Drawing.Size(161, 22);
+            this.toolStripMenuItemВырезать.Text = "Вырезать";
+            this.toolStripMenuItemВырезать.Click += new System.EventHandler(this.вырезатьToolStripMenuItem_Click);
             // 
-            // копироватьToolStripMenuItem
+            // toolStripMenuItemКопировать
             // 
-            this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.копироватьToolStripMenuItem.Text = "Копировать";
-            this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
+            this.toolStripMenuItemКопировать.Name = "toolStripMenuItemКопировать";
+            this.toolStripMenuItemКопировать.Size = new System.Drawing.Size(161, 22);
+            this.toolStripMenuItemКопировать.Text = "Копировать";
+            this.toolStripMenuItemКопировать.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
-            // ПереименоватьToolStripMenuItem
+            // toolStripMenuItemПереименовать
             // 
-            this.ПереименоватьToolStripMenuItem.Name = "ПереименоватьToolStripMenuItem";
-            this.ПереименоватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.ПереименоватьToolStripMenuItem.Text = "Переименовать";
-            this.ПереименоватьToolStripMenuItem.Click += new System.EventHandler(this.ПереименоватьToolStripMenuItem_Click);
+            this.toolStripMenuItemПереименовать.Name = "toolStripMenuItemПереименовать";
+            this.toolStripMenuItemПереименовать.Size = new System.Drawing.Size(161, 22);
+            this.toolStripMenuItemПереименовать.Text = "Переименовать";
+            this.toolStripMenuItemПереименовать.Click += new System.EventHandler(this.ПереименоватьToolStripMenuItem_Click);
             // 
-            // удалитьToolStripMenuItem
+            // toolStripMenuItemУдалить
             // 
-            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
-            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
+            this.toolStripMenuItemУдалить.Name = "toolStripMenuItemУдалить";
+            this.toolStripMenuItemУдалить.Size = new System.Drawing.Size(161, 22);
+            this.toolStripMenuItemУдалить.Text = "Удалить";
+            this.toolStripMenuItemУдалить.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this._treeViewLoc);
+            this.groupBox4.Controls.Add(this.treeViewLoc);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.ForeColor = System.Drawing.Color.Linen;
@@ -927,19 +897,289 @@ namespace AppClientTurbo
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Локальные Коллекции";
             // 
-            // _treeViewLoc
+            // treeViewLoc
             // 
-            this._treeViewLoc.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this._treeViewLoc.ContextMenuStrip = this.contextMenuStrip1;
-            this._treeViewLoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._treeViewLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this._treeViewLoc.Location = new System.Drawing.Point(3, 22);
-            this._treeViewLoc.Name = "_treeViewLoc";
-            this._treeViewLoc.Size = new System.Drawing.Size(195, 323);
-            this._treeViewLoc.TabIndex = 4;
-            this._treeViewLoc.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
-            this._treeViewLoc.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
-            this._treeViewLoc.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewLoc_MouseUp);
+            this.treeViewLoc.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.treeViewLoc.ContextMenuStrip = this.contextMenuStrip1;
+            this.treeViewLoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.treeViewLoc.Location = new System.Drawing.Point(3, 22);
+            this.treeViewLoc.Name = "treeViewLoc";
+            this.treeViewLoc.Size = new System.Drawing.Size(195, 323);
+            this.treeViewLoc.TabIndex = 4;
+            this.treeViewLoc.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
+            this.treeViewLoc.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
+            this.treeViewLoc.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewLoc_MouseUp);
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.groupBox8);
+            this.splitContainer4.Panel1.Controls.Add(this.groupBox7);
+            this.splitContainer4.Panel1MinSize = 200;
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btnExtCancel);
+            this.splitContainer4.Panel2.Controls.Add(this.btnExtOk);
+            this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer4.Panel2MinSize = 200;
+            this.splitContainer4.Size = new System.Drawing.Size(642, 680);
+            this.splitContainer4.SplitterDistance = 404;
+            this.splitContainer4.TabIndex = 4;
+            this.splitContainer4.Visible = false;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.listView);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox8.ForeColor = System.Drawing.Color.Linen;
+            this.groupBox8.Location = new System.Drawing.Point(0, 41);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(642, 363);
+            this.groupBox8.TabIndex = 5;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Содержимое";
+            // 
+            // listView
+            // 
+            this.listView.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colHeaderFile,
+            this.colHeaderSize,
+            this.colHeaderType,
+            this.colHeaderFullPath});
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(3, 16);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(636, 344);
+            this.listView.TabIndex = 3;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.DoubleClick += new System.EventHandler(this._listView_DoubleClick);
+            // 
+            // colHeaderFile
+            // 
+            this.colHeaderFile.Text = "Файл";
+            this.colHeaderFile.Width = 130;
+            // 
+            // colHeaderSize
+            // 
+            this.colHeaderSize.Text = "Размер (МБ)";
+            this.colHeaderSize.Width = 76;
+            // 
+            // colHeaderType
+            // 
+            this.colHeaderType.Text = "Тип";
+            this.colHeaderType.Width = 38;
+            // 
+            // colHeaderFullPath
+            // 
+            this.colHeaderFullPath.Text = "Полный путь к файлу";
+            this.colHeaderFullPath.Width = 700;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.tbJsonFile);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox7.ForeColor = System.Drawing.Color.Linen;
+            this.groupBox7.Location = new System.Drawing.Point(0, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(642, 41);
+            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Текущая Коллекция";
+            // 
+            // tbJsonFile
+            // 
+            this.tbJsonFile.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbJsonFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbJsonFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbJsonFile.ForeColor = System.Drawing.Color.White;
+            this.tbJsonFile.Location = new System.Drawing.Point(3, 16);
+            this.tbJsonFile.Name = "tbJsonFile";
+            this.tbJsonFile.ReadOnly = true;
+            this.tbJsonFile.Size = new System.Drawing.Size(636, 24);
+            this.tbJsonFile.TabIndex = 30;
+            this.tbJsonFile.Text = "File.Json";
+            this.tbJsonFile.TextChanged += new System.EventHandler(this.jsonFile_TextChanged);
+            // 
+            // btnExtCancel
+            // 
+            this.btnExtCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExtCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExtCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExtCancel.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnExtCancel.Location = new System.Drawing.Point(312, 166);
+            this.btnExtCancel.Name = "btnExtCancel";
+            this.btnExtCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnExtCancel.TabIndex = 2;
+            this.btnExtCancel.Text = "Отмена";
+            this.btnExtCancel.UseVisualStyleBackColor = false;
+            this.btnExtCancel.Click += new System.EventHandler(this.extCancelBtn_Click);
+            // 
+            // btnExtOk
+            // 
+            this.btnExtOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExtOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExtOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExtOk.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnExtOk.Location = new System.Drawing.Point(231, 166);
+            this.btnExtOk.Name = "btnExtOk";
+            this.btnExtOk.Size = new System.Drawing.Size(75, 23);
+            this.btnExtOk.TabIndex = 2;
+            this.btnExtOk.Text = "OK";
+            this.btnExtOk.UseVisualStyleBackColor = false;
+            this.btnExtOk.Click += new System.EventHandler(this.extOkBtn_Click);
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.groupBox5);
+            this.splitContainer5.Panel1MinSize = 200;
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.groupBox6);
+            this.splitContainer5.Panel2MinSize = 200;
+            this.splitContainer5.Size = new System.Drawing.Size(642, 159);
+            this.splitContainer5.SplitterDistance = 315;
+            this.splitContainer5.TabIndex = 1;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnOpenFDServ);
+            this.groupBox5.Controls.Add(this.btnDefaultServ);
+            this.groupBox5.Controls.Add(this.tbPathServ);
+            this.groupBox5.Controls.Add(this.labelПуть);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.ForeColor = System.Drawing.Color.Linen;
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(315, 159);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Настройка Общих Коллекций";
+            // 
+            // btnOpenFDServ
+            // 
+            this.btnOpenFDServ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFDServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOpenFDServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenFDServ.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnOpenFDServ.Location = new System.Drawing.Point(236, 74);
+            this.btnOpenFDServ.Name = "btnOpenFDServ";
+            this.btnOpenFDServ.Size = new System.Drawing.Size(57, 23);
+            this.btnOpenFDServ.TabIndex = 2;
+            this.btnOpenFDServ.Text = "Обзор";
+            this.btnOpenFDServ.UseVisualStyleBackColor = false;
+            this.btnOpenFDServ.Click += new System.EventHandler(this.openFDServBtn_Click);
+            // 
+            // btnDefaultServ
+            // 
+            this.btnDefaultServ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDefaultServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDefaultServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaultServ.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnDefaultServ.Location = new System.Drawing.Point(136, 74);
+            this.btnDefaultServ.Name = "btnDefaultServ";
+            this.btnDefaultServ.Size = new System.Drawing.Size(94, 23);
+            this.btnDefaultServ.TabIndex = 2;
+            this.btnDefaultServ.Text = "По умолчанию";
+            this.btnDefaultServ.UseVisualStyleBackColor = false;
+            this.btnDefaultServ.Click += new System.EventHandler(this.defaultServBtn_Click);
+            // 
+            // tbPathServ
+            // 
+            this.tbPathServ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPathServ.Location = new System.Drawing.Point(10, 48);
+            this.tbPathServ.Name = "tbPathServ";
+            this.tbPathServ.Size = new System.Drawing.Size(283, 20);
+            this.tbPathServ.TabIndex = 1;
+            // 
+            // labelПуть
+            // 
+            this.labelПуть.AutoSize = true;
+            this.labelПуть.Location = new System.Drawing.Point(7, 31);
+            this.labelПуть.Name = "labelПуть";
+            this.labelПуть.Size = new System.Drawing.Size(31, 13);
+            this.labelПуть.TabIndex = 0;
+            this.labelПуть.Text = "Путь";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnOpenFDLoc);
+            this.groupBox6.Controls.Add(this.btnDefaultLoc);
+            this.groupBox6.Controls.Add(this.tbPathLoc);
+            this.groupBox6.Controls.Add(this.labelПуть2);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.ForeColor = System.Drawing.Color.Linen;
+            this.groupBox6.Location = new System.Drawing.Point(0, 0);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(323, 159);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Настройка Локальных Коллекций";
+            // 
+            // btnOpenFDLoc
+            // 
+            this.btnOpenFDLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFDLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOpenFDLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenFDLoc.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnOpenFDLoc.Location = new System.Drawing.Point(247, 74);
+            this.btnOpenFDLoc.Name = "btnOpenFDLoc";
+            this.btnOpenFDLoc.Size = new System.Drawing.Size(55, 23);
+            this.btnOpenFDLoc.TabIndex = 2;
+            this.btnOpenFDLoc.Text = "Обзор";
+            this.btnOpenFDLoc.UseVisualStyleBackColor = false;
+            this.btnOpenFDLoc.Click += new System.EventHandler(this.openFDLocBtn_Click);
+            // 
+            // btnDefaultLoc
+            // 
+            this.btnDefaultLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDefaultLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDefaultLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaultLoc.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnDefaultLoc.Location = new System.Drawing.Point(146, 74);
+            this.btnDefaultLoc.Name = "btnDefaultLoc";
+            this.btnDefaultLoc.Size = new System.Drawing.Size(95, 23);
+            this.btnDefaultLoc.TabIndex = 2;
+            this.btnDefaultLoc.Text = "По умолчанию";
+            this.btnDefaultLoc.UseVisualStyleBackColor = false;
+            this.btnDefaultLoc.Click += new System.EventHandler(this.defaultLocBtn_Click);
+            // 
+            // tbPathLoc
+            // 
+            this.tbPathLoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPathLoc.Location = new System.Drawing.Point(19, 48);
+            this.tbPathLoc.Name = "tbPathLoc";
+            this.tbPathLoc.Size = new System.Drawing.Size(283, 20);
+            this.tbPathLoc.TabIndex = 1;
+            // 
+            // labelПуть2
+            // 
+            this.labelПуть2.AutoSize = true;
+            this.labelПуть2.Location = new System.Drawing.Point(16, 31);
+            this.labelПуть2.Name = "labelПуть2";
+            this.labelПуть2.Size = new System.Drawing.Size(31, 13);
+            this.labelПуть2.TabIndex = 0;
+            this.labelПуть2.Text = "Путь";
             // 
             // splitContainer7
             // 
@@ -964,7 +1204,7 @@ namespace AppClientTurbo
             // splitContainer6
             // 
             this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer6.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer6.IsSplitterFixed = true;
             this.splitContainer6.Location = new System.Drawing.Point(0, 0);
             this.splitContainer6.Name = "splitContainer6";
@@ -976,7 +1216,7 @@ namespace AppClientTurbo
             // 
             // splitContainer6.Panel2
             // 
-            this.splitContainer6.Panel2.Controls.Add(this.onOff);
+            this.splitContainer6.Panel2.Controls.Add(this.grBOnOff);
             this.splitContainer6.Panel2MinSize = 355;
             this.splitContainer6.Size = new System.Drawing.Size(950, 160);
             this.splitContainer6.SplitterDistance = 575;
@@ -984,297 +1224,27 @@ namespace AppClientTurbo
             // 
             // grBЗапросыВКоллекции
             // 
-            this.grBЗапросыВКоллекции.Controls.Add(this.deleteCashBtn);
-            this.grBЗапросыВКоллекции.Controls.Add(this.saveCashBtn);
-            this.grBЗапросыВКоллекции.Controls.Add(this.pictureBox3);
-            this.grBЗапросыВКоллекции.Controls.Add(this.Refs);
+            this.grBЗапросыВКоллекции.Controls.Add(this.btnDeleteCash);
+            this.grBЗапросыВКоллекции.Controls.Add(this.btnSaveCash);
+            this.grBЗапросыВКоллекции.Controls.Add(this.pictBoxОбработкаЗапроса);
+            this.grBЗапросыВКоллекции.Controls.Add(this.comboBoxRefs);
             this.grBЗапросыВКоллекции.Controls.Add(this.labelМетод);
             this.grBЗапросыВКоллекции.Controls.Add(this.labelОбработкаЗапроса);
-            this.grBЗапросыВКоллекции.Controls.Add(this.methodBox);
-            this.grBЗапросыВКоллекции.Controls.Add(this.sendBtn);
+            this.grBЗапросыВКоллекции.Controls.Add(this.comboBoxMethod);
+            this.grBЗапросыВКоллекции.Controls.Add(this.btnSend);
             this.grBЗапросыВКоллекции.Controls.Add(this.labelПрефикс);
-            this.grBЗапросыВКоллекции.Controls.Add(this.requestTB);
+            this.grBЗапросыВКоллекции.Controls.Add(this.tbRequest);
             this.grBЗапросыВКоллекции.Controls.Add(this.labelЗапрос);
-            this.grBЗапросыВКоллекции.Controls.Add(this.preRequestTB);
-            this.grBЗапросыВКоллекции.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grBЗапросыВКоллекции.Controls.Add(this.tbPreRequest);
+            this.grBЗапросыВКоллекции.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grBЗапросыВКоллекции.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.grBЗапросыВКоллекции.ForeColor = System.Drawing.Color.Linen;
             this.grBЗапросыВКоллекции.Location = new System.Drawing.Point(0, 0);
             this.grBЗапросыВКоллекции.Name = "grBЗапросыВКоллекции";
-            this.grBЗапросыВКоллекции.Size = new System.Drawing.Size(574, 160);
+            this.grBЗапросыВКоллекции.Size = new System.Drawing.Size(575, 160);
             this.grBЗапросыВКоллекции.TabIndex = 34;
             this.grBЗапросыВКоллекции.TabStop = false;
             this.grBЗапросыВКоллекции.Text = "Запросы в коллекции";
-            // 
-            // splitContainer5
-            // 
-            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer5.Name = "splitContainer5";
-            // 
-            // splitContainer5.Panel1
-            // 
-            this.splitContainer5.Panel1.Controls.Add(this.groupBox5);
-            this.splitContainer5.Panel1MinSize = 200;
-            // 
-            // splitContainer5.Panel2
-            // 
-            this.splitContainer5.Panel2.Controls.Add(this.groupBox6);
-            this.splitContainer5.Panel2MinSize = 200;
-            this.splitContainer5.Size = new System.Drawing.Size(642, 159);
-            this.splitContainer5.SplitterDistance = 315;
-            this.splitContainer5.TabIndex = 1;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.openFDLocBtn);
-            this.groupBox6.Controls.Add(this.defaultLocBtn);
-            this.groupBox6.Controls.Add(this.pathLocTb);
-            this.groupBox6.Controls.Add(this.labelПуть2);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox6.Location = new System.Drawing.Point(0, 0);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(323, 159);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Настройка Локальных Коллекций";
-            // 
-            // labelПуть2
-            // 
-            this.labelПуть2.AutoSize = true;
-            this.labelПуть2.Location = new System.Drawing.Point(16, 31);
-            this.labelПуть2.Name = "labelПуть2";
-            this.labelПуть2.Size = new System.Drawing.Size(31, 13);
-            this.labelПуть2.TabIndex = 0;
-            this.labelПуть2.Text = "Путь";
-            // 
-            // pathLocTb
-            // 
-            this.pathLocTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pathLocTb.Location = new System.Drawing.Point(19, 48);
-            this.pathLocTb.Name = "pathLocTb";
-            this.pathLocTb.Size = new System.Drawing.Size(283, 20);
-            this.pathLocTb.TabIndex = 1;
-            // 
-            // defaultLocBtn
-            // 
-            this.defaultLocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.defaultLocBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.defaultLocBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.defaultLocBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.defaultLocBtn.Location = new System.Drawing.Point(150, 74);
-            this.defaultLocBtn.Name = "defaultLocBtn";
-            this.defaultLocBtn.Size = new System.Drawing.Size(91, 23);
-            this.defaultLocBtn.TabIndex = 2;
-            this.defaultLocBtn.Text = "По умолчанию";
-            this.defaultLocBtn.UseVisualStyleBackColor = false;
-            this.defaultLocBtn.Click += new System.EventHandler(this.defaultLocBtn_Click);
-            // 
-            // openFDLocBtn
-            // 
-            this.openFDLocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.openFDLocBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.openFDLocBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openFDLocBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.openFDLocBtn.Location = new System.Drawing.Point(247, 74);
-            this.openFDLocBtn.Name = "openFDLocBtn";
-            this.openFDLocBtn.Size = new System.Drawing.Size(55, 23);
-            this.openFDLocBtn.TabIndex = 2;
-            this.openFDLocBtn.Text = "Обзор";
-            this.openFDLocBtn.UseVisualStyleBackColor = false;
-            this.openFDLocBtn.Click += new System.EventHandler(this.openFDLocBtn_Click);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.openFDServBtn);
-            this.groupBox5.Controls.Add(this.defaultServBtn);
-            this.groupBox5.Controls.Add(this.pathServTb);
-            this.groupBox5.Controls.Add(this.labelПуть);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox5.Location = new System.Drawing.Point(0, 0);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(315, 159);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Настройка Общих Коллекций";
-            // 
-            // labelПуть
-            // 
-            this.labelПуть.AutoSize = true;
-            this.labelПуть.Location = new System.Drawing.Point(7, 31);
-            this.labelПуть.Name = "labelПуть";
-            this.labelПуть.Size = new System.Drawing.Size(31, 13);
-            this.labelПуть.TabIndex = 0;
-            this.labelПуть.Text = "Путь";
-            // 
-            // pathServTb
-            // 
-            this.pathServTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pathServTb.Location = new System.Drawing.Point(10, 48);
-            this.pathServTb.Name = "pathServTb";
-            this.pathServTb.Size = new System.Drawing.Size(283, 20);
-            this.pathServTb.TabIndex = 1;
-            // 
-            // defaultServBtn
-            // 
-            this.defaultServBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.defaultServBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.defaultServBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.defaultServBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.defaultServBtn.Location = new System.Drawing.Point(139, 74);
-            this.defaultServBtn.Name = "defaultServBtn";
-            this.defaultServBtn.Size = new System.Drawing.Size(91, 23);
-            this.defaultServBtn.TabIndex = 2;
-            this.defaultServBtn.Text = "По умолчанию";
-            this.defaultServBtn.UseVisualStyleBackColor = false;
-            this.defaultServBtn.Click += new System.EventHandler(this.defaultServBtn_Click);
-            // 
-            // openFDServBtn
-            // 
-            this.openFDServBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.openFDServBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.openFDServBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openFDServBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.openFDServBtn.Location = new System.Drawing.Point(236, 74);
-            this.openFDServBtn.Name = "openFDServBtn";
-            this.openFDServBtn.Size = new System.Drawing.Size(57, 23);
-            this.openFDServBtn.TabIndex = 2;
-            this.openFDServBtn.Text = "Обзор";
-            this.openFDServBtn.UseVisualStyleBackColor = false;
-            this.openFDServBtn.Click += new System.EventHandler(this.openFDServBtn_Click);
-            // 
-            // extOkBtn
-            // 
-            this.extOkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.extOkBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.extOkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.extOkBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.extOkBtn.Location = new System.Drawing.Point(231, 166);
-            this.extOkBtn.Name = "extOkBtn";
-            this.extOkBtn.Size = new System.Drawing.Size(75, 23);
-            this.extOkBtn.TabIndex = 2;
-            this.extOkBtn.Text = "OK";
-            this.extOkBtn.UseVisualStyleBackColor = false;
-            this.extOkBtn.Click += new System.EventHandler(this.extOkBtn_Click);
-            // 
-            // extCancelBtn
-            // 
-            this.extCancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.extCancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.extCancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.extCancelBtn.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.extCancelBtn.Location = new System.Drawing.Point(312, 166);
-            this.extCancelBtn.Name = "extCancelBtn";
-            this.extCancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.extCancelBtn.TabIndex = 2;
-            this.extCancelBtn.Text = "Отмена";
-            this.extCancelBtn.UseVisualStyleBackColor = false;
-            this.extCancelBtn.Click += new System.EventHandler(this.extCancelBtn_Click);
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.jsonFile);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox7.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox7.Location = new System.Drawing.Point(0, 0);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(642, 41);
-            this.groupBox7.TabIndex = 4;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Текущая Коллекция";
-            // 
-            // jsonFile
-            // 
-            this.jsonFile.BackColor = System.Drawing.Color.LightSlateGray;
-            this.jsonFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.jsonFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.jsonFile.ForeColor = System.Drawing.Color.White;
-            this.jsonFile.Location = new System.Drawing.Point(3, 16);
-            this.jsonFile.Name = "jsonFile";
-            this.jsonFile.ReadOnly = true;
-            this.jsonFile.Size = new System.Drawing.Size(636, 24);
-            this.jsonFile.TabIndex = 30;
-            this.jsonFile.Text = "File.Json";
-            this.jsonFile.TextChanged += new System.EventHandler(this.jsonFile_TextChanged);
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this._listView);
-            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox8.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox8.Location = new System.Drawing.Point(0, 41);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(642, 363);
-            this.groupBox8.TabIndex = 5;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Содержимое";
-            // 
-            // _listView
-            // 
-            this._listView.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this._listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.file,
-            this.size,
-            this.type,
-            this.fullPath});
-            this._listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._listView.HideSelection = false;
-            this._listView.Location = new System.Drawing.Point(3, 16);
-            this._listView.Name = "_listView";
-            this._listView.Size = new System.Drawing.Size(636, 344);
-            this._listView.TabIndex = 3;
-            this._listView.UseCompatibleStateImageBehavior = false;
-            this._listView.View = System.Windows.Forms.View.Details;
-            this._listView.DoubleClick += new System.EventHandler(this._listView_DoubleClick);
-            // 
-            // file
-            // 
-            this.file.Text = "Файл";
-            this.file.Width = 130;
-            // 
-            // size
-            // 
-            this.size.Text = "Размер (МБ)";
-            this.size.Width = 76;
-            // 
-            // type
-            // 
-            this.type.Text = "Тип";
-            this.type.Width = 38;
-            // 
-            // fullPath
-            // 
-            this.fullPath.Text = "Полный путь к файлу";
-            this.fullPath.Width = 700;
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.groupBox8);
-            this.splitContainer4.Panel1.Controls.Add(this.groupBox7);
-            this.splitContainer4.Panel1MinSize = 200;
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.extCancelBtn);
-            this.splitContainer4.Panel2.Controls.Add(this.extOkBtn);
-            this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Panel2MinSize = 200;
-            this.splitContainer4.Size = new System.Drawing.Size(642, 680);
-            this.splitContainer4.SplitterDistance = 404;
-            this.splitContainer4.TabIndex = 4;
-            this.splitContainer4.Visible = false;
             // 
             // Form1
             // 
@@ -1293,28 +1263,28 @@ namespace AppClientTurbo
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.Move += new System.EventHandler(this.Form1_Move);
-            this.onOff.ResumeLayout(false);
-            this.onOff.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.grBOnOff.ResumeLayout(false);
+            this.grBOnOff.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxОбработкаЗапроса)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grBДанныеЗапроса.ResumeLayout(false);
             this.grBДанныеЗапроса.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataReqFctb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fctbDataReq)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.responseFctb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fctbResponse)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelИмя.ResumeLayout(false);
+            this.panelИмя.PerformLayout();
+            this.panelКоллекции.ResumeLayout(false);
+            this.panelКоллекции.PerformLayout();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
@@ -1322,6 +1292,21 @@ namespace AppClientTurbo
             this.groupBox3.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.splitContainer7.Panel1.ResumeLayout(false);
             this.splitContainer7.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
@@ -1332,112 +1317,97 @@ namespace AppClientTurbo
             this.splitContainer6.ResumeLayout(false);
             this.grBЗапросыВКоллекции.ResumeLayout(false);
             this.grBЗапросыВКоллекции.PerformLayout();
-            this.splitContainer5.Panel1.ResumeLayout(false);
-            this.splitContainer5.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
-            this.splitContainer5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox user;
-        private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.Button userautBtn;
-        private System.Windows.Forms.TextBox adrServer;
+        private System.Windows.Forms.TextBox tbUser;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.Button btnUseraut;
+        private System.Windows.Forms.TextBox tbAdrServer;
         private System.Windows.Forms.Label labelСервер;
         private System.Windows.Forms.Label labelПорт;
-        private System.Windows.Forms.TextBox adrPort;
+        private System.Windows.Forms.TextBox tbAdrPort;
         private System.Windows.Forms.Label labelМетод;
-        private System.Windows.Forms.TextBox requestTB;
+        private System.Windows.Forms.TextBox tbRequest;
         private System.Windows.Forms.Label labelЗапрос;
-        private System.Windows.Forms.Button sendBtn;
+        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label labelPswrd;
-        private System.Windows.Forms.GroupBox onOff;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox methodBox;
-        private System.Windows.Forms.ComboBox Refs;
-        private System.Windows.Forms.Button saveCashBtn;
+        private System.Windows.Forms.GroupBox grBOnOff;
+        private System.Windows.Forms.PictureBox pictBoxOff;
+        private System.Windows.Forms.PictureBox pictBoxOn;
+        private System.Windows.Forms.ComboBox comboBoxMethod;
+        private System.Windows.Forms.ComboBox comboBoxRefs;
+        private System.Windows.Forms.Button btnSaveCash;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictBoxОбработкаЗапроса;
         private System.Windows.Forms.Label labelОбработкаЗапроса;
-        private System.Windows.Forms.CheckBox ForceBox;
+        private System.Windows.Forms.CheckBox checkBoxForce;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button deleteCashBtn;
+        private System.Windows.Forms.Button btnDeleteCash;
         private System.Windows.Forms.Label labelКоллекции;
-        private System.Windows.Forms.TextBox preRequestTB;
+        private System.Windows.Forms.TextBox tbPreRequest;
         private System.Windows.Forms.Label labelПрефикс;
         private System.Windows.Forms.Label labelStatusCode;
-        private FastColoredTextBoxNS.FastColoredTextBox responseFctb;
-        private FastColoredTextBoxNS.FastColoredTextBox dataReqFctb;
+        private FastColoredTextBoxNS.FastColoredTextBox fctbResponse;
+        private FastColoredTextBoxNS.FastColoredTextBox fctbDataReq;
         private System.Windows.Forms.GroupBox grBДанныеЗапроса;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelИмя;
         private System.Windows.Forms.Label labelИмя;
-        private System.Windows.Forms.TextBox nameTb;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button refreshBtn;
-        private System.Windows.Forms.Button extBtn;
+        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.Panel panelКоллекции;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnExt;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TreeView _treeViewServ;
+        private System.Windows.Forms.TreeView treeViewServ;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TreeView _treeViewLoc;
+        private System.Windows.Forms.TreeView treeViewLoc;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem каталогToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem коллекциюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вырезатьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ПереименоватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
-        private System.Windows.Forms.FolderBrowserDialog folderBD;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemСоздать;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemКаталог;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemКоллекцию;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemВставить;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemВырезать;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemКопировать;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemПереименовать;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemУдалить;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.GroupBox grBЗапросыВКоллекции;
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ListView _listView;
-        private System.Windows.Forms.ColumnHeader file;
-        private System.Windows.Forms.ColumnHeader size;
-        private System.Windows.Forms.ColumnHeader type;
-        private System.Windows.Forms.ColumnHeader fullPath;
+        private System.Windows.Forms.ListView listView;
+        private System.Windows.Forms.ColumnHeader colHeaderFile;
+        private System.Windows.Forms.ColumnHeader colHeaderSize;
+        private System.Windows.Forms.ColumnHeader colHeaderType;
+        private System.Windows.Forms.ColumnHeader colHeaderFullPath;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox jsonFile;
-        private System.Windows.Forms.Button extCancelBtn;
-        private System.Windows.Forms.Button extOkBtn;
+        private System.Windows.Forms.TextBox tbJsonFile;
+        private System.Windows.Forms.Button btnExtCancel;
+        private System.Windows.Forms.Button btnExtOk;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button openFDServBtn;
-        private System.Windows.Forms.Button defaultServBtn;
-        private System.Windows.Forms.TextBox pathServTb;
+        private System.Windows.Forms.Button btnOpenFDServ;
+        private System.Windows.Forms.Button btnDefaultServ;
+        private System.Windows.Forms.TextBox tbPathServ;
         private System.Windows.Forms.Label labelПуть;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button openFDLocBtn;
-        private System.Windows.Forms.Button defaultLocBtn;
-        private System.Windows.Forms.TextBox pathLocTb;
+        private System.Windows.Forms.Button btnOpenFDLoc;
+        private System.Windows.Forms.Button btnDefaultLoc;
+        private System.Windows.Forms.TextBox tbPathLoc;
         private System.Windows.Forms.Label labelПуть2;
     }
 }

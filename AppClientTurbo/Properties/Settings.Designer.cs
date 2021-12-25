@@ -142,5 +142,29 @@ namespace AppClientTurbo.Properties {
                 this["preRequest"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string pathServSv {
+            get {
+                return ((string)(this["pathServSv"]));
+            }
+            set {
+                this["pathServSv"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string pathLocSv {
+            get {
+                return ((string)(this["pathLocSv"]));
+            }
+            set {
+                this["pathLocSv"] = value;
+            }
+        }
     }
 }
