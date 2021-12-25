@@ -12,28 +12,33 @@ namespace AppClientTurbo
     class CashList
     {
         public List<Cash> listCash;
+        public bool result;
         public string path { get; set; }
         public CashList(string path)
         {        
             try
             {
                 this.path = path;
-                if (!File.Exists(this.path)) File.Create(this.path).Close();
+                result = !File.Exists(this.path);
+                if (result) File.Create(this.path).Close();
             }
             catch 
             {
-                this.path = "File.JSon";
-                if (!File.Exists(this.path)) File.Create(this.path).Close();
+                this.path = "Collections\\File.json";
+                result = !File.Exists(this.path);
+                if (result) File.Create(this.path).Close();
             }
             
             listCash = JsonConvert.DeserializeObject<List<Cash>>(File.ReadAllText(this.path));
             if (listCash == null) listCash = new List<Cash>();
             
         }
-        public void save()
+        public bool save()
         {
             string json = JsonConvert.SerializeObject(listCash, Formatting.Indented);
+            result = !File.Exists(path);
             File.WriteAllText(path, json);
+            return result;
         }
     }
     class Cash

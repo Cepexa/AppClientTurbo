@@ -28,16 +28,19 @@ namespace AppClientTurbo
             InitializeComponent();
             Init_FileExplorer(); //для файлового менеджера 
             timer1.Start();
+
             if (Properties.Settings.Default.adrServer!="")    tbAdrServer   .Text = Properties.Settings.Default.adrServer;
             if (Properties.Settings.Default.adrPort != "")    tbAdrPort     .Text = Properties.Settings.Default.adrPort;
-            if (Properties.Settings.Default.methodBox != "")  comboBoxMethod   .Text = Properties.Settings.Default.methodBox;
+            if (Properties.Settings.Default.methodBox != "")  comboBoxMethod.Text = Properties.Settings.Default.methodBox;
             if (Properties.Settings.Default.user != "")       tbUser        .Text = Properties.Settings.Default.user;
             if (Properties.Settings.Default.password != "")   tbPassword    .Text = Properties.Settings.Default.password;
-            if (Properties.Settings.Default.Refs != "")       comboBoxRefs        .Text = Properties.Settings.Default.Refs;
-            if (Properties.Settings.Default.dataReq != "")    fctbDataReq .Text = Properties.Settings.Default.dataReq;
-            if (Properties.Settings.Default.request != "")    tbRequest   .Text = Properties.Settings.Default.request;
-            if (Properties.Settings.Default.preRequest != "") tbPreRequest.Text = Properties.Settings.Default.preRequest;
-            if (Properties.Settings.Default.file != "")       tbJsonFile    .Text = Properties.Settings.Default.file; 
+            if (Properties.Settings.Default.Refs != "")       comboBoxRefs  .Text = Properties.Settings.Default.Refs;
+            if (Properties.Settings.Default.dataReq != "")    fctbDataReq   .Text = Properties.Settings.Default.dataReq;
+            if (Properties.Settings.Default.request != "")    tbRequest     .Text = Properties.Settings.Default.request;
+            if (Properties.Settings.Default.preRequest != "") tbPreRequest  .Text = Properties.Settings.Default.preRequest;
+            if ((Properties.Settings.Default.file != "")
+              &&File.Exists(Properties.Settings.Default.file))tbJsonFile  .Text = Properties.Settings.Default.file; 
+            
             loadCash();
         }
         
@@ -57,6 +60,7 @@ namespace AppClientTurbo
             #region для файлового менеджера
             Properties.Settings.Default.pathLocSv = pathLoc;
             Properties.Settings.Default.pathServSv = pathServ;
+            if(Directory.Exists(pathTempBuff)) Directory.Delete(pathTempBuff, true);
             #endregion
             
             Properties.Settings.Default.Save();
@@ -185,7 +189,10 @@ namespace AppClientTurbo
                     btnUseraut.Text = "Вход";
                     return "Сессия завершена!";
                 }
-                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) return "Не Авторизован!";
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) {
+                    Off();
+                    btnUseraut.Text = "Вход";
+                    return "Не Авторизован!"; }
                 string responseString = await response.Content.ReadAsStringAsync();
                 try
                 {
@@ -250,13 +257,14 @@ namespace AppClientTurbo
                 cash.Request    = tbRequest.Text; 
                 cash.DataReq    = fctbDataReq.Text; 
             }
-            cashList.save();
+            if (cashList.save()) updateView();
             updateRef();
         }
         private void loadCash()
         {
             cashList = new CashList(tbJsonFile.Text);
             if (cashList.listCash != null) updateRef();
+            if (cashList.result) updateView();
             tbJsonFile.Text = cashList.path;
         }
         private void updateRef()
@@ -356,8 +364,8 @@ namespace AppClientTurbo
         #region ФАЙЛОВЫЙ МЕНЕДЖЕР
         ImageList _imageList = new ImageList();
         // как будто константы
-        string cPathLoc = Directory.GetCurrentDirectory() + "\\Collection";
-        const string cPathServ = "\\\\172.17.18.50\\Users\\Public\\AppClientTurbo\\v1.2\\Collection";
+        string cPathLoc = Directory.GetCurrentDirectory() + "\\Collections";
+        const string cPathServ = "\\\\172.17.18.50\\Users\\Public\\AppClientTurbo\\Collections";
         //переменные
         string pathLoc;
         string pathServ;
@@ -551,7 +559,6 @@ namespace AppClientTurbo
             else if (curTn.ImageIndex == 1)
             {
                 setFilesOnce(curTn.Name);
-                tbJsonFile.Text = curTn.Name;
             }
             else
             {
@@ -601,6 +608,19 @@ namespace AppClientTurbo
 
         private void _treeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (((TreeView)sender).SelectedNode.ImageIndex == 1)
+            {
+                var curFile = ((TreeView)sender).SelectedNode.Name;
+                if (File.Exists(curFile))
+                {
+                    tbJsonFile.Text = curFile;
+                }
+                else
+                {
+                    MessageBox.Show("Файла " + curFile + " не существует!");
+                    updateView();
+                }
+            }
             NodeClick = true;
         }
 
@@ -663,7 +683,7 @@ namespace AppClientTurbo
                     {
                         var temp = checkCloneFile(path);
                         File.Move(curTn.Name, temp);
-                        File.Move(temp, path);
+                        File.Move(temp, path+".json");
                     }
                 }
                 else

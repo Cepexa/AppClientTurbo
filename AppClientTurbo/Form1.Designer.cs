@@ -267,7 +267,7 @@ namespace AppClientTurbo
             this.labelStatusCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStatusCode.AutoSize = true;
             this.labelStatusCode.ForeColor = System.Drawing.Color.Black;
-            this.labelStatusCode.Location = new System.Drawing.Point(1061, -2);
+            this.labelStatusCode.Location = new System.Drawing.Point(600, -3);
             this.labelStatusCode.Name = "labelStatusCode";
             this.labelStatusCode.Size = new System.Drawing.Size(112, 20);
             this.labelStatusCode.TabIndex = 33;
@@ -282,7 +282,7 @@ namespace AppClientTurbo
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(169, 26);
             this.tbUser.TabIndex = 0;
-            this.tbUser.Text = "Пользователь";
+            this.tbUser.Text = "User01";
             this.tbUser.TextChanged += new System.EventHandler(this.user_TextChanged);
             // 
             // tbPassword
@@ -321,7 +321,7 @@ namespace AppClientTurbo
             this.tbAdrServer.Name = "tbAdrServer";
             this.tbAdrServer.Size = new System.Drawing.Size(136, 26);
             this.tbAdrServer.TabIndex = 3;
-            this.tbAdrServer.Text = "127.0.0.1";
+            this.tbAdrServer.Text = "172.17.18.50";
             this.tbAdrServer.TextChanged += new System.EventHandler(this.adrServer_TextChanged);
             // 
             // tbAdrPort
@@ -375,7 +375,7 @@ namespace AppClientTurbo
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnClear.Location = new System.Drawing.Point(822, 303);
+            this.btnClear.Location = new System.Drawing.Point(822, 291);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(101, 31);
             this.btnClear.TabIndex = 17;
@@ -434,7 +434,7 @@ namespace AppClientTurbo
             this.checkBoxForce.Name = "checkBoxForce";
             this.checkBoxForce.Size = new System.Drawing.Size(159, 40);
             this.checkBoxForce.TabIndex = 28;
-            this.checkBoxForce.Text = "Принудительный\r\nвход";
+            this.checkBoxForce.Text = "Принудительный\r\nвход  ";
             this.checkBoxForce.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxForce.UseVisualStyleBackColor = true;
             this.checkBoxForce.Visible = false;
@@ -973,7 +973,7 @@ namespace AppClientTurbo
             // 
             // colHeaderSize
             // 
-            this.colHeaderSize.Text = "Размер (МБ)";
+            this.colHeaderSize.Text = "Размер (байт)";
             this.colHeaderSize.Width = 76;
             // 
             // colHeaderType
@@ -1009,7 +1009,7 @@ namespace AppClientTurbo
             this.tbJsonFile.ReadOnly = true;
             this.tbJsonFile.Size = new System.Drawing.Size(636, 24);
             this.tbJsonFile.TabIndex = 30;
-            this.tbJsonFile.Text = "File.Json";
+            this.tbJsonFile.Text = "Collections\\File.json";
             this.tbJsonFile.TextChanged += new System.EventHandler(this.jsonFile_TextChanged);
             // 
             // btnExtCancel
