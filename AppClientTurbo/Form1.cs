@@ -12,6 +12,7 @@ using System.Collections;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace AppClientTurbo
 {
@@ -23,6 +24,8 @@ namespace AppClientTurbo
         HttpResponseMessage response;
         string sessionId=null;
         CashList cashList;
+        CancellationTokenSource cts;
+        CancellationToken token;
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +41,7 @@ namespace AppClientTurbo
             if (Properties.Settings.Default.dataReq != "")    fctbDataReq   .Text = Properties.Settings.Default.dataReq;
             if (Properties.Settings.Default.request != "")    tbRequest     .Text = Properties.Settings.Default.request;
             if (Properties.Settings.Default.preRequest != "") tbPreRequest  .Text = Properties.Settings.Default.preRequest;
+            if (Properties.Settings.Default.ЗапросыВКоллекции != "") grBЗапросыВКоллекции.Text = Properties.Settings.Default.ЗапросыВКоллекции;
             if ((Properties.Settings.Default.file != "")
               &&File.Exists(Properties.Settings.Default.file))tbJsonFile  .Text = Properties.Settings.Default.file; 
             
@@ -56,6 +60,7 @@ namespace AppClientTurbo
             Properties.Settings.Default.password = tbPassword.Text;
             Properties.Settings.Default.Refs = comboBoxRefs.Text;
             Properties.Settings.Default.file = tbJsonFile.Text;
+            Properties.Settings.Default.ЗапросыВКоллекции = grBЗапросыВКоллекции.Text;
             
             #region для файлового менеджера
             Properties.Settings.Default.pathLocSv = pathLoc;
@@ -73,8 +78,10 @@ namespace AppClientTurbo
             
             if (myClick)
             {
+                cts = new CancellationTokenSource();
+                token = cts.Token;
                 myTime = 0;
-                setVisibility(false);
+                setVisibility(false, true);
                 try
                 {
                     if (sessionId == null) throw new Exception("SessionId empty");
@@ -88,7 +95,9 @@ namespace AppClientTurbo
                         req.request = tbRequest.Text;
                         req.content.Headers.Add("sessionID", sessionId);
 
-                        fctbResponse.Text = await senderReq() + Environment.NewLine;
+                        var txtResponce = await senderReq();
+                        if (!token.IsCancellationRequested)
+                        fctbResponse.Text = txtResponce + Environment.NewLine;
                     }
                 }
                 catch
@@ -97,7 +106,7 @@ namespace AppClientTurbo
                     labelStatusCode.Text = "Status Code";
                     fctbResponse.Text="Пожалуйста авторизуйтесь!" + Environment.NewLine;
                 }
-                setVisibility(true);
+                setVisibility(true,true);
             }
         }
         private async void userauth_Click(object sender, EventArgs e)
@@ -109,12 +118,21 @@ namespace AppClientTurbo
                 setVisibility(true);
             }
         }
-        void setVisibility(bool flag)
+        void setVisibility(bool flag,bool ext = false)
         {
             myClick = flag;
-            labelStatusCode.Visible = flag;
             pictBoxОбработкаЗапроса.BackColor = flag ? Color.White : Color.Yellow;
-
+            if (ext)
+            {
+                comboBoxRefs.Enabled = flag;
+                linkLabel1.Visible = !flag;
+                splitContainer2.Panel1.Enabled = flag;
+            }
+        }
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            cts.Cancel();
+            setVisibility(true, true);
         }
         private void Clear_Click(object sender, EventArgs e)
         {
@@ -262,10 +280,13 @@ namespace AppClientTurbo
         }
         private void loadCash()
         {
-            cashList = new CashList(tbJsonFile.Text);
+            var temp = tbJsonFile.Text;
+            cashList = new CashList(temp);
             if (cashList.listCash != null) updateRef();
             if (cashList.result) updateView();
             tbJsonFile.Text = cashList.path;
+            if(temp != tbJsonFile.Text)
+                grBЗапросыВКоллекции.Text = "Запросы в коллекции \"" + tbJsonFile.Text + "\"";
         }
         private void updateRef()
         {
@@ -367,10 +388,13 @@ namespace AppClientTurbo
         string cPathLoc = Directory.GetCurrentDirectory() + "\\Collections";
         const string cPathServ = "\\\\172.17.18.50\\Users\\Public\\AppClientTurbo\\Collections";
         //переменные
+        bool IsServ;
         string pathLoc;
         string pathServ;
         string pathBuff;
         string pathTempBuff = Directory.GetCurrentDirectory() + "\\TempBuff";
+        TreeNode lastServNode;
+        TreeNode lastLocNode;
         void Init_FileExplorer()
         {
             try
@@ -440,6 +464,7 @@ namespace AppClientTurbo
                 treeViewLoc.Enabled = true;
                 _treeView_NodeMouseClick(treeViewLoc,
                     new TreeNodeMouseClickEventArgs(treeViewLoc.Nodes[0], MouseButtons.Left, 1, 80, 5));
+
             }
             catch { treeViewLoc.Enabled = false; }
             try
@@ -469,7 +494,7 @@ namespace AppClientTurbo
                 }
             }
         }
-        void loadTreeNode(TreeNodeCollection tnc, string path, bool ToCollapse = true)
+        void loadTreeNode(TreeNodeCollection tnc, string path)
         {
             try
             {
@@ -484,8 +509,6 @@ namespace AppClientTurbo
                     curTn.ImageIndex = 0;
                     curTn.Name = dir;
                     loadTreeNode(curTn.Nodes, curTn.Name);
-                    if (ToCollapse) curTn.Collapse();
-                    else curTn.Expand();
                 }
                 foreach (string file in files)
                 {
@@ -551,14 +574,18 @@ namespace AppClientTurbo
         {
             NodeClick = true;
             TreeNode curTn = e.Node;
+            if (curTn.TreeView == treeViewLoc) lastLocNode = curTn;
+            if (curTn.TreeView == treeViewServ) lastServNode = curTn;
             ((TreeView)sender).SelectedNode = curTn;
             if (curTn.ImageIndex == 0)
             {
                 setFilesToListFromDir(curTn.Name);
+                grBСодержимое.Text = "Содержимое \"" + curTn.Text + "\"";
             }
             else if (curTn.ImageIndex == 1)
             {
                 setFilesOnce(curTn.Name);
+                grBСодержимое.Text = "Содержимое \"" + curTn.Text+"\"";
             }
             else
             {
@@ -574,35 +601,14 @@ namespace AppClientTurbo
         private void _treeViewServ_MouseUp(object sender, MouseEventArgs e)
         {
             treeViewLoc.SelectedNode = null;
-            if (!NodeClick)
-            {
-                try
-                {
-                    _treeView_NodeMouseClick(treeViewServ,
-                    new TreeNodeMouseClickEventArgs(treeViewServ.Nodes[0], MouseButtons.Left, 1, 80, 5));
-                }
-                catch
-                {
-                }
-            }
+            if (!NodeClick) treeViewServ.SelectedNode = (lastServNode==null)? treeViewServ.TopNode : lastServNode; 
             NodeClick = false;
         }
 
         private void _treeViewLoc_MouseUp(object sender, MouseEventArgs e)
         {
             treeViewServ.SelectedNode = null;
-            if (!NodeClick)
-            {
-                try
-                {
-                    _treeView_NodeMouseClick(treeViewLoc,
-                new TreeNodeMouseClickEventArgs(treeViewLoc.Nodes[0], MouseButtons.Left, 1, 80, 5));
-                }
-                catch
-                {
-
-                }
-            }
+            if (!NodeClick) treeViewLoc.SelectedNode = (lastLocNode == null) ? treeViewLoc.TopNode : lastLocNode;
             NodeClick = false;
         }
 
@@ -614,6 +620,7 @@ namespace AppClientTurbo
                 if (File.Exists(curFile))
                 {
                     tbJsonFile.Text = curFile;
+                    grBЗапросыВКоллекции.Text = "Запросы в коллекции \"" + ((TreeView)sender).SelectedNode.Text + "\"";
                 }
                 else
                 {
@@ -623,10 +630,13 @@ namespace AppClientTurbo
             }
             NodeClick = true;
         }
-
+        TreeNode curTnName;
         private void каталогToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TypeContextMenu = 0;
+            curTnName = treeViewServ.SelectedNode;
+            IsServ = curTnName != null;
+            if (!IsServ) curTnName = treeViewLoc.SelectedNode;
             panelИмя.Visible = true;
             tbName.Text = "";
             tbName.Focus();
@@ -634,6 +644,9 @@ namespace AppClientTurbo
         private void коллекциюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TypeContextMenu = 1;
+            curTnName = treeViewServ.SelectedNode;
+            IsServ = curTnName != null;
+            if (!IsServ) curTnName = treeViewLoc.SelectedNode;
             panelИмя.Visible = true;
             tbName.Text = "";
             tbName.Focus();
@@ -641,20 +654,19 @@ namespace AppClientTurbo
         private void ПереименоватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TypeContextMenu = 2;
-            TreeNode curTn = treeViewServ.SelectedNode;
-            if (curTn == null) curTn = treeViewLoc.SelectedNode;
-            if (!(curTn.ImageIndex == 0 || curTn.ImageIndex == 1)) return;
+            curTnName = treeViewServ.SelectedNode;
+            IsServ = curTnName != null;
+            if (!IsServ) curTnName = treeViewLoc.SelectedNode;
+            if (!(curTnName.ImageIndex == 0 || curTnName.ImageIndex == 1)) return;
             panelИмя.Visible = true;
-            tbName.Text = curTn.Text;
+            tbName.Text = curTnName.Text;
             tbName.Focus();
         }
         private void nameTb_Leave(object sender, EventArgs e)
         {
             panelИмя.Visible = false;
             if (tbName.Text.Replace(" ", "") == "") return;//Если мы оставили Имя пустым - ничего не делаем
-            TreeNode curTn = treeViewServ.SelectedNode;
-            if (curTn == null) curTn = treeViewLoc.SelectedNode;
-            var parentPath = Directory.GetParent(curTn.Name).FullName;
+            var parentPath = Directory.GetParent(curTnName.Name).FullName;
             var path = parentPath + '\\' + tbName.Text;
             if (TypeContextMenu == 0)//создать каталог
             {
@@ -670,31 +682,45 @@ namespace AppClientTurbo
             }
             else if (TypeContextMenu == 2) //Переименовать
             {
-                if (tbName.Text == curTn.Text) return;
-                if (tbName.Text.ToLower() == curTn.Text.ToLower())
+                if (tbName.Text == curTnName.Text) return;
+                if (tbName.Text.ToLower() == curTnName.Text.ToLower())
                 {
-                    if (curTn.ImageIndex == 0)
+                    if (curTnName.ImageIndex == 0)
                     {
                         var temp = checkCloneDir(path);
-                        Directory.Move(curTn.Name, temp);
+                        Directory.Move(curTnName.Name, temp);
                         Directory.Move(temp, path);
                     }
-                    else if (curTn.ImageIndex == 1)
+                    else if (curTnName.ImageIndex == 1)
                     {
                         var temp = checkCloneFile(path);
-                        File.Move(curTn.Name, temp);
-                        File.Move(temp, path+".json");
+                        File.Move(curTnName.Name, temp);
+                        path += ".json";
+                        File.Move(temp, path);
                     }
                 }
                 else
                 {
-                    if (curTn.ImageIndex == 0)
-                        Directory.Move(curTn.Name, checkCloneDir(path));
-                    else if (curTn.ImageIndex == 1)
-                        File.Move(curTn.Name, checkCloneFile(path));
+                    if (curTnName.ImageIndex == 0)
+                    {
+                        path = checkCloneDir(path);
+                        Directory.Move(curTnName.Name, path);
+                    }
+                    else if (curTnName.ImageIndex == 1)
+                    {
+                        path = checkCloneFile(path);
+                        File.Move(curTnName.Name, path);
+                    }
                 }
+                if (curTnName.Name == tbJsonFile.Text)
+                {
+                    tbJsonFile.Text = path;
+                    grBЗапросыВКоллекции.Text = "Запросы в коллекции \"" + tbName.Text + "\"";
+                }
+
             }
-            loadTreeNode((curTn.Parent == null) ? curTn.TreeView.Nodes : curTn.Parent.Nodes, parentPath);
+            loadTreeNode((curTnName.Parent == null) ? curTnName.TreeView.Nodes : curTnName.Parent.Nodes, parentPath);
+            findCurrentNode(path);
         }
         string checkCloneDir(string path)
         {
@@ -717,11 +743,12 @@ namespace AppClientTurbo
             try
             {
                 TreeNode curTn = treeViewServ.SelectedNode;
-                if (curTn == null) curTn = treeViewLoc.SelectedNode;
+                IsServ = curTn != null;
+                if (!IsServ) curTn = treeViewLoc.SelectedNode;
                 if (curTn.ImageIndex == 0) Directory.Delete(curTn.Name, true);
                 else if (curTn.ImageIndex == 1) File.Delete(curTn.Name);
                 else return;
-                loadTreeNode((curTn.Parent == null) ? curTn.TreeView.Nodes : curTn.Parent.Nodes, Directory.GetParent(curTn.Name).FullName);
+                changeCurCollection(curTn);
             }
             catch (Exception ex)
             {
@@ -732,16 +759,11 @@ namespace AppClientTurbo
         private void nameTb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                TreeNode curTn = treeViewServ.SelectedNode;
-                if (curTn == null) curTn = treeViewLoc.SelectedNode;
-                curTn.TreeView.Focus();
-            }
+                curTnName.TreeView.Focus();
         }
         void ToCopyMove(TreeNode curTn, bool IsMove = false)
         {
             if (!(curTn.ImageIndex == 0 || curTn.ImageIndex == 1)) return;
-
             if (Directory.Exists(pathTempBuff))
                 Directory.Delete(pathTempBuff, true);
             Directory.CreateDirectory(pathTempBuff);
@@ -758,17 +780,36 @@ namespace AppClientTurbo
                 if (IsMove) File.Move(curTn.Name, pathBuff);
                 else File.Copy(curTn.Name, pathBuff);
             }
+            if (IsMove) changeCurCollection(curTn);
+        }
+        void changeCurCollection(TreeNode curTn)
+        {
+            var newTn = (curTn.PrevNode != null) ? curTn.PrevNode : curTn.NextNode;
+            var path = newTn?.Name;
+            if ((curTn.Name == tbJsonFile.Text) && (newTn != null))
+            {
+                tbJsonFile.Text = path;
+                grBЗапросыВКоллекции.Text = "Запросы в коллекции \"" + newTn.Text + "\"";
+            }
             loadTreeNode((curTn.Parent == null) ? curTn.TreeView.Nodes : curTn.Parent.Nodes, Directory.GetParent(curTn.Name).FullName);
-
+            if (path != null) findCurrentNode(path);
         }
         private void вырезатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
+                bool IsServ = true;
                 TreeNode curTn = treeViewServ.SelectedNode;
-                if (curTn == null) curTn = treeViewLoc.SelectedNode;
+                IsServ = curTn != null;
+                if (!IsServ) curTn = treeViewLoc.SelectedNode;
+
+                
+                
                 ToCopyMove(curTn, true);
                 toolStripMenuItemВставить.Enabled = true;
+
+                
+                
             }
             catch (Exception ex)
             {
@@ -783,6 +824,7 @@ namespace AppClientTurbo
                 if (curTn == null) curTn = treeViewLoc.SelectedNode;
                 ToCopyMove(curTn);
                 toolStripMenuItemВставить.Enabled = true;
+
             }
             catch (Exception ex)
             {
@@ -812,7 +854,9 @@ namespace AppClientTurbo
             try
             {
                 TreeNode curTn = treeViewServ.SelectedNode;
-                if (curTn == null) curTn = treeViewLoc.SelectedNode;
+                IsServ = curTn != null;
+                if (!IsServ) curTn = treeViewLoc.SelectedNode;
+
                 var parentPath = Directory.GetParent(curTn.Name).FullName;
                 var spltPath = pathBuff.Split('\\');
                 var nameObj = spltPath[spltPath.Length - 1];
@@ -820,22 +864,40 @@ namespace AppClientTurbo
                 var path = parentPath + '\\' + nameObj;
                 if (spltName[spltName.Length - 1].ToLower() == "json")
                 {
-                    File.Move(pathBuff, checkCloneFile(path.Replace("." + spltName[spltName.Length - 1], "")));
+                    path = parentPath + '\\' + nameObj.Remove(nameObj.Length - 5);
+                    path = checkCloneFile(path);
+                    File.Copy(pathBuff, path);
                 }
                 else
                 {
-                    copyDir(pathBuff, checkCloneDir(path));
-                    Directory.Delete(pathBuff, true);
+                    path = checkCloneDir(path);
+                    copyDir(pathBuff, path);
+                    //Directory.Delete(pathBuff, true);
                 }
                 loadTreeNode((curTn.Parent == null) ? curTn.TreeView.Nodes : curTn.Parent.Nodes, Directory.GetParent(curTn.Name).FullName);
-                toolStripMenuItemВставить.Enabled = false;
+                //toolStripMenuItemВставить.Enabled = false;
+                findCurrentNode(path);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
+        void findCurrentNode(string path)
+        {
+            TreeView temp = (IsServ) ? treeViewServ : treeViewLoc;
+            TreeNode curTn = temp.SelectedNode;
+            if (curTn == null)
+            {
+                temp.SelectedNode = temp.Nodes.Find(path, true)[0];
+                if (temp.SelectedNode.ImageIndex == 0) temp.SelectedNode.Expand();
+            }
+            else
+            {
+                curTn.TreeView.SelectedNode = curTn.Nodes.Find(path, true)[0];
+                if (curTn.TreeView.SelectedNode.ImageIndex == 0) curTn.TreeView.SelectedNode.Expand();
+            }
+        }
         private void extBtn_Click(object sender, EventArgs e)
         {
             splitContainer4.Visible = !splitContainer4.Visible;
@@ -885,7 +947,16 @@ namespace AppClientTurbo
                 tbPathLoc.Text = folderBrowserDialog1.SelectedPath;
             }
         }
-        #endregion ФАЙЛОВЫЙ МЕНЕДЖЕР
 
+        private void treeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
+        {
+            TreeNode curTn = e.Node;
+            if (curTn.TreeView == treeViewLoc) lastLocNode = curTn;
+            if (curTn.TreeView == treeViewServ) lastServNode = curTn;
+            treeViewLoc.SelectedNode = null;
+            treeViewServ.SelectedNode = null;
+            ((TreeView)sender).SelectedNode = curTn;
+        }
+        #endregion ФАЙЛОВЫЙ МЕНЕДЖЕР
     }
 }

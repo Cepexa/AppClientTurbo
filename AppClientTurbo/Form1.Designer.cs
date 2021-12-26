@@ -61,7 +61,7 @@ namespace AppClientTurbo
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grBДанныеЗапроса = new System.Windows.Forms.GroupBox();
             this.fctbDataReq = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grBОтвет = new System.Windows.Forms.GroupBox();
             this.fctbResponse = new FastColoredTextBoxNS.FastColoredTextBox();
             this.btnDeleteCash = new System.Windows.Forms.Button();
             this.tbPreRequest = new System.Windows.Forms.TextBox();
@@ -73,7 +73,7 @@ namespace AppClientTurbo
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnExt = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grBОбщиеКоллекции = new System.Windows.Forms.GroupBox();
             this.treeViewServ = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemСоздать = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,26 +84,26 @@ namespace AppClientTurbo
             this.toolStripMenuItemКопировать = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemПереименовать = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemУдалить = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.grBЛокальныеКоллекции = new System.Windows.Forms.GroupBox();
             this.treeViewLoc = new System.Windows.Forms.TreeView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.grBСодержимое = new System.Windows.Forms.GroupBox();
             this.listView = new System.Windows.Forms.ListView();
             this.colHeaderFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeaderFullPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.grBТекущаяКоллекция = new System.Windows.Forms.GroupBox();
             this.tbJsonFile = new System.Windows.Forms.TextBox();
             this.btnExtCancel = new System.Windows.Forms.Button();
             this.btnExtOk = new System.Windows.Forms.Button();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.grBНастройкаОбщихКоллекций = new System.Windows.Forms.GroupBox();
             this.btnOpenFDServ = new System.Windows.Forms.Button();
             this.btnDefaultServ = new System.Windows.Forms.Button();
             this.tbPathServ = new System.Windows.Forms.TextBox();
             this.labelПуть = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.grBНастройкаЛокальныхКоллекций = new System.Windows.Forms.GroupBox();
             this.btnOpenFDLoc = new System.Windows.Forms.Button();
             this.btnDefaultLoc = new System.Windows.Forms.Button();
             this.tbPathLoc = new System.Windows.Forms.TextBox();
@@ -111,6 +111,7 @@ namespace AppClientTurbo
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.grBЗапросыВКоллекции = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.grBOnOff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).BeginInit();
@@ -122,7 +123,7 @@ namespace AppClientTurbo
             this.splitContainer1.SuspendLayout();
             this.grBДанныеЗапроса.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fctbDataReq)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.grBОтвет.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fctbResponse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -134,21 +135,21 @@ namespace AppClientTurbo
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.grBОбщиеКоллекции.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.grBЛокальныеКоллекции.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.grBСодержимое.SuspendLayout();
+            this.grBТекущаяКоллекция.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.grBНастройкаОбщихКоллекций.SuspendLayout();
+            this.grBНастройкаЛокальныхКоллекций.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
             this.splitContainer7.Panel1.SuspendLayout();
             this.splitContainer7.Panel2.SuspendLayout();
@@ -269,7 +270,7 @@ namespace AppClientTurbo
             this.labelStatusCode.ForeColor = System.Drawing.Color.Black;
             this.labelStatusCode.Location = new System.Drawing.Point(600, -3);
             this.labelStatusCode.Name = "labelStatusCode";
-            this.labelStatusCode.Size = new System.Drawing.Size(112, 20);
+            this.labelStatusCode.Size = new System.Drawing.Size(109, 20);
             this.labelStatusCode.TabIndex = 33;
             this.labelStatusCode.Text = "Status Code";
             // 
@@ -398,6 +399,7 @@ namespace AppClientTurbo
             this.grBOnOff.Controls.Add(this.tbPassword);
             this.grBOnOff.Controls.Add(this.labelUser);
             this.grBOnOff.Dock = System.Windows.Forms.DockStyle.Right;
+            this.grBOnOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.grBOnOff.ForeColor = System.Drawing.Color.Linen;
             this.grBOnOff.Location = new System.Drawing.Point(0, 0);
             this.grBOnOff.Name = "grBOnOff";
@@ -519,7 +521,7 @@ namespace AppClientTurbo
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.grBОтвет);
             this.splitContainer1.Panel2MinSize = 100;
             this.splitContainer1.Size = new System.Drawing.Size(950, 516);
             this.splitContainer1.SplitterDistance = 164;
@@ -531,7 +533,7 @@ namespace AppClientTurbo
             this.grBДанныеЗапроса.Controls.Add(this.labelStatusCode);
             this.grBДанныеЗапроса.Controls.Add(this.fctbDataReq);
             this.grBДанныеЗапроса.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grBДанныеЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBДанныеЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.grBДанныеЗапроса.ForeColor = System.Drawing.Color.Linen;
             this.grBДанныеЗапроса.Location = new System.Drawing.Point(0, 0);
             this.grBДанныеЗапроса.Name = "grBДанныеЗапроса";
@@ -586,19 +588,19 @@ namespace AppClientTurbo
             this.fctbDataReq.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.dataReqFctb_TextChanged);
             this.fctbDataReq.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dataReq_MouseMove);
             // 
-            // groupBox2
+            // grBОтвет
             // 
-            this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.fctbResponse);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(946, 344);
-            this.groupBox2.TabIndex = 35;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ответ";
+            this.grBОтвет.Controls.Add(this.btnClear);
+            this.grBОтвет.Controls.Add(this.fctbResponse);
+            this.grBОтвет.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grBОтвет.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.grBОтвет.ForeColor = System.Drawing.Color.Linen;
+            this.grBОтвет.Location = new System.Drawing.Point(0, 0);
+            this.grBОтвет.Name = "grBОтвет";
+            this.grBОтвет.Size = new System.Drawing.Size(946, 344);
+            this.grBОтвет.TabIndex = 35;
+            this.grBОтвет.TabStop = false;
+            this.grBОтвет.Text = "Ответ";
             // 
             // fctbResponse
             // 
@@ -721,7 +723,10 @@ namespace AppClientTurbo
             // 
             // tbName
             // 
+            this.tbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbName.Location = new System.Drawing.Point(41, 4);
+            this.tbName.MaxLength = 32;
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(154, 20);
             this.tbName.TabIndex = 0;
@@ -777,27 +782,27 @@ namespace AppClientTurbo
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer3.Panel1.Controls.Add(this.grBОбщиеКоллекции);
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer3.Panel2.Controls.Add(this.grBЛокальныеКоллекции);
             this.splitContainer3.Size = new System.Drawing.Size(201, 644);
             this.splitContainer3.SplitterDistance = 292;
             this.splitContainer3.TabIndex = 6;
             // 
-            // groupBox3
+            // grBОбщиеКоллекции
             // 
-            this.groupBox3.Controls.Add(this.treeViewServ);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox3.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(201, 292);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Общие Коллекции";
+            this.grBОбщиеКоллекции.Controls.Add(this.treeViewServ);
+            this.grBОбщиеКоллекции.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grBОбщиеКоллекции.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBОбщиеКоллекции.ForeColor = System.Drawing.Color.Linen;
+            this.grBОбщиеКоллекции.Location = new System.Drawing.Point(0, 0);
+            this.grBОбщиеКоллекции.Name = "grBОбщиеКоллекции";
+            this.grBОбщиеКоллекции.Size = new System.Drawing.Size(201, 292);
+            this.grBОбщиеКоллекции.TabIndex = 5;
+            this.grBОбщиеКоллекции.TabStop = false;
+            this.grBОбщиеКоллекции.Text = "Общие Коллекции";
             // 
             // treeViewServ
             // 
@@ -809,6 +814,7 @@ namespace AppClientTurbo
             this.treeViewServ.Name = "treeViewServ";
             this.treeViewServ.Size = new System.Drawing.Size(195, 267);
             this.treeViewServ.TabIndex = 4;
+            this.treeViewServ.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
             this.treeViewServ.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
             this.treeViewServ.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
             this.treeViewServ.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewServ_MouseUp);
@@ -884,18 +890,18 @@ namespace AppClientTurbo
             this.toolStripMenuItemУдалить.Text = "Удалить";
             this.toolStripMenuItemУдалить.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
-            // groupBox4
+            // grBЛокальныеКоллекции
             // 
-            this.groupBox4.Controls.Add(this.treeViewLoc);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox4.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox4.Location = new System.Drawing.Point(0, 0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(201, 348);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Локальные Коллекции";
+            this.grBЛокальныеКоллекции.Controls.Add(this.treeViewLoc);
+            this.grBЛокальныеКоллекции.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grBЛокальныеКоллекции.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBЛокальныеКоллекции.ForeColor = System.Drawing.Color.Linen;
+            this.grBЛокальныеКоллекции.Location = new System.Drawing.Point(0, 0);
+            this.grBЛокальныеКоллекции.Name = "grBЛокальныеКоллекции";
+            this.grBЛокальныеКоллекции.Size = new System.Drawing.Size(201, 348);
+            this.grBЛокальныеКоллекции.TabIndex = 5;
+            this.grBЛокальныеКоллекции.TabStop = false;
+            this.grBЛокальныеКоллекции.Text = "Локальные Коллекции";
             // 
             // treeViewLoc
             // 
@@ -907,6 +913,7 @@ namespace AppClientTurbo
             this.treeViewLoc.Name = "treeViewLoc";
             this.treeViewLoc.Size = new System.Drawing.Size(195, 323);
             this.treeViewLoc.TabIndex = 4;
+            this.treeViewLoc.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
             this.treeViewLoc.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
             this.treeViewLoc.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
             this.treeViewLoc.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewLoc_MouseUp);
@@ -921,8 +928,8 @@ namespace AppClientTurbo
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.groupBox8);
-            this.splitContainer4.Panel1.Controls.Add(this.groupBox7);
+            this.splitContainer4.Panel1.Controls.Add(this.grBСодержимое);
+            this.splitContainer4.Panel1.Controls.Add(this.grBТекущаяКоллекция);
             this.splitContainer4.Panel1MinSize = 200;
             // 
             // splitContainer4.Panel2
@@ -936,17 +943,18 @@ namespace AppClientTurbo
             this.splitContainer4.TabIndex = 4;
             this.splitContainer4.Visible = false;
             // 
-            // groupBox8
+            // grBСодержимое
             // 
-            this.groupBox8.Controls.Add(this.listView);
-            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox8.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox8.Location = new System.Drawing.Point(0, 41);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(642, 363);
-            this.groupBox8.TabIndex = 5;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Содержимое";
+            this.grBСодержимое.Controls.Add(this.listView);
+            this.grBСодержимое.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grBСодержимое.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBСодержимое.ForeColor = System.Drawing.Color.Linen;
+            this.grBСодержимое.Location = new System.Drawing.Point(0, 53);
+            this.grBСодержимое.Name = "grBСодержимое";
+            this.grBСодержимое.Size = new System.Drawing.Size(642, 351);
+            this.grBСодержимое.TabIndex = 5;
+            this.grBСодержимое.TabStop = false;
+            this.grBСодержимое.Text = "Содержимое";
             // 
             // listView
             // 
@@ -957,10 +965,11 @@ namespace AppClientTurbo
             this.colHeaderType,
             this.colHeaderFullPath});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(3, 16);
+            this.listView.Location = new System.Drawing.Point(3, 18);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(636, 344);
+            this.listView.Size = new System.Drawing.Size(636, 330);
             this.listView.TabIndex = 3;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -969,34 +978,35 @@ namespace AppClientTurbo
             // colHeaderFile
             // 
             this.colHeaderFile.Text = "Файл";
-            this.colHeaderFile.Width = 130;
+            this.colHeaderFile.Width = 128;
             // 
             // colHeaderSize
             // 
             this.colHeaderSize.Text = "Размер (байт)";
-            this.colHeaderSize.Width = 76;
+            this.colHeaderSize.Width = 101;
             // 
             // colHeaderType
             // 
             this.colHeaderType.Text = "Тип";
-            this.colHeaderType.Width = 38;
+            this.colHeaderType.Width = 66;
             // 
             // colHeaderFullPath
             // 
             this.colHeaderFullPath.Text = "Полный путь к файлу";
             this.colHeaderFullPath.Width = 700;
             // 
-            // groupBox7
+            // grBТекущаяКоллекция
             // 
-            this.groupBox7.Controls.Add(this.tbJsonFile);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox7.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox7.Location = new System.Drawing.Point(0, 0);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(642, 41);
-            this.groupBox7.TabIndex = 4;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Текущая Коллекция";
+            this.grBТекущаяКоллекция.Controls.Add(this.tbJsonFile);
+            this.grBТекущаяКоллекция.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grBТекущаяКоллекция.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBТекущаяКоллекция.ForeColor = System.Drawing.Color.Linen;
+            this.grBТекущаяКоллекция.Location = new System.Drawing.Point(0, 0);
+            this.grBТекущаяКоллекция.Name = "grBТекущаяКоллекция";
+            this.grBТекущаяКоллекция.Size = new System.Drawing.Size(642, 53);
+            this.grBТекущаяКоллекция.TabIndex = 4;
+            this.grBТекущаяКоллекция.TabStop = false;
+            this.grBТекущаяКоллекция.Text = "Текущая Коллекция";
             // 
             // tbJsonFile
             // 
@@ -1004,7 +1014,7 @@ namespace AppClientTurbo
             this.tbJsonFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbJsonFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbJsonFile.ForeColor = System.Drawing.Color.White;
-            this.tbJsonFile.Location = new System.Drawing.Point(3, 16);
+            this.tbJsonFile.Location = new System.Drawing.Point(3, 22);
             this.tbJsonFile.Name = "tbJsonFile";
             this.tbJsonFile.ReadOnly = true;
             this.tbJsonFile.Size = new System.Drawing.Size(636, 24);
@@ -1018,7 +1028,7 @@ namespace AppClientTurbo
             this.btnExtCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExtCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtCancel.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnExtCancel.Location = new System.Drawing.Point(312, 166);
+            this.btnExtCancel.Location = new System.Drawing.Point(300, 166);
             this.btnExtCancel.Name = "btnExtCancel";
             this.btnExtCancel.Size = new System.Drawing.Size(75, 23);
             this.btnExtCancel.TabIndex = 2;
@@ -1032,7 +1042,7 @@ namespace AppClientTurbo
             this.btnExtOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExtOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtOk.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnExtOk.Location = new System.Drawing.Point(231, 166);
+            this.btnExtOk.Location = new System.Drawing.Point(223, 166);
             this.btnExtOk.Name = "btnExtOk";
             this.btnExtOk.Size = new System.Drawing.Size(75, 23);
             this.btnExtOk.TabIndex = 2;
@@ -1048,39 +1058,41 @@ namespace AppClientTurbo
             // 
             // splitContainer5.Panel1
             // 
-            this.splitContainer5.Panel1.Controls.Add(this.groupBox5);
-            this.splitContainer5.Panel1MinSize = 200;
+            this.splitContainer5.Panel1.Controls.Add(this.grBНастройкаОбщихКоллекций);
+            this.splitContainer5.Panel1MinSize = 240;
             // 
             // splitContainer5.Panel2
             // 
-            this.splitContainer5.Panel2.Controls.Add(this.groupBox6);
-            this.splitContainer5.Panel2MinSize = 200;
+            this.splitContainer5.Panel2.Controls.Add(this.grBНастройкаЛокальныхКоллекций);
+            this.splitContainer5.Panel2MinSize = 240;
             this.splitContainer5.Size = new System.Drawing.Size(642, 159);
-            this.splitContainer5.SplitterDistance = 315;
+            this.splitContainer5.SplitterDistance = 297;
             this.splitContainer5.TabIndex = 1;
             // 
-            // groupBox5
+            // grBНастройкаОбщихКоллекций
             // 
-            this.groupBox5.Controls.Add(this.btnOpenFDServ);
-            this.groupBox5.Controls.Add(this.btnDefaultServ);
-            this.groupBox5.Controls.Add(this.tbPathServ);
-            this.groupBox5.Controls.Add(this.labelПуть);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox5.Location = new System.Drawing.Point(0, 0);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(315, 159);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Настройка Общих Коллекций";
+            this.grBНастройкаОбщихКоллекций.Controls.Add(this.btnOpenFDServ);
+            this.grBНастройкаОбщихКоллекций.Controls.Add(this.btnDefaultServ);
+            this.grBНастройкаОбщихКоллекций.Controls.Add(this.tbPathServ);
+            this.grBНастройкаОбщихКоллекций.Controls.Add(this.labelПуть);
+            this.grBНастройкаОбщихКоллекций.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grBНастройкаОбщихКоллекций.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBНастройкаОбщихКоллекций.ForeColor = System.Drawing.Color.Linen;
+            this.grBНастройкаОбщихКоллекций.Location = new System.Drawing.Point(0, 0);
+            this.grBНастройкаОбщихКоллекций.Name = "grBНастройкаОбщихКоллекций";
+            this.grBНастройкаОбщихКоллекций.Size = new System.Drawing.Size(297, 159);
+            this.grBНастройкаОбщихКоллекций.TabIndex = 0;
+            this.grBНастройкаОбщихКоллекций.TabStop = false;
+            this.grBНастройкаОбщихКоллекций.Text = "Настройка Общих Коллекций";
             // 
             // btnOpenFDServ
             // 
             this.btnOpenFDServ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenFDServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnOpenFDServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenFDServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpenFDServ.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnOpenFDServ.Location = new System.Drawing.Point(236, 74);
+            this.btnOpenFDServ.Location = new System.Drawing.Point(218, 74);
             this.btnOpenFDServ.Name = "btnOpenFDServ";
             this.btnOpenFDServ.Size = new System.Drawing.Size(57, 23);
             this.btnOpenFDServ.TabIndex = 2;
@@ -1093,8 +1105,9 @@ namespace AppClientTurbo
             this.btnDefaultServ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDefaultServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnDefaultServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaultServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDefaultServ.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnDefaultServ.Location = new System.Drawing.Point(136, 74);
+            this.btnDefaultServ.Location = new System.Drawing.Point(118, 74);
             this.btnDefaultServ.Name = "btnDefaultServ";
             this.btnDefaultServ.Size = new System.Drawing.Size(94, 23);
             this.btnDefaultServ.TabIndex = 2;
@@ -1108,7 +1121,7 @@ namespace AppClientTurbo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPathServ.Location = new System.Drawing.Point(10, 48);
             this.tbPathServ.Name = "tbPathServ";
-            this.tbPathServ.Size = new System.Drawing.Size(283, 20);
+            this.tbPathServ.Size = new System.Drawing.Size(265, 22);
             this.tbPathServ.TabIndex = 1;
             // 
             // labelПуть
@@ -1116,32 +1129,34 @@ namespace AppClientTurbo
             this.labelПуть.AutoSize = true;
             this.labelПуть.Location = new System.Drawing.Point(7, 31);
             this.labelПуть.Name = "labelПуть";
-            this.labelПуть.Size = new System.Drawing.Size(31, 13);
+            this.labelПуть.Size = new System.Drawing.Size(40, 16);
             this.labelПуть.TabIndex = 0;
             this.labelПуть.Text = "Путь";
             // 
-            // groupBox6
+            // grBНастройкаЛокальныхКоллекций
             // 
-            this.groupBox6.Controls.Add(this.btnOpenFDLoc);
-            this.groupBox6.Controls.Add(this.btnDefaultLoc);
-            this.groupBox6.Controls.Add(this.tbPathLoc);
-            this.groupBox6.Controls.Add(this.labelПуть2);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.ForeColor = System.Drawing.Color.Linen;
-            this.groupBox6.Location = new System.Drawing.Point(0, 0);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(323, 159);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Настройка Локальных Коллекций";
+            this.grBНастройкаЛокальныхКоллекций.Controls.Add(this.btnOpenFDLoc);
+            this.grBНастройкаЛокальныхКоллекций.Controls.Add(this.btnDefaultLoc);
+            this.grBНастройкаЛокальныхКоллекций.Controls.Add(this.tbPathLoc);
+            this.grBНастройкаЛокальныхКоллекций.Controls.Add(this.labelПуть2);
+            this.grBНастройкаЛокальныхКоллекций.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grBНастройкаЛокальныхКоллекций.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.grBНастройкаЛокальныхКоллекций.ForeColor = System.Drawing.Color.Linen;
+            this.grBНастройкаЛокальныхКоллекций.Location = new System.Drawing.Point(0, 0);
+            this.grBНастройкаЛокальныхКоллекций.Name = "grBНастройкаЛокальныхКоллекций";
+            this.grBНастройкаЛокальныхКоллекций.Size = new System.Drawing.Size(341, 159);
+            this.grBНастройкаЛокальныхКоллекций.TabIndex = 0;
+            this.grBНастройкаЛокальныхКоллекций.TabStop = false;
+            this.grBНастройкаЛокальныхКоллекций.Text = "Настройка Локальных Коллекций";
             // 
             // btnOpenFDLoc
             // 
             this.btnOpenFDLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenFDLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnOpenFDLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenFDLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpenFDLoc.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnOpenFDLoc.Location = new System.Drawing.Point(247, 74);
+            this.btnOpenFDLoc.Location = new System.Drawing.Point(265, 74);
             this.btnOpenFDLoc.Name = "btnOpenFDLoc";
             this.btnOpenFDLoc.Size = new System.Drawing.Size(55, 23);
             this.btnOpenFDLoc.TabIndex = 2;
@@ -1154,8 +1169,9 @@ namespace AppClientTurbo
             this.btnDefaultLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDefaultLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnDefaultLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaultLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDefaultLoc.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnDefaultLoc.Location = new System.Drawing.Point(146, 74);
+            this.btnDefaultLoc.Location = new System.Drawing.Point(164, 74);
             this.btnDefaultLoc.Name = "btnDefaultLoc";
             this.btnDefaultLoc.Size = new System.Drawing.Size(95, 23);
             this.btnDefaultLoc.TabIndex = 2;
@@ -1169,7 +1185,7 @@ namespace AppClientTurbo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPathLoc.Location = new System.Drawing.Point(19, 48);
             this.tbPathLoc.Name = "tbPathLoc";
-            this.tbPathLoc.Size = new System.Drawing.Size(283, 20);
+            this.tbPathLoc.Size = new System.Drawing.Size(301, 22);
             this.tbPathLoc.TabIndex = 1;
             // 
             // labelПуть2
@@ -1177,7 +1193,7 @@ namespace AppClientTurbo
             this.labelПуть2.AutoSize = true;
             this.labelПуть2.Location = new System.Drawing.Point(16, 31);
             this.labelПуть2.Name = "labelПуть2";
-            this.labelПуть2.Size = new System.Drawing.Size(31, 13);
+            this.labelПуть2.Size = new System.Drawing.Size(40, 16);
             this.labelПуть2.TabIndex = 0;
             this.labelПуть2.Text = "Путь";
             // 
@@ -1224,6 +1240,7 @@ namespace AppClientTurbo
             // 
             // grBЗапросыВКоллекции
             // 
+            this.grBЗапросыВКоллекции.Controls.Add(this.linkLabel1);
             this.grBЗапросыВКоллекции.Controls.Add(this.btnDeleteCash);
             this.grBЗапросыВКоллекции.Controls.Add(this.btnSaveCash);
             this.grBЗапросыВКоллекции.Controls.Add(this.pictBoxОбработкаЗапроса);
@@ -1244,7 +1261,21 @@ namespace AppClientTurbo
             this.grBЗапросыВКоллекции.Size = new System.Drawing.Size(575, 160);
             this.grBЗапросыВКоллекции.TabIndex = 34;
             this.grBЗапросыВКоллекции.TabStop = false;
-            this.grBЗапросыВКоллекции.Text = "Запросы в коллекции";
+            this.grBЗапросыВКоллекции.Text = "Запросы в коллекции \"File\"";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Yellow;
+            this.linkLabel1.Location = new System.Drawing.Point(473, 84);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(94, 20);
+            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Отменить";
+            this.linkLabel1.Visible = false;
+            this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // Form1
             // 
@@ -1275,7 +1306,7 @@ namespace AppClientTurbo
             this.grBДанныеЗапроса.ResumeLayout(false);
             this.grBДанныеЗапроса.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fctbDataReq)).EndInit();
-            this.groupBox2.ResumeLayout(false);
+            this.grBОтвет.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fctbResponse)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -1289,24 +1320,24 @@ namespace AppClientTurbo
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.grBОбщиеКоллекции.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.grBЛокальныеКоллекции.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.grBСодержимое.ResumeLayout(false);
+            this.grBТекущаяКоллекция.ResumeLayout(false);
+            this.grBТекущаяКоллекция.PerformLayout();
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.grBНастройкаОбщихКоллекций.ResumeLayout(false);
+            this.grBНастройкаОбщихКоллекций.PerformLayout();
+            this.grBНастройкаЛокальныхКоллекций.ResumeLayout(false);
+            this.grBНастройкаЛокальныхКоллекций.PerformLayout();
             this.splitContainer7.Panel1.ResumeLayout(false);
             this.splitContainer7.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).EndInit();
@@ -1361,7 +1392,7 @@ namespace AppClientTurbo
         private FastColoredTextBoxNS.FastColoredTextBox fctbResponse;
         private FastColoredTextBoxNS.FastColoredTextBox fctbDataReq;
         private System.Windows.Forms.GroupBox grBДанныеЗапроса;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grBОтвет;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel panelИмя;
         private System.Windows.Forms.Label labelИмя;
@@ -1370,9 +1401,9 @@ namespace AppClientTurbo
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnExt;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grBОбщиеКоллекции;
         private System.Windows.Forms.TreeView treeViewServ;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox grBЛокальныеКоллекции;
         private System.Windows.Forms.TreeView treeViewLoc;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemСоздать;
@@ -1388,27 +1419,28 @@ namespace AppClientTurbo
         private System.Windows.Forms.SplitContainer splitContainer7;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox grBСодержимое;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ColumnHeader colHeaderFile;
         private System.Windows.Forms.ColumnHeader colHeaderSize;
         private System.Windows.Forms.ColumnHeader colHeaderType;
         private System.Windows.Forms.ColumnHeader colHeaderFullPath;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox grBТекущаяКоллекция;
         private System.Windows.Forms.TextBox tbJsonFile;
         private System.Windows.Forms.Button btnExtCancel;
         private System.Windows.Forms.Button btnExtOk;
         private System.Windows.Forms.SplitContainer splitContainer5;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox grBНастройкаОбщихКоллекций;
         private System.Windows.Forms.Button btnOpenFDServ;
         private System.Windows.Forms.Button btnDefaultServ;
         private System.Windows.Forms.TextBox tbPathServ;
         private System.Windows.Forms.Label labelПуть;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox grBНастройкаЛокальныхКоллекций;
         private System.Windows.Forms.Button btnOpenFDLoc;
         private System.Windows.Forms.Button btnDefaultLoc;
         private System.Windows.Forms.TextBox tbPathLoc;
         private System.Windows.Forms.Label labelПуть2;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

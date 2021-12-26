@@ -166,5 +166,17 @@ namespace AppClientTurbo.Properties {
                 this["pathLocSv"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ЗапросыВКоллекции {
+            get {
+                return ((string)(this["ЗапросыВКоллекции"]));
+            }
+            set {
+                this["ЗапросыВКоллекции"] = value;
+            }
+        }
     }
 }
