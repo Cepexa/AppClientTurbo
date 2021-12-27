@@ -74,6 +74,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Req.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -83,14 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -107,8 +107,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon0.ico" />
+    <None Include="Resources\eye21.png" />
+    <None Include="Resources\eye11.png" />
+    <None Include="Resources\switchRed1.png" />
+    <None Include="Resources\switchGreen1.png" />
     <None Include="Resources\clear2.png" />
     <None Include="Resources\clear.png" />
+    <None Include="Resources\330.png" />
+    <None Include="Resources\300.png" />
+    <None Include="Resources\270.png" />
+    <None Include="Resources\240.png" />
+    <None Include="Resources\210.png" />
+    <None Include="Resources\180.png" />
+    <None Include="Resources\150.png" />
+    <None Include="Resources\120.png" />
+    <None Include="Resources\90.png" />
+    <None Include="Resources\60.png" />
+    <None Include="Resources\30.png" />
+    <None Include="Resources\360.png" />
+    <None Include="Resources\switchRed.png" />
+    <None Include="Resources\switchGreen.png" />
+    <None Include="Resources\eye2.png" />
+    <None Include="Resources\eye1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

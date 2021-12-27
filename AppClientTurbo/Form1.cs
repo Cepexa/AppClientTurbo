@@ -48,8 +48,9 @@ namespace AppClientTurbo
             loadCash();
         }
         
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private async void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            await logout();
             Properties.Settings.Default.dataReq = fctbDataReq.Text;
             Properties.Settings.Default.preRequest = tbPreRequest.Text;
             Properties.Settings.Default.request = tbRequest.Text;
@@ -69,7 +70,6 @@ namespace AppClientTurbo
             #endregion
             
             Properties.Settings.Default.Save();
-            logout();
         }
         static bool myClick = true;
         static bool myClick2 = true;
@@ -116,10 +116,48 @@ namespace AppClientTurbo
                 setVisibility(true);
             }
         }
+        CancellationTokenSource cts2;
+        CancellationToken token2;
+        bool  helpОбрЗапроса(Bitmap bm)
+        {
+            pictBoxОбработкаЗапроса.Image = bm;
+            Thread.Sleep(6);
+            return token2.IsCancellationRequested;
+        }
+        void ОбработкаЗапроса()
+        {
+            while (!token2.IsCancellationRequested)
+            {
+                if (helpОбрЗапроса(Properties.Resources._60)) return;
+                if (helpОбрЗапроса(Properties.Resources._90)) return;
+                if (helpОбрЗапроса(Properties.Resources._120)) return;
+                if (helpОбрЗапроса(Properties.Resources._150)) return;
+                if (helpОбрЗапроса(Properties.Resources._180)) return;
+                if (helpОбрЗапроса(Properties.Resources._210)) return;
+                if (helpОбрЗапроса(Properties.Resources._240)) return;
+                if (helpОбрЗапроса(Properties.Resources._270)) return;
+                if (helpОбрЗапроса(Properties.Resources._300)) return;
+                if (helpОбрЗапроса(Properties.Resources._330)) return;
+                if (helpОбрЗапроса(Properties.Resources._360)) return;
+                if (helpОбрЗапроса(Properties.Resources._30)) return;
+            }
+        }
+
         void setVisibility(bool flag,bool ext = false)
         {
             myClick = flag;
-            pictBoxОбработкаЗапроса.BackColor = flag ? Color.White : Color.Yellow;
+            labelОбработкаЗапроса.Visible = !flag;
+            pictBoxОбработкаЗапроса.Visible = !flag;
+            if (!flag)
+            {
+                cts2 = new CancellationTokenSource();
+                token2 = cts2.Token;
+                Task.Run(() => ОбработкаЗапроса());
+            }
+            else
+            {
+                cts2.Cancel();
+            }
             if (ext)
             {
                 comboBoxRefs.Enabled = flag;
@@ -146,8 +184,7 @@ namespace AppClientTurbo
                 {
                     sessionId = response.Headers.GetValues("sessionId").Last().ToString();
                     fctbResponse.Text="Успешная авторизация!" + Environment.NewLine;
-                    pictBoxOff.BackColor = Color.White;
-                    pictBoxOn.BackColor = Color.Lime;
+                    pictBoxOn.Image = Properties.Resources.switchGreen;
                     checkBoxForce.Visible = false;
                     checkBoxForce.Checked = false;
                     if (timeWithoutClick)
@@ -197,16 +234,14 @@ namespace AppClientTurbo
                 cts = new CancellationTokenSource();
                 token = cts.Token;
                 response = await req.makeRequest(token);
-                labelStatusCode.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + "-";
+                labelStatusCode.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + " -";
                 if (((req.preRequest + req.request).ToLower() == "/api/xcom/userauth/logout") && response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Off();
-                    btnUseraut.Text = "Вход";
                     return "Сессия завершена!";
                 }
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) {
                     Off();
-                    btnUseraut.Text = "Вход";
                     return "Не Авторизован!"; }
                 string responseString = await response.Content.ReadAsStringAsync();
                 try
@@ -250,8 +285,8 @@ namespace AppClientTurbo
         private void Off()
         {
             sessionId = null;
-            pictBoxOff.BackColor = Color.Red;
-            pictBoxOn.BackColor = Color.White;
+            btnUseraut.Text = "Вход";
+            pictBoxOn.Image = Properties.Resources.switchRed;
         }
         bool timeWithoutClick = false;
         private async void timer1_Tick(object sender, EventArgs e)
@@ -959,11 +994,13 @@ namespace AppClientTurbo
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             tbPassword.PasswordChar = (char)0;
+            pictureBoxVisblPswrd.Image = Properties.Resources.eye2;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             tbPassword.PasswordChar = '*';
+            pictureBoxVisblPswrd.Image = Properties.Resources.eye1;
         }
 
         ToolTip tt = new ToolTip();

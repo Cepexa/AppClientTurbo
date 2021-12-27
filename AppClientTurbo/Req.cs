@@ -115,7 +115,7 @@ namespace AppClientTurbo
             }
             else if (method == Req.Method.DELETE)
             {
-                return null;//необходима реализация
+                return client.DeleteAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, token);
             }
             else if (method == Req.Method.GET)
             {
@@ -123,7 +123,7 @@ namespace AppClientTurbo
             }
             else if (method == Req.Method.PUT)
             {
-                return null;//необходима реализация
+                return client.PutAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, content, token);
             }
             else
             {

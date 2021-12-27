@@ -50,7 +50,6 @@ namespace AppClientTurbo
             this.btnSend = new System.Windows.Forms.Button();
             this.grBOnOff = new System.Windows.Forms.GroupBox();
             this.pictureBoxVisblPswrd = new System.Windows.Forms.PictureBox();
-            this.pictBoxOff = new System.Windows.Forms.PictureBox();
             this.pictBoxOn = new System.Windows.Forms.PictureBox();
             this.checkBoxForce = new System.Windows.Forms.CheckBox();
             this.comboBoxMethod = new System.Windows.Forms.ComboBox();
@@ -116,7 +115,6 @@ namespace AppClientTurbo
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.grBOnOff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVisblPswrd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -235,14 +233,15 @@ namespace AppClientTurbo
             this.labelОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelОбработкаЗапроса.AutoSize = true;
             this.labelОбработкаЗапроса.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.labelОбработкаЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World, ((byte)(204)));
+            this.labelОбработкаЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelОбработкаЗапроса.ForeColor = System.Drawing.Color.Linen;
             this.labelОбработкаЗапроса.Location = new System.Drawing.Point(470, 17);
             this.labelОбработкаЗапроса.Name = "labelОбработкаЗапроса";
-            this.labelОбработкаЗапроса.Size = new System.Drawing.Size(95, 36);
+            this.labelОбработкаЗапроса.Size = new System.Drawing.Size(86, 36);
             this.labelОбработкаЗапроса.TabIndex = 27;
             this.labelОбработкаЗапроса.Text = "Обработка\r\nзапроса";
             this.labelОбработкаЗапроса.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelОбработкаЗапроса.Visible = false;
             // 
             // labelКоллекции
             // 
@@ -280,6 +279,7 @@ namespace AppClientTurbo
             // tbUser
             // 
             this.tbUser.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbUser.ForeColor = System.Drawing.Color.White;
             this.tbUser.Location = new System.Drawing.Point(173, 50);
@@ -292,6 +292,7 @@ namespace AppClientTurbo
             // tbPassword
             // 
             this.tbPassword.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPassword.ForeColor = System.Drawing.Color.White;
             this.tbPassword.Location = new System.Drawing.Point(173, 80);
@@ -303,13 +304,13 @@ namespace AppClientTurbo
             // 
             // btnUseraut
             // 
-            this.btnUseraut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnUseraut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnUseraut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUseraut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnUseraut.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnUseraut.Location = new System.Drawing.Point(173, 112);
             this.btnUseraut.Name = "btnUseraut";
-            this.btnUseraut.Size = new System.Drawing.Size(79, 37);
+            this.btnUseraut.Size = new System.Drawing.Size(68, 37);
             this.btnUseraut.TabIndex = 2;
             this.btnUseraut.Text = "Вход";
             this.btnUseraut.UseVisualStyleBackColor = false;
@@ -318,6 +319,7 @@ namespace AppClientTurbo
             // tbAdrServer
             // 
             this.tbAdrServer.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAdrServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbAdrServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbAdrServer.ForeColor = System.Drawing.Color.White;
             this.tbAdrServer.Location = new System.Drawing.Point(88, 19);
@@ -331,6 +333,7 @@ namespace AppClientTurbo
             // tbAdrPort
             // 
             this.tbAdrPort.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAdrPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbAdrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbAdrPort.ForeColor = System.Drawing.Color.White;
             this.tbAdrPort.Location = new System.Drawing.Point(283, 19);
@@ -359,7 +362,7 @@ namespace AppClientTurbo
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSend.ForeColor = System.Drawing.SystemColors.ActiveBorder;
@@ -373,8 +376,8 @@ namespace AppClientTurbo
             // 
             // grBOnOff
             // 
+            this.grBOnOff.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grBOnOff.Controls.Add(this.pictureBoxVisblPswrd);
-            this.grBOnOff.Controls.Add(this.pictBoxOff);
             this.grBOnOff.Controls.Add(this.pictBoxOn);
             this.grBOnOff.Controls.Add(this.checkBoxForce);
             this.grBOnOff.Controls.Add(this.labelСервер);
@@ -404,27 +407,21 @@ namespace AppClientTurbo
             this.pictureBoxVisblPswrd.Location = new System.Drawing.Point(311, 82);
             this.pictureBoxVisblPswrd.Name = "pictureBoxVisblPswrd";
             this.pictureBoxVisblPswrd.Size = new System.Drawing.Size(28, 21);
+            this.pictureBoxVisblPswrd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxVisblPswrd.TabIndex = 30;
             this.pictureBoxVisblPswrd.TabStop = false;
             this.pictureBoxVisblPswrd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBoxVisblPswrd.MouseHover += new System.EventHandler(this.pictureBoxVisblPswrd_MouseHover);
             this.pictureBoxVisblPswrd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // pictBoxOff
-            // 
-            this.pictBoxOff.BackColor = System.Drawing.Color.Red;
-            this.pictBoxOff.Location = new System.Drawing.Point(292, 112);
-            this.pictBoxOff.Name = "pictBoxOff";
-            this.pictBoxOff.Size = new System.Drawing.Size(28, 29);
-            this.pictBoxOff.TabIndex = 22;
-            this.pictBoxOff.TabStop = false;
-            // 
             // pictBoxOn
             // 
-            this.pictBoxOn.BackColor = System.Drawing.Color.White;
-            this.pictBoxOn.Location = new System.Drawing.Point(258, 112);
+            this.pictBoxOn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pictBoxOn.Image = ((System.Drawing.Image)(resources.GetObject("pictBoxOn.Image")));
+            this.pictBoxOn.Location = new System.Drawing.Point(245, 112);
             this.pictBoxOn.Name = "pictBoxOn";
-            this.pictBoxOn.Size = new System.Drawing.Size(28, 29);
+            this.pictBoxOn.Size = new System.Drawing.Size(64, 37);
+            this.pictBoxOn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictBoxOn.TabIndex = 21;
             this.pictBoxOn.TabStop = false;
             // 
@@ -686,6 +683,7 @@ namespace AppClientTurbo
             // 
             // splitContainer2
             // 
+            this.splitContainer2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
@@ -1033,7 +1031,7 @@ namespace AppClientTurbo
             // btnExtCancel
             // 
             this.btnExtCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExtCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExtCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnExtCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtCancel.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnExtCancel.Location = new System.Drawing.Point(300, 166);
@@ -1047,7 +1045,7 @@ namespace AppClientTurbo
             // btnExtOk
             // 
             this.btnExtOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExtOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExtOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnExtOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtOk.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnExtOk.Location = new System.Drawing.Point(223, 166);
@@ -1096,7 +1094,7 @@ namespace AppClientTurbo
             // btnOpenFDServ
             // 
             this.btnOpenFDServ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFDServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOpenFDServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnOpenFDServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenFDServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpenFDServ.ForeColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1111,7 +1109,7 @@ namespace AppClientTurbo
             // btnDefaultServ
             // 
             this.btnDefaultServ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefaultServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDefaultServ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnDefaultServ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDefaultServ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDefaultServ.ForeColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1160,7 +1158,7 @@ namespace AppClientTurbo
             // btnOpenFDLoc
             // 
             this.btnOpenFDLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFDLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOpenFDLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnOpenFDLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenFDLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnOpenFDLoc.ForeColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1175,7 +1173,7 @@ namespace AppClientTurbo
             // btnDefaultLoc
             // 
             this.btnDefaultLoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefaultLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDefaultLoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnDefaultLoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDefaultLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDefaultLoc.ForeColor = System.Drawing.SystemColors.ActiveBorder;
@@ -1275,10 +1273,11 @@ namespace AppClientTurbo
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkColor = System.Drawing.Color.Yellow;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.Linen;
             this.linkLabel1.Location = new System.Drawing.Point(473, 84);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(94, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(86, 20);
             this.linkLabel1.TabIndex = 28;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Отменить";
@@ -1288,12 +1287,14 @@ namespace AppClientTurbo
             // pictBoxОбработкаЗапроса
             // 
             this.pictBoxОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictBoxОбработкаЗапроса.BackColor = System.Drawing.Color.White;
+            this.pictBoxОбработкаЗапроса.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pictBoxОбработкаЗапроса.Location = new System.Drawing.Point(500, 54);
             this.pictBoxОбработкаЗапроса.Name = "pictBoxОбработкаЗапроса";
             this.pictBoxОбработкаЗапроса.Size = new System.Drawing.Size(31, 28);
+            this.pictBoxОбработкаЗапроса.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictBoxОбработкаЗапроса.TabIndex = 26;
             this.pictBoxОбработкаЗапроса.TabStop = false;
+            this.pictBoxОбработкаЗапроса.Visible = false;
             // 
             // Form1
             // 
@@ -1315,7 +1316,6 @@ namespace AppClientTurbo
             this.grBOnOff.ResumeLayout(false);
             this.grBOnOff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVisblPswrd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1388,16 +1388,10 @@ namespace AppClientTurbo
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label labelPswrd;
         private System.Windows.Forms.GroupBox grBOnOff;
-        private System.Windows.Forms.PictureBox pictBoxOff;
         private System.Windows.Forms.PictureBox pictBoxOn;
         private System.Windows.Forms.ComboBox comboBoxMethod;
         private System.Windows.Forms.ComboBox comboBoxRefs;
         private System.Windows.Forms.Button btnSaveCash;
-        private System.Windows.Forms.Button save;
-        private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictBoxОбработкаЗапроса;
         private System.Windows.Forms.Label labelОбработкаЗапроса;
         private System.Windows.Forms.CheckBox checkBoxForce;
