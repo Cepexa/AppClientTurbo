@@ -78,13 +78,11 @@ namespace AppClientTurbo
             
             if (myClick)
             {
-                cts = new CancellationTokenSource();
-                token = cts.Token;
-                myTime = 0;
-                setVisibility(false, true);
                 try
                 {
                     if (sessionId == null) throw new Exception("SessionId empty");
+                    setVisibility(false, true);
+                    myTime = 0;
                     {
                         if (comboBoxMethod.Text == "POST") req.method = Req.Method.POST;
                         else if (comboBoxMethod.Text == "GET") req.method = Req.Method.GET;
@@ -134,18 +132,15 @@ namespace AppClientTurbo
             cts.Cancel();
             setVisibility(true, true);
         }
-        private void Clear_Click(object sender, EventArgs e)
-        {
-            fctbResponse.Clear();
-            labelStatusCode.Text = "Status Code";
-        }
         private async Task login()
         {
             req = new Req(Req.Method.POST, @"{""user"": """ + tbUser.Text + "\",\"password\":\"" + tbPassword.Text + ((checkBoxForce.Checked) ? "\",\"ForceLogin\":true}" : "\"}"),
                                        "/api/xcom/userauth/", "login", tbAdrServer.Text, tbAdrPort.Text);
             try
             {
-                response = await req.postRequest();
+                cts = new CancellationTokenSource();
+                token = cts.Token;
+                response = await req.makeRequest(token);
                 labelStatusCode.Text = "Status Code -" + (int)response.StatusCode + " " + response.StatusCode + "-";
                 try
                 {
@@ -199,7 +194,9 @@ namespace AppClientTurbo
         {
             try
             {
-                response = await req.postRequest();
+                cts = new CancellationTokenSource();
+                token = cts.Token;
+                response = await req.makeRequest(token);
                 labelStatusCode.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + "-";
                 if (((req.preRequest + req.request).ToLower() == "/api/xcom/userauth/logout") && response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -229,7 +226,11 @@ namespace AppClientTurbo
             
 
         }
-
+        private void pictBoxClear_Click(object sender, EventArgs e)
+        {
+            fctbResponse.Clear();
+            labelStatusCode.Text = "Status Code";
+        }
         private async void adrPort_TextChanged(object sender, EventArgs e)
         {
             await logout();
@@ -573,6 +574,7 @@ namespace AppClientTurbo
         private void _treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             NodeClick = true;
+
             TreeNode curTn = e.Node;
             if (curTn.TreeView == treeViewLoc) lastLocNode = curTn;
             if (curTn.TreeView == treeViewServ) lastServNode = curTn;
@@ -585,7 +587,7 @@ namespace AppClientTurbo
             else if (curTn.ImageIndex == 1)
             {
                 setFilesOnce(curTn.Name);
-                grBСодержимое.Text = "Содержимое \"" + curTn.Text+"\"";
+                grBСодержимое.Text = "Содержимое \"" + curTn.Text + "\"";
             }
             else
             {
@@ -596,15 +598,15 @@ namespace AppClientTurbo
             toolStripMenuItemКопировать.Enabled = flag;
             toolStripMenuItemПереименовать.Enabled = flag;
             toolStripMenuItemУдалить.Enabled = flag;
+
         }
 
         private void _treeViewServ_MouseUp(object sender, MouseEventArgs e)
         {
             treeViewLoc.SelectedNode = null;
-            if (!NodeClick) treeViewServ.SelectedNode = (lastServNode==null)? treeViewServ.TopNode : lastServNode; 
+            if (!NodeClick) treeViewServ.SelectedNode = (lastServNode == null) ? treeViewServ.TopNode : lastServNode;
             NodeClick = false;
         }
-
         private void _treeViewLoc_MouseUp(object sender, MouseEventArgs e)
         {
             treeViewServ.SelectedNode = null;
@@ -720,6 +722,7 @@ namespace AppClientTurbo
 
             }
             loadTreeNode((curTnName.Parent == null) ? curTnName.TreeView.Nodes : curTnName.Parent.Nodes, parentPath);
+            //treeViewServ.SelectedNode = treeViewServ.Nodes.Find(path, true)[0];
             findCurrentNode(path);
         }
         string checkCloneDir(string path)
@@ -886,17 +889,8 @@ namespace AppClientTurbo
         void findCurrentNode(string path)
         {
             TreeView temp = (IsServ) ? treeViewServ : treeViewLoc;
-            TreeNode curTn = temp.SelectedNode;
-            if (curTn == null)
-            {
-                temp.SelectedNode = temp.Nodes.Find(path, true)[0];
-                if (temp.SelectedNode.ImageIndex == 0) temp.SelectedNode.Expand();
-            }
-            else
-            {
-                curTn.TreeView.SelectedNode = curTn.Nodes.Find(path, true)[0];
-                if (curTn.TreeView.SelectedNode.ImageIndex == 0) curTn.TreeView.SelectedNode.Expand();
-            }
+            temp.SelectedNode = temp.Nodes.Find(path, true)[0];
+            if (temp.SelectedNode?.ImageIndex == 0) temp.SelectedNode?.Expand();
         }
         private void extBtn_Click(object sender, EventArgs e)
         {
@@ -950,13 +944,54 @@ namespace AppClientTurbo
 
         private void treeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
         {
-            TreeNode curTn = e.Node;
-            if (curTn.TreeView == treeViewLoc) lastLocNode = curTn;
-            if (curTn.TreeView == treeViewServ) lastServNode = curTn;
-            treeViewLoc.SelectedNode = null;
-            treeViewServ.SelectedNode = null;
-            ((TreeView)sender).SelectedNode = curTn;
+            if (!panelИмя.Visible)
+            {
+                TreeNode curTn = e.Node;
+                if (curTn.TreeView == treeViewLoc) lastLocNode = curTn;
+                if (curTn.TreeView == treeViewServ) lastServNode = curTn;
+                treeViewLoc.SelectedNode = null;
+                treeViewServ.SelectedNode = null;
+                ((TreeView)sender).SelectedNode = curTn;
+            }
         }
         #endregion ФАЙЛОВЫЙ МЕНЕДЖЕР
+        #region Подсказки
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            tbPassword.PasswordChar = (char)0;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            tbPassword.PasswordChar = '*';
+        }
+
+        ToolTip tt = new ToolTip();
+        private void pictureBoxVisblPswrd_MouseHover(object sender, EventArgs e)
+        {
+            tt.SetToolTip(this.pictureBoxVisblPswrd, "Показать пароль");
+        }
+
+        private void btnExt_MouseHover(object sender, EventArgs e)
+        {
+            tt.SetToolTip(this.btnExt, "Расширеные Настройки");
+        }
+
+        private void btnRefresh_MouseHover(object sender, EventArgs e)
+        {
+            tt.SetToolTip(this.btnRefresh, "Обновить Список");
+        }
+        #endregion Подсказки
+
+        private void pictBoxClear_MouseEnter(object sender, EventArgs e)
+        {
+            pictBoxClear.Image=Properties.Resources.clear2;
+        }
+
+        private void pictBoxClear_MouseLeave(object sender, EventArgs e)
+        {
+            pictBoxClear.Image=Properties.Resources.clear;
+        }
+
     }
 }

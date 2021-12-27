@@ -48,20 +48,20 @@ namespace AppClientTurbo
             this.tbAdrPort = new System.Windows.Forms.TextBox();
             this.tbRequest = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.grBOnOff = new System.Windows.Forms.GroupBox();
+            this.pictureBoxVisblPswrd = new System.Windows.Forms.PictureBox();
             this.pictBoxOff = new System.Windows.Forms.PictureBox();
             this.pictBoxOn = new System.Windows.Forms.PictureBox();
             this.checkBoxForce = new System.Windows.Forms.CheckBox();
             this.comboBoxMethod = new System.Windows.Forms.ComboBox();
             this.comboBoxRefs = new System.Windows.Forms.ComboBox();
             this.btnSaveCash = new System.Windows.Forms.Button();
-            this.pictBoxОбработкаЗапроса = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grBДанныеЗапроса = new System.Windows.Forms.GroupBox();
             this.fctbDataReq = new FastColoredTextBoxNS.FastColoredTextBox();
             this.grBОтвет = new System.Windows.Forms.GroupBox();
+            this.pictBoxClear = new System.Windows.Forms.PictureBox();
             this.fctbResponse = new FastColoredTextBoxNS.FastColoredTextBox();
             this.btnDeleteCash = new System.Windows.Forms.Button();
             this.tbPreRequest = new System.Windows.Forms.TextBox();
@@ -112,11 +112,12 @@ namespace AppClientTurbo
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.grBЗапросыВКоллекции = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictBoxОбработкаЗапроса = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.grBOnOff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVisblPswrd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxОбработкаЗапроса)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -124,6 +125,7 @@ namespace AppClientTurbo
             this.grBДанныеЗапроса.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fctbDataReq)).BeginInit();
             this.grBОтвет.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxClear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fctbResponse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -159,6 +161,7 @@ namespace AppClientTurbo
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
             this.grBЗапросыВКоллекции.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxОбработкаЗапроса)).BeginInit();
             this.SuspendLayout();
             // 
             // labelСервер
@@ -368,24 +371,9 @@ namespace AppClientTurbo
             this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.send_Click);
             // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnClear.Location = new System.Drawing.Point(822, 291);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(101, 31);
-            this.btnClear.TabIndex = 17;
-            this.btnClear.Text = "Очистить";
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.Clear_Click);
-            // 
             // grBOnOff
             // 
+            this.grBOnOff.Controls.Add(this.pictureBoxVisblPswrd);
             this.grBOnOff.Controls.Add(this.pictBoxOff);
             this.grBOnOff.Controls.Add(this.pictBoxOn);
             this.grBOnOff.Controls.Add(this.checkBoxForce);
@@ -407,6 +395,20 @@ namespace AppClientTurbo
             this.grBOnOff.TabIndex = 20;
             this.grBOnOff.TabStop = false;
             this.grBOnOff.Text = "On/Off";
+            // 
+            // pictureBoxVisblPswrd
+            // 
+            this.pictureBoxVisblPswrd.BackColor = System.Drawing.Color.LightSlateGray;
+            this.pictureBoxVisblPswrd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxVisblPswrd.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxVisblPswrd.Image")));
+            this.pictureBoxVisblPswrd.Location = new System.Drawing.Point(311, 82);
+            this.pictureBoxVisblPswrd.Name = "pictureBoxVisblPswrd";
+            this.pictureBoxVisblPswrd.Size = new System.Drawing.Size(28, 21);
+            this.pictureBoxVisblPswrd.TabIndex = 30;
+            this.pictureBoxVisblPswrd.TabStop = false;
+            this.pictureBoxVisblPswrd.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBoxVisblPswrd.MouseHover += new System.EventHandler(this.pictureBoxVisblPswrd_MouseHover);
+            this.pictureBoxVisblPswrd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // pictBoxOff
             // 
@@ -491,16 +493,6 @@ namespace AppClientTurbo
             this.btnSaveCash.Text = "Save";
             this.btnSaveCash.UseVisualStyleBackColor = false;
             this.btnSaveCash.Click += new System.EventHandler(this.saveCash_Click);
-            // 
-            // pictBoxОбработкаЗапроса
-            // 
-            this.pictBoxОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictBoxОбработкаЗапроса.BackColor = System.Drawing.Color.White;
-            this.pictBoxОбработкаЗапроса.Location = new System.Drawing.Point(500, 54);
-            this.pictBoxОбработкаЗапроса.Name = "pictBoxОбработкаЗапроса";
-            this.pictBoxОбработкаЗапроса.Size = new System.Drawing.Size(31, 28);
-            this.pictBoxОбработкаЗапроса.TabIndex = 26;
-            this.pictBoxОбработкаЗапроса.TabStop = false;
             // 
             // timer1
             // 
@@ -590,7 +582,7 @@ namespace AppClientTurbo
             // 
             // grBОтвет
             // 
-            this.grBОтвет.Controls.Add(this.btnClear);
+            this.grBОтвет.Controls.Add(this.pictBoxClear);
             this.grBОтвет.Controls.Add(this.fctbResponse);
             this.grBОтвет.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grBОтвет.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
@@ -601,6 +593,20 @@ namespace AppClientTurbo
             this.grBОтвет.TabIndex = 35;
             this.grBОтвет.TabStop = false;
             this.grBОтвет.Text = "Ответ";
+            // 
+            // pictBoxClear
+            // 
+            this.pictBoxClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictBoxClear.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.pictBoxClear.Image = global::AppClientTurbo.Properties.Resources.clear;
+            this.pictBoxClear.Location = new System.Drawing.Point(888, 280);
+            this.pictBoxClear.Name = "pictBoxClear";
+            this.pictBoxClear.Size = new System.Drawing.Size(35, 41);
+            this.pictBoxClear.TabIndex = 31;
+            this.pictBoxClear.TabStop = false;
+            this.pictBoxClear.Click += new System.EventHandler(this.pictBoxClear_Click);
+            this.pictBoxClear.MouseEnter += new System.EventHandler(this.pictBoxClear_MouseEnter);
+            this.pictBoxClear.MouseLeave += new System.EventHandler(this.pictBoxClear_MouseLeave);
             // 
             // fctbResponse
             // 
@@ -757,6 +763,7 @@ namespace AppClientTurbo
             this.btnRefresh.TabIndex = 0;
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.refreshBtn_Click);
+            this.btnRefresh.MouseHover += new System.EventHandler(this.btnRefresh_MouseHover);
             // 
             // btnExt
             // 
@@ -770,6 +777,7 @@ namespace AppClientTurbo
             this.btnExt.TabIndex = 0;
             this.btnExt.UseVisualStyleBackColor = false;
             this.btnExt.Click += new System.EventHandler(this.extBtn_Click);
+            this.btnExt.MouseHover += new System.EventHandler(this.btnExt_MouseHover);
             // 
             // splitContainer3
             // 
@@ -1277,6 +1285,16 @@ namespace AppClientTurbo
             this.linkLabel1.Visible = false;
             this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
+            // pictBoxОбработкаЗапроса
+            // 
+            this.pictBoxОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictBoxОбработкаЗапроса.BackColor = System.Drawing.Color.White;
+            this.pictBoxОбработкаЗапроса.Location = new System.Drawing.Point(500, 54);
+            this.pictBoxОбработкаЗапроса.Name = "pictBoxОбработкаЗапроса";
+            this.pictBoxОбработкаЗапроса.Size = new System.Drawing.Size(31, 28);
+            this.pictBoxОбработкаЗапроса.TabIndex = 26;
+            this.pictBoxОбработкаЗапроса.TabStop = false;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -1296,9 +1314,9 @@ namespace AppClientTurbo
             this.Move += new System.EventHandler(this.Form1_Move);
             this.grBOnOff.ResumeLayout(false);
             this.grBOnOff.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVisblPswrd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxОбработкаЗапроса)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1307,6 +1325,7 @@ namespace AppClientTurbo
             this.grBДанныеЗапроса.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fctbDataReq)).EndInit();
             this.grBОтвет.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxClear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fctbResponse)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -1348,6 +1367,7 @@ namespace AppClientTurbo
             this.splitContainer6.ResumeLayout(false);
             this.grBЗапросыВКоллекции.ResumeLayout(false);
             this.grBЗапросыВКоллекции.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxОбработкаЗапроса)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1365,7 +1385,6 @@ namespace AppClientTurbo
         private System.Windows.Forms.TextBox tbRequest;
         private System.Windows.Forms.Label labelЗапрос;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label labelPswrd;
         private System.Windows.Forms.GroupBox grBOnOff;
@@ -1441,6 +1460,8 @@ namespace AppClientTurbo
         private System.Windows.Forms.TextBox tbPathLoc;
         private System.Windows.Forms.Label labelПуть2;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.PictureBox pictureBoxVisblPswrd;
+        private System.Windows.Forms.PictureBox pictBoxClear;
     }
 }
 

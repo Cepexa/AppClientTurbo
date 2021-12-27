@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
+using System.Threading;
 
 namespace AppClientTurbo
 {   
@@ -106,11 +107,11 @@ namespace AppClientTurbo
         public StringContent content { get { return _content; } set { _content = value; } }
 
         private static readonly HttpClient client = new HttpClient();
-        public Task<HttpResponseMessage> postRequest()
+        public Task<HttpResponseMessage> makeRequest(CancellationToken token)
         {
             if (method == Req.Method.POST)
             {
-                return client.PostAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, content);
+                return client.PostAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, content, token);
             }
             else if (method == Req.Method.DELETE)
             {
@@ -118,7 +119,7 @@ namespace AppClientTurbo
             }
             else if (method == Req.Method.GET)
             {
-                return null;//необходима реализация
+                return client.GetAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, token);
             }
             else if (method == Req.Method.PUT)
             {
