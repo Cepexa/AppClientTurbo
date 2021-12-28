@@ -43,14 +43,13 @@ namespace AppClientTurbo
             this.labelStatusCode = new System.Windows.Forms.Label();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
-            this.btnUseraut = new System.Windows.Forms.Button();
             this.tbAdrServer = new System.Windows.Forms.TextBox();
             this.tbAdrPort = new System.Windows.Forms.TextBox();
             this.tbRequest = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.grBOnOff = new System.Windows.Forms.GroupBox();
             this.pictureBoxVisblPswrd = new System.Windows.Forms.PictureBox();
-            this.pictBoxOn = new System.Windows.Forms.PictureBox();
+            this.pictBoxВход = new System.Windows.Forms.PictureBox();
             this.checkBoxForce = new System.Windows.Forms.CheckBox();
             this.comboBoxMethod = new System.Windows.Forms.ComboBox();
             this.comboBoxRefs = new System.Windows.Forms.ComboBox();
@@ -115,7 +114,7 @@ namespace AppClientTurbo
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.grBOnOff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVisblPswrd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxВход)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -235,7 +234,7 @@ namespace AppClientTurbo
             this.labelОбработкаЗапроса.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.labelОбработкаЗапроса.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelОбработкаЗапроса.ForeColor = System.Drawing.Color.Linen;
-            this.labelОбработкаЗапроса.Location = new System.Drawing.Point(470, 17);
+            this.labelОбработкаЗапроса.Location = new System.Drawing.Point(480, 17);
             this.labelОбработкаЗапроса.Name = "labelОбработкаЗапроса";
             this.labelОбработкаЗапроса.Size = new System.Drawing.Size(86, 36);
             this.labelОбработкаЗапроса.TabIndex = 27;
@@ -278,84 +277,74 @@ namespace AppClientTurbo
             // 
             // tbUser
             // 
-            this.tbUser.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbUser.BackColor = System.Drawing.SystemColors.Desktop;
             this.tbUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbUser.ForeColor = System.Drawing.Color.White;
+            this.tbUser.ForeColor = System.Drawing.Color.Lime;
             this.tbUser.Location = new System.Drawing.Point(173, 50);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(169, 26);
-            this.tbUser.TabIndex = 0;
+            this.tbUser.TabIndex = 3;
             this.tbUser.Text = "User01";
-            this.tbUser.TextChanged += new System.EventHandler(this.user_TextChanged);
+            this.tbUser.TextChanged += new System.EventHandler(this.Выход);
+            this.tbUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUser_KeyDown);
             // 
             // tbPassword
             // 
-            this.tbPassword.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbPassword.BackColor = System.Drawing.SystemColors.Desktop;
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbPassword.ForeColor = System.Drawing.Color.White;
+            this.tbPassword.ForeColor = System.Drawing.Color.Lime;
             this.tbPassword.Location = new System.Drawing.Point(173, 80);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(169, 26);
-            this.tbPassword.TabIndex = 1;
-            this.tbPassword.TextChanged += new System.EventHandler(this.password_TextChanged);
-            // 
-            // btnUseraut
-            // 
-            this.btnUseraut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnUseraut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUseraut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnUseraut.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnUseraut.Location = new System.Drawing.Point(173, 112);
-            this.btnUseraut.Name = "btnUseraut";
-            this.btnUseraut.Size = new System.Drawing.Size(68, 37);
-            this.btnUseraut.TabIndex = 2;
-            this.btnUseraut.Text = "Вход";
-            this.btnUseraut.UseVisualStyleBackColor = false;
-            this.btnUseraut.Click += new System.EventHandler(this.userauth_Click);
+            this.tbPassword.TabIndex = 4;
+            this.tbPassword.Enter += new System.EventHandler(this.Выход);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // tbAdrServer
             // 
-            this.tbAdrServer.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAdrServer.BackColor = System.Drawing.SystemColors.Desktop;
             this.tbAdrServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbAdrServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbAdrServer.ForeColor = System.Drawing.Color.White;
+            this.tbAdrServer.ForeColor = System.Drawing.Color.Lime;
             this.tbAdrServer.Location = new System.Drawing.Point(88, 19);
             this.tbAdrServer.MaxLength = 15;
             this.tbAdrServer.Name = "tbAdrServer";
             this.tbAdrServer.Size = new System.Drawing.Size(136, 26);
-            this.tbAdrServer.TabIndex = 3;
+            this.tbAdrServer.TabIndex = 1;
             this.tbAdrServer.Text = "172.17.18.50";
-            this.tbAdrServer.TextChanged += new System.EventHandler(this.adrServer_TextChanged);
+            this.tbAdrServer.TextChanged += new System.EventHandler(this.Выход);
+            this.tbAdrServer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbAdrServer_KeyDown);
             // 
             // tbAdrPort
             // 
-            this.tbAdrPort.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbAdrPort.BackColor = System.Drawing.SystemColors.Desktop;
             this.tbAdrPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbAdrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbAdrPort.ForeColor = System.Drawing.Color.White;
+            this.tbAdrPort.ForeColor = System.Drawing.Color.Lime;
             this.tbAdrPort.Location = new System.Drawing.Point(283, 19);
             this.tbAdrPort.MaxLength = 5;
             this.tbAdrPort.Name = "tbAdrPort";
             this.tbAdrPort.Size = new System.Drawing.Size(59, 26);
-            this.tbAdrPort.TabIndex = 6;
+            this.tbAdrPort.TabIndex = 2;
             this.tbAdrPort.Text = "81";
-            this.tbAdrPort.TextChanged += new System.EventHandler(this.adrPort_TextChanged);
+            this.tbAdrPort.TextChanged += new System.EventHandler(this.Выход);
+            this.tbAdrPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbAdrPort_KeyDown);
             // 
             // tbRequest
             // 
             this.tbRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbRequest.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbRequest.BackColor = System.Drawing.SystemColors.Desktop;
             this.tbRequest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbRequest.ForeColor = System.Drawing.Color.White;
+            this.tbRequest.ForeColor = System.Drawing.Color.Lime;
             this.tbRequest.Location = new System.Drawing.Point(91, 114);
             this.tbRequest.Name = "tbRequest";
-            this.tbRequest.Size = new System.Drawing.Size(376, 26);
-            this.tbRequest.TabIndex = 10;
+            this.tbRequest.Size = new System.Drawing.Size(378, 26);
+            this.tbRequest.TabIndex = 11;
             this.tbRequest.Text = "Select";
             this.tbRequest.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
@@ -366,7 +355,7 @@ namespace AppClientTurbo
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSend.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnSend.Location = new System.Drawing.Point(473, 107);
+            this.btnSend.Location = new System.Drawing.Point(477, 108);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(92, 34);
             this.btnSend.TabIndex = 16;
@@ -378,33 +367,32 @@ namespace AppClientTurbo
             // 
             this.grBOnOff.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grBOnOff.Controls.Add(this.pictureBoxVisblPswrd);
-            this.grBOnOff.Controls.Add(this.pictBoxOn);
+            this.grBOnOff.Controls.Add(this.tbPassword);
+            this.grBOnOff.Controls.Add(this.pictBoxВход);
             this.grBOnOff.Controls.Add(this.checkBoxForce);
             this.grBOnOff.Controls.Add(this.labelСервер);
-            this.grBOnOff.Controls.Add(this.btnUseraut);
             this.grBOnOff.Controls.Add(this.tbAdrPort);
             this.grBOnOff.Controls.Add(this.labelPswrd);
             this.grBOnOff.Controls.Add(this.tbAdrServer);
             this.grBOnOff.Controls.Add(this.labelПорт);
             this.grBOnOff.Controls.Add(this.tbUser);
-            this.grBOnOff.Controls.Add(this.tbPassword);
             this.grBOnOff.Controls.Add(this.labelUser);
             this.grBOnOff.Dock = System.Windows.Forms.DockStyle.Right;
             this.grBOnOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.grBOnOff.ForeColor = System.Drawing.Color.Linen;
             this.grBOnOff.Location = new System.Drawing.Point(0, 0);
             this.grBOnOff.Name = "grBOnOff";
-            this.grBOnOff.Size = new System.Drawing.Size(371, 160);
+            this.grBOnOff.Size = new System.Drawing.Size(371, 150);
             this.grBOnOff.TabIndex = 20;
             this.grBOnOff.TabStop = false;
             this.grBOnOff.Text = "On/Off";
             // 
             // pictureBoxVisblPswrd
             // 
-            this.pictureBoxVisblPswrd.BackColor = System.Drawing.Color.LightSlateGray;
+            this.pictureBoxVisblPswrd.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pictureBoxVisblPswrd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxVisblPswrd.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxVisblPswrd.Image")));
-            this.pictureBoxVisblPswrd.Location = new System.Drawing.Point(311, 82);
+            this.pictureBoxVisblPswrd.Image = global::AppClientTurbo.Properties.Resources.eye1;
+            this.pictureBoxVisblPswrd.Location = new System.Drawing.Point(341, 82);
             this.pictureBoxVisblPswrd.Name = "pictureBoxVisblPswrd";
             this.pictureBoxVisblPswrd.Size = new System.Drawing.Size(28, 21);
             this.pictureBoxVisblPswrd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -414,38 +402,39 @@ namespace AppClientTurbo
             this.pictureBoxVisblPswrd.MouseHover += new System.EventHandler(this.pictureBoxVisblPswrd_MouseHover);
             this.pictureBoxVisblPswrd.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // pictBoxOn
+            // pictBoxВход
             // 
-            this.pictBoxOn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pictBoxOn.Image = ((System.Drawing.Image)(resources.GetObject("pictBoxOn.Image")));
-            this.pictBoxOn.Location = new System.Drawing.Point(245, 112);
-            this.pictBoxOn.Name = "pictBoxOn";
-            this.pictBoxOn.Size = new System.Drawing.Size(64, 37);
-            this.pictBoxOn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictBoxOn.TabIndex = 21;
-            this.pictBoxOn.TabStop = false;
+            this.pictBoxВход.Image = ((System.Drawing.Image)(resources.GetObject("pictBoxВход.Image")));
+            this.pictBoxВход.Location = new System.Drawing.Point(4, 59);
+            this.pictBoxВход.Name = "pictBoxВход";
+            this.pictBoxВход.Size = new System.Drawing.Size(85, 89);
+            this.pictBoxВход.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictBoxВход.TabIndex = 31;
+            this.pictBoxВход.TabStop = false;
+            this.pictBoxВход.Click += new System.EventHandler(this.pictBoxВход_Click);
+            this.pictBoxВход.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictBoxВход_MouseDown);
+            this.pictBoxВход.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictBoxВход_MouseUp);
             // 
             // checkBoxForce
             // 
             this.checkBoxForce.AutoSize = true;
-            this.checkBoxForce.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxForce.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBoxForce.ForeColor = System.Drawing.Color.Linen;
-            this.checkBoxForce.Location = new System.Drawing.Point(8, 110);
+            this.checkBoxForce.Location = new System.Drawing.Point(91, 115);
             this.checkBoxForce.Name = "checkBoxForce";
-            this.checkBoxForce.Size = new System.Drawing.Size(159, 40);
-            this.checkBoxForce.TabIndex = 28;
-            this.checkBoxForce.Text = "Принудительный\r\nвход  ";
+            this.checkBoxForce.Size = new System.Drawing.Size(201, 22);
+            this.checkBoxForce.TabIndex = 0;
+            this.checkBoxForce.Text = "Принудительный вход";
             this.checkBoxForce.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxForce.UseVisualStyleBackColor = true;
             this.checkBoxForce.Visible = false;
             // 
             // comboBoxMethod
             // 
-            this.comboBoxMethod.BackColor = System.Drawing.Color.LightSlateGray;
+            this.comboBoxMethod.BackColor = System.Drawing.SystemColors.Desktop;
             this.comboBoxMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxMethod.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBoxMethod.ForeColor = System.Drawing.Color.Lime;
             this.comboBoxMethod.FormattingEnabled = true;
             this.comboBoxMethod.Items.AddRange(new object[] {
             "POST",
@@ -454,26 +443,26 @@ namespace AppClientTurbo
             "DELETE"});
             this.comboBoxMethod.Location = new System.Drawing.Point(91, 56);
             this.comboBoxMethod.Name = "comboBoxMethod";
-            this.comboBoxMethod.Size = new System.Drawing.Size(76, 24);
-            this.comboBoxMethod.TabIndex = 21;
+            this.comboBoxMethod.Size = new System.Drawing.Size(86, 24);
+            this.comboBoxMethod.TabIndex = 7;
             this.comboBoxMethod.Text = "POST";
             // 
             // comboBoxRefs
             // 
             this.comboBoxRefs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxRefs.BackColor = System.Drawing.Color.LightSlateGray;
+            this.comboBoxRefs.BackColor = System.Drawing.SystemColors.Desktop;
             this.comboBoxRefs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxRefs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxRefs.ForeColor = System.Drawing.Color.White;
+            this.comboBoxRefs.ForeColor = System.Drawing.Color.Lime;
             this.comboBoxRefs.FormattingEnabled = true;
             this.comboBoxRefs.Location = new System.Drawing.Point(6, 25);
             this.comboBoxRefs.Name = "comboBoxRefs";
-            this.comboBoxRefs.Size = new System.Drawing.Size(461, 28);
-            this.comboBoxRefs.TabIndex = 22;
+            this.comboBoxRefs.Size = new System.Drawing.Size(463, 28);
+            this.comboBoxRefs.TabIndex = 6;
             this.comboBoxRefs.Text = "-";
             this.comboBoxRefs.SelectedIndexChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
-            this.comboBoxRefs.TextChanged += new System.EventHandler(this.Refs_TextChanged);
+            this.comboBoxRefs.TextChanged += new System.EventHandler(this.request_TextChanged);
             // 
             // btnSaveCash
             // 
@@ -486,7 +475,7 @@ namespace AppClientTurbo
             this.btnSaveCash.Location = new System.Drawing.Point(329, 59);
             this.btnSaveCash.Name = "btnSaveCash";
             this.btnSaveCash.Size = new System.Drawing.Size(66, 22);
-            this.btnSaveCash.TabIndex = 24;
+            this.btnSaveCash.TabIndex = 8;
             this.btnSaveCash.Text = "Save";
             this.btnSaveCash.UseVisualStyleBackColor = false;
             this.btnSaveCash.Click += new System.EventHandler(this.saveCash_Click);
@@ -512,10 +501,11 @@ namespace AppClientTurbo
             // 
             this.splitContainer1.Panel2.Controls.Add(this.grBОтвет);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(950, 516);
-            this.splitContainer1.SplitterDistance = 164;
+            this.splitContainer1.Size = new System.Drawing.Size(950, 526);
+            this.splitContainer1.SplitterDistance = 167;
             this.splitContainer1.TabIndex = 29;
-            this.splitContainer1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_MouseMove);
+            this.splitContainer1.TabStop = false;
+            this.splitContainer1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_Activated);
             // 
             // grBДанныеЗапроса
             // 
@@ -526,13 +516,14 @@ namespace AppClientTurbo
             this.grBДанныеЗапроса.ForeColor = System.Drawing.Color.Linen;
             this.grBДанныеЗапроса.Location = new System.Drawing.Point(0, 0);
             this.grBДанныеЗапроса.Name = "grBДанныеЗапроса";
-            this.grBДанныеЗапроса.Size = new System.Drawing.Size(946, 160);
+            this.grBДанныеЗапроса.Size = new System.Drawing.Size(946, 163);
             this.grBДанныеЗапроса.TabIndex = 35;
             this.grBДанныеЗапроса.TabStop = false;
             this.grBДанныеЗапроса.Text = "Данные запроса";
             // 
             // fctbDataReq
             // 
+            this.fctbDataReq.AutoCompleteBrackets = true;
             this.fctbDataReq.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
@@ -571,11 +562,12 @@ namespace AppClientTurbo
             this.fctbDataReq.RightBracket2 = '}';
             this.fctbDataReq.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fctbDataReq.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fctbDataReq.ServiceColors")));
-            this.fctbDataReq.Size = new System.Drawing.Size(940, 135);
-            this.fctbDataReq.TabIndex = 34;
+            this.fctbDataReq.Size = new System.Drawing.Size(940, 138);
+            this.fctbDataReq.TabIndex = 0;
+            this.fctbDataReq.TabStop = false;
             this.fctbDataReq.Zoom = 100;
-            this.fctbDataReq.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.dataReqFctb_TextChanged);
-            this.fctbDataReq.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dataReq_MouseMove);
+            this.fctbDataReq.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.request_TextChanged);
+            this.fctbDataReq.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_Activated);
             // 
             // grBОтвет
             // 
@@ -586,7 +578,7 @@ namespace AppClientTurbo
             this.grBОтвет.ForeColor = System.Drawing.Color.Linen;
             this.grBОтвет.Location = new System.Drawing.Point(0, 0);
             this.grBОтвет.Name = "grBОтвет";
-            this.grBОтвет.Size = new System.Drawing.Size(946, 344);
+            this.grBОтвет.Size = new System.Drawing.Size(946, 351);
             this.grBОтвет.TabIndex = 35;
             this.grBОтвет.TabStop = false;
             this.grBОтвет.Text = "Ответ";
@@ -596,7 +588,7 @@ namespace AppClientTurbo
             this.pictBoxClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictBoxClear.BackColor = System.Drawing.SystemColors.MenuBar;
             this.pictBoxClear.Image = global::AppClientTurbo.Properties.Resources.clear;
-            this.pictBoxClear.Location = new System.Drawing.Point(888, 280);
+            this.pictBoxClear.Location = new System.Drawing.Point(888, 287);
             this.pictBoxClear.Name = "pictBoxClear";
             this.pictBoxClear.Size = new System.Drawing.Size(35, 41);
             this.pictBoxClear.TabIndex = 31;
@@ -646,10 +638,11 @@ namespace AppClientTurbo
             this.fctbResponse.RightBracket2 = '}';
             this.fctbResponse.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.fctbResponse.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fctbResponse.ServiceColors")));
-            this.fctbResponse.Size = new System.Drawing.Size(940, 319);
-            this.fctbResponse.TabIndex = 34;
+            this.fctbResponse.Size = new System.Drawing.Size(940, 326);
+            this.fctbResponse.TabIndex = 0;
+            this.fctbResponse.TabStop = false;
             this.fctbResponse.Zoom = 100;
-            this.fctbResponse.MouseMove += new System.Windows.Forms.MouseEventHandler(this.responseTxt_MouseMove);
+            this.fctbResponse.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_Activated);
             // 
             // btnDeleteCash
             // 
@@ -658,10 +651,10 @@ namespace AppClientTurbo
             this.btnDeleteCash.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnDeleteCash.ForeColor = System.Drawing.Color.Orange;
-            this.btnDeleteCash.Location = new System.Drawing.Point(401, 59);
+            this.btnDeleteCash.Location = new System.Drawing.Point(403, 59);
             this.btnDeleteCash.Name = "btnDeleteCash";
             this.btnDeleteCash.Size = new System.Drawing.Size(66, 22);
-            this.btnDeleteCash.TabIndex = 24;
+            this.btnDeleteCash.TabIndex = 9;
             this.btnDeleteCash.Text = "Delete";
             this.btnDeleteCash.UseVisualStyleBackColor = false;
             this.btnDeleteCash.Click += new System.EventHandler(this.deleteCash_Click);
@@ -670,13 +663,13 @@ namespace AppClientTurbo
             // 
             this.tbPreRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPreRequest.BackColor = System.Drawing.Color.LightSlateGray;
+            this.tbPreRequest.BackColor = System.Drawing.SystemColors.Desktop;
             this.tbPreRequest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPreRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbPreRequest.ForeColor = System.Drawing.Color.White;
+            this.tbPreRequest.ForeColor = System.Drawing.Color.Lime;
             this.tbPreRequest.Location = new System.Drawing.Point(91, 84);
             this.tbPreRequest.Name = "tbPreRequest";
-            this.tbPreRequest.Size = new System.Drawing.Size(376, 26);
+            this.tbPreRequest.Size = new System.Drawing.Size(378, 26);
             this.tbPreRequest.TabIndex = 10;
             this.tbPreRequest.Text = "/api/xcom/RepairService/";
             this.tbPreRequest.TextChanged += new System.EventHandler(this.request_TextChanged);
@@ -703,6 +696,7 @@ namespace AppClientTurbo
             this.splitContainer2.Size = new System.Drawing.Size(1155, 680);
             this.splitContainer2.SplitterDistance = 201;
             this.splitContainer2.TabIndex = 33;
+            this.splitContainer2.TabStop = false;
             // 
             // panelИмя
             // 
@@ -796,6 +790,7 @@ namespace AppClientTurbo
             this.splitContainer3.Size = new System.Drawing.Size(201, 644);
             this.splitContainer3.SplitterDistance = 292;
             this.splitContainer3.TabIndex = 6;
+            this.splitContainer3.TabStop = false;
             // 
             // grBОбщиеКоллекции
             // 
@@ -820,7 +815,6 @@ namespace AppClientTurbo
             this.treeViewServ.Name = "treeViewServ";
             this.treeViewServ.Size = new System.Drawing.Size(195, 267);
             this.treeViewServ.TabIndex = 4;
-            this.treeViewServ.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
             this.treeViewServ.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
             this.treeViewServ.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
             this.treeViewServ.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewServ_MouseUp);
@@ -919,7 +913,6 @@ namespace AppClientTurbo
             this.treeViewLoc.Name = "treeViewLoc";
             this.treeViewLoc.Size = new System.Drawing.Size(195, 323);
             this.treeViewLoc.TabIndex = 4;
-            this.treeViewLoc.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
             this.treeViewLoc.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseClick);
             this.treeViewLoc.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this._treeView_NodeMouseDoubleClick);
             this.treeViewLoc.MouseUp += new System.Windows.Forms.MouseEventHandler(this._treeViewLoc_MouseUp);
@@ -947,6 +940,7 @@ namespace AppClientTurbo
             this.splitContainer4.Size = new System.Drawing.Size(642, 680);
             this.splitContainer4.SplitterDistance = 404;
             this.splitContainer4.TabIndex = 4;
+            this.splitContainer4.TabStop = false;
             this.splitContainer4.Visible = false;
             // 
             // grBСодержимое
@@ -979,11 +973,12 @@ namespace AppClientTurbo
             this.listView.TabIndex = 3;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ColumnClick);
             this.listView.DoubleClick += new System.EventHandler(this._listView_DoubleClick);
             // 
             // colHeaderFile
             // 
-            this.colHeaderFile.Text = "Файл";
+            this.colHeaderFile.Text = "Имя";
             this.colHeaderFile.Width = 128;
             // 
             // colHeaderSize
@@ -1074,6 +1069,7 @@ namespace AppClientTurbo
             this.splitContainer5.Size = new System.Drawing.Size(642, 159);
             this.splitContainer5.SplitterDistance = 297;
             this.splitContainer5.TabIndex = 1;
+            this.splitContainer5.TabStop = false;
             // 
             // grBНастройкаОбщихКоллекций
             // 
@@ -1220,7 +1216,7 @@ namespace AppClientTurbo
             // 
             this.splitContainer7.Panel2.Controls.Add(this.splitContainer1);
             this.splitContainer7.Size = new System.Drawing.Size(950, 680);
-            this.splitContainer7.SplitterDistance = 160;
+            this.splitContainer7.SplitterDistance = 150;
             this.splitContainer7.TabIndex = 30;
             // 
             // splitContainer6
@@ -1240,7 +1236,7 @@ namespace AppClientTurbo
             // 
             this.splitContainer6.Panel2.Controls.Add(this.grBOnOff);
             this.splitContainer6.Panel2MinSize = 355;
-            this.splitContainer6.Size = new System.Drawing.Size(950, 160);
+            this.splitContainer6.Size = new System.Drawing.Size(950, 150);
             this.splitContainer6.SplitterDistance = 575;
             this.splitContainer6.TabIndex = 30;
             // 
@@ -1264,7 +1260,7 @@ namespace AppClientTurbo
             this.grBЗапросыВКоллекции.ForeColor = System.Drawing.Color.Linen;
             this.grBЗапросыВКоллекции.Location = new System.Drawing.Point(0, 0);
             this.grBЗапросыВКоллекции.Name = "grBЗапросыВКоллекции";
-            this.grBЗапросыВКоллекции.Size = new System.Drawing.Size(575, 160);
+            this.grBЗапросыВКоллекции.Size = new System.Drawing.Size(575, 150);
             this.grBЗапросыВКоллекции.TabIndex = 34;
             this.grBЗапросыВКоллекции.TabStop = false;
             this.grBЗапросыВКоллекции.Text = "Запросы в коллекции \"File\"";
@@ -1275,10 +1271,10 @@ namespace AppClientTurbo
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkLabel1.LinkColor = System.Drawing.Color.Linen;
-            this.linkLabel1.Location = new System.Drawing.Point(473, 84);
+            this.linkLabel1.Location = new System.Drawing.Point(484, 84);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(86, 20);
-            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Отменить";
             this.linkLabel1.Visible = false;
@@ -1288,7 +1284,7 @@ namespace AppClientTurbo
             // 
             this.pictBoxОбработкаЗапроса.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictBoxОбработкаЗапроса.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pictBoxОбработкаЗапроса.Location = new System.Drawing.Point(500, 54);
+            this.pictBoxОбработкаЗапроса.Location = new System.Drawing.Point(508, 54);
             this.pictBoxОбработкаЗапроса.Name = "pictBoxОбработкаЗапроса";
             this.pictBoxОбработкаЗапроса.Size = new System.Drawing.Size(31, 28);
             this.pictBoxОбработкаЗапроса.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1310,13 +1306,14 @@ namespace AppClientTurbo
             this.Name = "Form1";
             this.Text = "AppClientTurbo";
             this.Activated += new System.EventHandler(this.Form1_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Выход);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.Move += new System.EventHandler(this.Form1_Move);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_Activated);
+            this.Move += new System.EventHandler(this.Form1_Activated);
             this.grBOnOff.ResumeLayout(false);
             this.grBOnOff.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVisblPswrd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxOn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxВход)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1376,7 +1373,6 @@ namespace AppClientTurbo
 
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.Button btnUseraut;
         private System.Windows.Forms.TextBox tbAdrServer;
         private System.Windows.Forms.Label labelСервер;
         private System.Windows.Forms.Label labelПорт;
@@ -1388,7 +1384,6 @@ namespace AppClientTurbo
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Label labelPswrd;
         private System.Windows.Forms.GroupBox grBOnOff;
-        private System.Windows.Forms.PictureBox pictBoxOn;
         private System.Windows.Forms.ComboBox comboBoxMethod;
         private System.Windows.Forms.ComboBox comboBoxRefs;
         private System.Windows.Forms.Button btnSaveCash;
@@ -1456,6 +1451,7 @@ namespace AppClientTurbo
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox pictureBoxVisblPswrd;
         private System.Windows.Forms.PictureBox pictBoxClear;
+        private System.Windows.Forms.PictureBox pictBoxВход;
     }
 }
 

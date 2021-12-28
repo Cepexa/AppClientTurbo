@@ -183,6 +183,46 @@ namespace AppClientTurbo.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnGreenOff {
+            get {
+                object obj = ResourceManager.GetObject("btnGreenOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnGreenOnTest {
+            get {
+                object obj = ResourceManager.GetObject("btnGreenOnTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnRedOff {
+            get {
+                object obj = ResourceManager.GetObject("btnRedOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnRedOnTest {
+            get {
+                object obj = ResourceManager.GetObject("btnRedOnTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clear {
             get {
                 object obj = ResourceManager.GetObject("clear", resourceCulture);
@@ -223,9 +263,9 @@ namespace AppClientTurbo.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap switchGreen {
+        internal static System.Drawing.Bitmap eyeGreen1 {
             get {
-                object obj = ResourceManager.GetObject("switchGreen", resourceCulture);
+                object obj = ResourceManager.GetObject("eyeGreen1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +273,9 @@ namespace AppClientTurbo.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap switchRed {
+        internal static System.Drawing.Bitmap eyeGreen2 {
             get {
-                object obj = ResourceManager.GetObject("switchRed", resourceCulture);
+                object obj = ResourceManager.GetObject("eyeGreen2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

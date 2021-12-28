@@ -13,7 +13,6 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Threading;
-
 namespace AppClientTurbo
 {
     
@@ -26,57 +25,59 @@ namespace AppClientTurbo
         CashList cashList;
         CancellationTokenSource cts;
         CancellationToken token;
+        private ListViewColumnSorter lvwColumnSorter;
         public Form1()
         {
             InitializeComponent();
             Init_FileExplorer(); //для файлового менеджера 
             timer1.Start();
-
-            if (Properties.Settings.Default.adrServer!="")    tbAdrServer   .Text = Properties.Settings.Default.adrServer;
-            if (Properties.Settings.Default.adrPort != "")    tbAdrPort     .Text = Properties.Settings.Default.adrPort;
-            if (Properties.Settings.Default.methodBox != "")  comboBoxMethod.Text = Properties.Settings.Default.methodBox;
-            if (Properties.Settings.Default.user != "")       tbUser        .Text = Properties.Settings.Default.user;
-            if (Properties.Settings.Default.password != "")   tbPassword    .Text = Properties.Settings.Default.password;
-            if (Properties.Settings.Default.Refs != "")       comboBoxRefs  .Text = Properties.Settings.Default.Refs;
-            if (Properties.Settings.Default.dataReq != "")    fctbDataReq   .Text = Properties.Settings.Default.dataReq;
-            if (Properties.Settings.Default.request != "")    tbRequest     .Text = Properties.Settings.Default.request;
-            if (Properties.Settings.Default.preRequest != "") tbPreRequest  .Text = Properties.Settings.Default.preRequest;
-            if (Properties.Settings.Default.ЗапросыВКоллекции != "") grBЗапросыВКоллекции.Text = Properties.Settings.Default.ЗапросыВКоллекции;
-            if ((Properties.Settings.Default.file != "")
-              &&File.Exists(Properties.Settings.Default.file))tbJsonFile  .Text = Properties.Settings.Default.file; 
+            var psd = Properties.Settings.Default; 
+            if  (psd.adrServer != "")  tbAdrServer   .Text = psd.adrServer;
+            if  (psd.adrPort != "")    tbAdrPort     .Text = psd.adrPort;
+            if  (psd.methodBox != "")  comboBoxMethod.Text = psd.methodBox;
+            if  (psd.user != "")       tbUser        .Text = psd.user;
+            if  (psd.password != "")   tbPassword    .Text = psd.password;
+            if  (psd.Refs != "")       comboBoxRefs  .Text = psd.Refs;
+            if  (psd.dataReq != "")    fctbDataReq   .Text = psd.dataReq;
+            if  (psd.request != "")    tbRequest     .Text = psd.request;
+            if  (psd.preRequest != "") tbPreRequest  .Text = psd.preRequest;
+            if  (psd.ЗапросыВКоллекции != "") grBЗапросыВКоллекции.Text = psd.ЗапросыВКоллекции;
+            if ((psd.file != "")&&File.Exists(psd.file)) tbJsonFile  .Text = psd.file; 
             
             loadCash();
+
+            // Create an instance of a ListView column sorter and assign it
+            // to the ListView control.
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listView.ListViewItemSorter = lvwColumnSorter;
         }
-        
-        private async void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            await logout();
-            Properties.Settings.Default.dataReq = fctbDataReq.Text;
-            Properties.Settings.Default.preRequest = tbPreRequest.Text;
-            Properties.Settings.Default.request = tbRequest.Text;
-            Properties.Settings.Default.adrServer = tbAdrServer.Text;
-            Properties.Settings.Default.adrPort = tbAdrPort.Text;
-            Properties.Settings.Default.methodBox = comboBoxMethod.Text;
-            Properties.Settings.Default.user = tbUser.Text;
-            Properties.Settings.Default.password = tbPassword.Text;
-            Properties.Settings.Default.Refs = comboBoxRefs.Text;
-            Properties.Settings.Default.file = tbJsonFile.Text;
-            Properties.Settings.Default.ЗапросыВКоллекции = grBЗапросыВКоллекции.Text;
-            
+            var psd = Properties.Settings.Default;
+            psd.dataReq           = fctbDataReq         .Text;
+            psd.preRequest        = tbPreRequest        .Text;
+            psd.request           = tbRequest           .Text;
+            psd.adrServer         = tbAdrServer         .Text;
+            psd.adrPort           = tbAdrPort           .Text;
+            psd.methodBox         = comboBoxMethod      .Text;
+            psd.user              = tbUser              .Text;
+            psd.password          = tbPassword          .Text;
+            psd.Refs              = comboBoxRefs        .Text;
+            psd.file              = tbJsonFile          .Text;
+            psd.ЗапросыВКоллекции = grBЗапросыВКоллекции.Text;
+
             #region для файлового менеджера
-            Properties.Settings.Default.pathLocSv = pathLoc;
-            Properties.Settings.Default.pathServSv = pathServ;
+            psd.pathLocSv  = pathLoc;
+            psd.pathServSv = pathServ;
             if(Directory.Exists(pathTempBuff)) Directory.Delete(pathTempBuff, true);
             #endregion
             
-            Properties.Settings.Default.Save();
+            psd.Save();
         }
-        static bool myClick = true;
-        static bool myClick2 = true;
+        static bool canClick = true;
         private async void send_Click(object sender, EventArgs e)
         {
-            
-            if (myClick)
+            if (canClick)
             {
                 try
                 {
@@ -84,13 +85,13 @@ namespace AppClientTurbo
                     setVisibility(false, true);
                     myTime = 0;
                     {
-                        if (comboBoxMethod.Text == "POST") req.method = Req.Method.POST;
-                        else if (comboBoxMethod.Text == "GET") req.method = Req.Method.GET;
-                        else if (comboBoxMethod.Text == "PUT") req.method = Req.Method.PUT;
+                        if      (comboBoxMethod.Text == "POST")   req.method = Req.Method.POST;
+                        else if (comboBoxMethod.Text == "GET")    req.method = Req.Method.GET;
+                        else if (comboBoxMethod.Text == "PUT")    req.method = Req.Method.PUT;
                         else if (comboBoxMethod.Text == "DELETE") req.method = Req.Method.DELETE;
-                        req.data = fctbDataReq.Text;
+                        req.data       = fctbDataReq.Text;
                         req.preRequest = tbPreRequest.Text;
-                        req.request = tbRequest.Text;
+                        req.request    = tbRequest.Text;
                         req.content.Headers.Add("sessionID", sessionId);
 
                         var txtResponce = await senderReq();
@@ -100,28 +101,38 @@ namespace AppClientTurbo
                 }
                 catch
                 {
-                    Off();
+                    sessionId = null;
                     labelStatusCode.Text = "Status Code";
-                    fctbResponse.Text="Пожалуйста авторизуйтесь!" + Environment.NewLine;
+                    fctbResponse   .Text = "Пожалуйста авторизуйтесь!" + Environment.NewLine;
                 }
                 setVisibility(true,true);
             }
         }
-        private async void userauth_Click(object sender, EventArgs e)
+        private async Task Вход_Выход()
         {
-            if (myClick){
+            if (canClick){
+                pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOnTest : Properties.Resources.btnGreenOnTest;
                 myTime = -1;
                 setVisibility(false);
                 if (sessionId == null) await login(); else await logout();
                 setVisibility(true);
+                pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOff : Properties.Resources.btnGreenOff;
             }
         }
+        private async void Выход(object sender, EventArgs e)
+        {
+            pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOnTest : Properties.Resources.btnGreenOnTest;
+            await logout();
+            pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOff : Properties.Resources.btnGreenOff;
+
+        }
+
         CancellationTokenSource cts2;
         CancellationToken token2;
         bool  helpОбрЗапроса(Bitmap bm)
         {
             pictBoxОбработкаЗапроса.Image = bm;
-            Thread.Sleep(6);
+            Thread.Sleep(30);
             return token2.IsCancellationRequested;
         }
         void ОбработкаЗапроса()
@@ -145,7 +156,7 @@ namespace AppClientTurbo
 
         void setVisibility(bool flag,bool ext = false)
         {
-            myClick = flag;
+            canClick = flag;
             labelОбработкаЗапроса.Visible = !flag;
             pictBoxОбработкаЗапроса.Visible = !flag;
             if (!flag)
@@ -163,6 +174,13 @@ namespace AppClientTurbo
                 comboBoxRefs.Enabled = flag;
                 linkLabel1.Visible = !flag;
                 splitContainer2.Panel1.Enabled = flag;
+            }
+            else
+            {
+                tbPassword.Enabled = flag;
+                tbAdrServer.Enabled = flag;
+                tbAdrPort.Enabled = flag;
+                tbUser.Enabled = flag;
             }
         }
         private void linkLabel1_Click(object sender, EventArgs e)
@@ -184,7 +202,6 @@ namespace AppClientTurbo
                 {
                     sessionId = response.Headers.GetValues("sessionId").Last().ToString();
                     fctbResponse.Text="Успешная авторизация!" + Environment.NewLine;
-                    pictBoxOn.Image = Properties.Resources.switchGreen;
                     checkBoxForce.Visible = false;
                     checkBoxForce.Checked = false;
                     if (timeWithoutClick)
@@ -192,28 +209,30 @@ namespace AppClientTurbo
                         timeWithoutClick = false;
                     }
                     myTime = 0;
-                    btnUseraut.Text = "Выход";
+                    pictBoxВход.Image = Properties.Resources.btnGreenOff;
                 }
                 catch
                 {
                     fctbResponse.Text="Не Авторизован!" + Environment.NewLine;
                     fctbResponse.AppendText(await response.Content.ReadAsStringAsync() + Environment.NewLine);
                     checkBoxForce.Visible = (response.StatusCode != System.Net.HttpStatusCode.Unauthorized);
-                    Off();
+                    sessionId = null;
                 }
             }
             catch
             {
                 fctbResponse.Text="Проверьте адрес и порт сервера!" + Environment.NewLine;
                 labelStatusCode.Text = "Status Code";
-                Off();
+                sessionId = null;
             }
         }
+
+        static bool canClickLogout = true;
         private async Task logout()
         {
-            if (myClick2)
+            if (canClickLogout)
             {
-                myClick2 = false;
+                canClickLogout = false;
                 myTime = -1;
                 if (sessionId != null)
                 {
@@ -223,8 +242,9 @@ namespace AppClientTurbo
                     req.data = "";
                     req.content.Headers.Add("sessionID", sessionId);
                     fctbResponse.Text=await senderReq() + Environment.NewLine;
+                    pictBoxВход.Image =  Properties.Resources.btnRedOff;
                 }
-                myClick2 = true;
+                canClickLogout = true;
             }
         }
         async Task<string> senderReq()
@@ -234,14 +254,14 @@ namespace AppClientTurbo
                 cts = new CancellationTokenSource();
                 token = cts.Token;
                 response = await req.makeRequest(token);
-                labelStatusCode.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + " -";
+                labelStatusCode.Text = "Status Code -" + (int)response.StatusCode+" " + response.StatusCode + "-";
                 if (((req.preRequest + req.request).ToLower() == "/api/xcom/userauth/logout") && response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    Off();
+                    sessionId = null;
                     return "Сессия завершена!";
                 }
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) {
-                    Off();
+                    sessionId = null;
                     return "Не Авторизован!"; }
                 string responseString = await response.Content.ReadAsStringAsync();
                 try
@@ -266,33 +286,12 @@ namespace AppClientTurbo
             fctbResponse.Clear();
             labelStatusCode.Text = "Status Code";
         }
-        private async void adrPort_TextChanged(object sender, EventArgs e)
-        {
-            await logout();
-        }
-        private async void adrServer_TextChanged(object sender, EventArgs e)
-        {
-            await logout();
-        }
-        private async void user_TextChanged(object sender, EventArgs e)
-        {
-            await logout();
-        }
-        private async void password_TextChanged(object sender, EventArgs e)
-        {
-            await logout();
-        }
-        private void Off()
-        {
-            sessionId = null;
-            btnUseraut.Text = "Вход";
-            pictBoxOn.Image = Properties.Resources.switchRed;
-        }
+
         bool timeWithoutClick = false;
         private async void timer1_Tick(object sender, EventArgs e)
         {
             if (myTime != -1) {
-                if (++myTime > 10000) 
+                if (++myTime > 20000) 
                 {
                     timeWithoutClick = true;
                     await logout();
@@ -356,16 +355,6 @@ namespace AppClientTurbo
             btnSaveCash.Enabled = true;
             btnDeleteCash.Enabled = false;
         }
-        private void dataReqFctb_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
-        {
-            btnSaveCash.Enabled = true;
-            btnDeleteCash.Enabled = false;
-        }
-        private void Refs_TextChanged(object sender, EventArgs e)
-        {
-            btnSaveCash.Enabled = true;
-            btnDeleteCash.Enabled = false;
-        }
 
         private void deleteCash_Click(object sender, EventArgs e)
         {
@@ -376,39 +365,14 @@ namespace AppClientTurbo
 
         private void Form1_Activated(object sender, EventArgs e)
         {
-            if (timeWithoutClick) userauth_Click(sender, e);
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (timeWithoutClick) userauth_Click(sender, e);
-        }
-
-        private void Form1_Move(object sender, EventArgs e)
-        {
-            if (timeWithoutClick) userauth_Click(sender, e);
-        }
-
-        private void splitContainer1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (timeWithoutClick) userauth_Click(sender, e);
-        }
-
-        private void dataReq_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (timeWithoutClick) userauth_Click(sender, e);
-        }
-
-        private void responseTxt_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (timeWithoutClick) userauth_Click(sender, e);
+            if (timeWithoutClick) Вход_Выход();
         }
         private void jsonFile_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 loadCash();
-            Refs_SelectedIndexChanged(sender, e);
+                Refs_SelectedIndexChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -455,9 +419,9 @@ namespace AppClientTurbo
         {
             string placeSource = "source\\image\\";
             _imageList.Images.Add(Image.FromFile(placeSource + "folder.ico"));
-            _imageList.Images.Add(Image.FromFile(placeSource + "original.png"));
-            _imageList.Images.Add(Image.FromFile(placeSource + "arrow.png"));
-            _imageList.Images.Add(Image.FromFile(placeSource + "plus.png"));
+            _imageList.Images.Add(Image.FromFile(placeSource + "original.ico"));
+            _imageList.Images.Add(Image.FromFile(placeSource + "arrow.ico"));
+            _imageList.Images.Add(Image.FromFile(placeSource + "plus.ico"));
             treeViewLoc.ImageList = _imageList;
             treeViewServ.ImageList = _imageList;
             treeViewLoc.SelectedImageIndex = 2;
@@ -553,11 +517,10 @@ namespace AppClientTurbo
                     var ext = fileName.Split('.');
                     if (ext[ext.Length - 1].ToLower() == "json")
                     {
-                        TreeNode curTn = tnc.Add(fileName.Replace("." + ext[ext.Length - 1], ""));
+                        TreeNode curTn = tnc.Add(fileName.Remove(fileName.Length-5));
                         curTn.ImageIndex = 1;
                         curTn.Name = file;
                     }
-
                 }
                 if (tnc.Count == 0)
                 {
@@ -579,10 +542,30 @@ namespace AppClientTurbo
         void setFilesToListFromDir(string path)
         {
             listView.Items.Clear();
-            var dirs = Directory.GetFiles(path);
+            var dirs = Directory.GetDirectories(path);
+            var files = Directory.GetFiles(path);
+
             foreach (var dir in dirs)
             {
+                setDir(dir);
+            }
+            foreach (var dir in files)
+            {
                 setFiles(dir);
+            }
+        }
+        void setDir(string file)
+        {
+            try
+            {
+                DirectoryInfo d = new DirectoryInfo(file);
+                string name = d.Name;
+                string[] row = { "", "каталог", file };
+                listView.Items.Add(name).SubItems.AddRange(row);
+            }
+            catch (Exception)
+            {
+                updateView();
             }
         }
         void setFiles(string file)
@@ -651,19 +634,24 @@ namespace AppClientTurbo
 
         private void _treeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (((TreeView)sender).SelectedNode.ImageIndex == 1)
+            var curTn = ((TreeView)sender).SelectedNode;
+            if (curTn.ImageIndex == 1)
             {
-                var curFile = ((TreeView)sender).SelectedNode.Name;
+                var curFile = curTn.Name;
                 if (File.Exists(curFile))
                 {
                     tbJsonFile.Text = curFile;
-                    grBЗапросыВКоллекции.Text = "Запросы в коллекции \"" + ((TreeView)sender).SelectedNode.Text + "\"";
+                    grBЗапросыВКоллекции.Text = "Запросы в коллекции \"" + curTn.Text + "\"";
                 }
                 else
                 {
                     MessageBox.Show("Файла " + curFile + " не существует!");
                     updateView();
                 }
+            }
+            else if (curTn.ImageIndex == 3)
+            {
+                contextMenuStrip1.Show(curTn.TreeView,e.Location);
             }
             NodeClick = true;
         }
@@ -757,7 +745,6 @@ namespace AppClientTurbo
 
             }
             loadTreeNode((curTnName.Parent == null) ? curTnName.TreeView.Nodes : curTnName.Parent.Nodes, parentPath);
-            //treeViewServ.SelectedNode = treeViewServ.Nodes.Find(path, true)[0];
             findCurrentNode(path);
         }
         string checkCloneDir(string path)
@@ -840,14 +827,8 @@ namespace AppClientTurbo
                 TreeNode curTn = treeViewServ.SelectedNode;
                 IsServ = curTn != null;
                 if (!IsServ) curTn = treeViewLoc.SelectedNode;
-
-                
-                
                 ToCopyMove(curTn, true);
                 toolStripMenuItemВставить.Enabled = true;
-
-                
-                
             }
             catch (Exception ex)
             {
@@ -910,10 +891,8 @@ namespace AppClientTurbo
                 {
                     path = checkCloneDir(path);
                     copyDir(pathBuff, path);
-                    //Directory.Delete(pathBuff, true);
                 }
                 loadTreeNode((curTn.Parent == null) ? curTn.TreeView.Nodes : curTn.Parent.Nodes, Directory.GetParent(curTn.Name).FullName);
-                //toolStripMenuItemВставить.Enabled = false;
                 findCurrentNode(path);
             }
             catch (Exception ex)
@@ -977,19 +956,8 @@ namespace AppClientTurbo
             }
         }
 
-        private void treeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
-        {
-            if (!panelИмя.Visible)
-            {
-                TreeNode curTn = e.Node;
-                if (curTn.TreeView == treeViewLoc) lastLocNode = curTn;
-                if (curTn.TreeView == treeViewServ) lastServNode = curTn;
-                treeViewLoc.SelectedNode = null;
-                treeViewServ.SelectedNode = null;
-                ((TreeView)sender).SelectedNode = curTn;
-            }
-        }
         #endregion ФАЙЛОВЫЙ МЕНЕДЖЕР
+      
         #region Подсказки
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1018,7 +986,6 @@ namespace AppClientTurbo
         {
             tt.SetToolTip(this.btnRefresh, "Обновить Список");
         }
-        #endregion Подсказки
 
         private void pictBoxClear_MouseEnter(object sender, EventArgs e)
         {
@@ -1029,6 +996,75 @@ namespace AppClientTurbo
         {
             pictBoxClear.Image=Properties.Resources.clear;
         }
+        #endregion Подсказки
 
+        #region Переброс курсора
+        private void tbAdrServer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbAdrPort.Focus();
+        }
+
+        private void tbAdrPort_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbUser.Focus();
+        }
+
+        private void tbUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbPassword.Focus();
+        }
+        private void pictBoxВход_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (canClick) pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOnTest : Properties.Resources.btnGreenOnTest;
+        }
+
+        private void pictBoxВход_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (canClick) pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOff : Properties.Resources.btnGreenOff;
+        }
+
+        private async void tbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Enter) && canClick && canClickLogout)
+            {
+                await Вход_Выход();
+                pictBoxВход.Focus();
+            }
+        }
+        private async void pictBoxВход_Click(object sender, EventArgs e)
+        {
+            await Вход_Выход();
+        }
+        #endregion
+
+        #region сортировка колонок
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+            // Perform the sort with these new sort options.
+            this.listView.Sort();
+        }
+        #endregion
     }
 }
