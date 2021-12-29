@@ -1308,6 +1308,7 @@ namespace AppClientTurbo
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Выход);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_Activated);
             this.Move += new System.EventHandler(this.Form1_Activated);
             this.grBOnOff.ResumeLayout(false);

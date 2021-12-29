@@ -12,24 +12,22 @@ namespace AppClientTurbo
 {
     public partial class Form2 : Form
     {
-        List<Cash> listCash2;
-        string name;
-        public Form2(object listCash2,string quest,string name)
+        public Form2(string quest,string btn1 = "Да",string btn2 ="Нет",string header = "Подтверждение действий")
         {
             InitializeComponent();
             textBox1.Text = quest;
-            this.listCash2 = (List<Cash>)listCash2;
-            this.name = name;
+            button1 .Text = btn1;
+            button2 .Text = btn2;
+            this.Text     = header;
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.No;
             this.Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            listCash2.Remove(listCash2.Find(x => x.Name == name));
+            DialogResult = DialogResult.Yes; 
             this.Close();
         }
     }

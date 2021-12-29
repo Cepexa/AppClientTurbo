@@ -18,6 +18,12 @@ namespace AppClientTurbo
     
     public partial class Form1 : Form
     {
+        Info infoThis = new Info("AppClientTurbo","v2.4");
+        Info infoUpdate;
+        DialogResult updateNow;
+        
+
+
         Req req;
         int myTime = -1;
         HttpResponseMessage response;
@@ -27,7 +33,7 @@ namespace AppClientTurbo
         CancellationToken token;
         private ListViewColumnSorter lvwColumnSorter;
         public Form1()
-        {
+        { 
             InitializeComponent();
             Init_FileExplorer(); //для файлового менеджера 
             timer1.Start();
@@ -51,28 +57,58 @@ namespace AppClientTurbo
             lvwColumnSorter = new ListViewColumnSorter();
             this.listView.ListViewItemSorter = lvwColumnSorter;
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Text = $"{infoThis.NameClient} {infoThis.Version}";
+            updateClient();
+        }
+        string pathUpdate = @"\\172.17.18.50\Users\Public\AppClientTurbo\Update";
+        string pathExeUpdate = Directory.GetCurrentDirectory() + @"\Update.exe";
+        void updateClient()
+        {
+            
+            string pathUpdateInfo = pathUpdate + @"\info.json";
+            if (File.Exists(pathUpdateInfo))
+            {
+                infoUpdate = JsonConvert.DeserializeObject<Info>(File.ReadAllText(pathUpdateInfo));
+                if (infoUpdate.Version != infoThis.Version)
+                {
+                    updateNow = new Form2($"Доступна версия {infoUpdate.Version}, \nХотите обновить сейчас?", "Обновить", "позже...", $"Обновление {infoUpdate.NameClient}").ShowDialog();
+                    if (updateNow == DialogResult.Yes) {
+                        this.Close();
+                    }
+                }
+            }
+        }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (updateNow == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(pathExeUpdate);
+                return;
+            }
+
             var psd = Properties.Settings.Default;
-            psd.dataReq           = fctbDataReq         .Text;
-            psd.preRequest        = tbPreRequest        .Text;
-            psd.request           = tbRequest           .Text;
-            psd.adrServer         = tbAdrServer         .Text;
-            psd.adrPort           = tbAdrPort           .Text;
-            psd.methodBox         = comboBoxMethod      .Text;
-            psd.user              = tbUser              .Text;
-            psd.password          = tbPassword          .Text;
-            psd.Refs              = comboBoxRefs        .Text;
-            psd.file              = tbJsonFile          .Text;
+            psd.dataReq = fctbDataReq.Text;
+            psd.preRequest = tbPreRequest.Text;
+            psd.request = tbRequest.Text;
+            psd.adrServer = tbAdrServer.Text;
+            psd.adrPort = tbAdrPort.Text;
+            psd.methodBox = comboBoxMethod.Text;
+            psd.user = tbUser.Text;
+            psd.password = tbPassword.Text;
+            psd.Refs = comboBoxRefs.Text;
+            psd.file = tbJsonFile.Text;
             psd.ЗапросыВКоллекции = grBЗапросыВКоллекции.Text;
 
             #region для файлового менеджера
-            psd.pathLocSv  = pathLoc;
+            psd.pathLocSv = pathLoc;
             psd.pathServSv = pathServ;
-            if(Directory.Exists(pathTempBuff)) Directory.Delete(pathTempBuff, true);
+            if (Directory.Exists(pathTempBuff)) Directory.Delete(pathTempBuff, true);
             #endregion
-            
+
             psd.Save();
+
         }
         static bool canClick = true;
         private async void send_Click(object sender, EventArgs e)
@@ -89,9 +125,9 @@ namespace AppClientTurbo
                         else if (comboBoxMethod.Text == "GET")    req.method = Req.Method.GET;
                         else if (comboBoxMethod.Text == "PUT")    req.method = Req.Method.PUT;
                         else if (comboBoxMethod.Text == "DELETE") req.method = Req.Method.DELETE;
-                        req.data       = fctbDataReq.Text;
                         req.preRequest = tbPreRequest.Text;
                         req.request    = tbRequest.Text;
+                        req.data       = fctbDataReq.Text;
                         req.content.Headers.Add("sessionID", sessionId);
 
                         var txtResponce = await senderReq();
@@ -116,7 +152,6 @@ namespace AppClientTurbo
                 setVisibility(false);
                 if (sessionId == null) await login(); else await logout();
                 setVisibility(true);
-                pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOff : Properties.Resources.btnGreenOff;
             }
         }
         private async void Выход(object sender, EventArgs e)
@@ -154,7 +189,7 @@ namespace AppClientTurbo
             }
         }
 
-        void setVisibility(bool flag,bool ext = false)
+        void setVisibility(bool flag,bool usualReq = false)
         {
             canClick = flag;
             labelОбработкаЗапроса.Visible = !flag;
@@ -167,9 +202,10 @@ namespace AppClientTurbo
             }
             else
             {
-                cts2.Cancel();
+                cts2?.Cancel();
+                pictBoxВход.Image = (sessionId == null) ? Properties.Resources.btnRedOff : Properties.Resources.btnGreenOff;
             }
-            if (ext)
+            if (usualReq)
             {
                 comboBoxRefs.Enabled = flag;
                 linkLabel1.Visible = !flag;
@@ -190,8 +226,8 @@ namespace AppClientTurbo
         }
         private async Task login()
         {
-            req = new Req(Req.Method.POST, @"{""user"": """ + tbUser.Text + "\",\"password\":\"" + tbPassword.Text + ((checkBoxForce.Checked) ? "\",\"ForceLogin\":true}" : "\"}"),
-                                       "/api/xcom/userauth/", "login", tbAdrServer.Text, tbAdrPort.Text);
+            req = new Req(Req.Method.POST, tbAdrServer.Text, tbAdrPort.Text, "/api/xcom/userauth/", "login",
+                          @"{""user"": """ + tbUser.Text + "\",\"password\":\"" + tbPassword.Text + ((checkBoxForce.Checked) ? "\",\"ForceLogin\":true}" : "\"}"));
             try
             {
                 cts = new CancellationTokenSource();
@@ -236,13 +272,13 @@ namespace AppClientTurbo
                 myTime = -1;
                 if (sessionId != null)
                 {
-                    req.method = Req.Method.POST;
-                    req.preRequest = "/api/xcom/userAuth/";
-                    req.request = "logout";
-                    req.data = "";
+                    req.method        = Req.Method.POST;
+                    req.preRequest    = "/api/xcom/userAuth/";
+                    req.request       = "logout";
+                    req.data          = "";
                     req.content.Headers.Add("sessionID", sessionId);
-                    fctbResponse.Text=await senderReq() + Environment.NewLine;
-                    pictBoxВход.Image =  Properties.Resources.btnRedOff;
+                    fctbResponse.Text = await senderReq() + Environment.NewLine;
+                    pictBoxВход.Image = Properties.Resources.btnRedOff;
                 }
                 canClickLogout = true;
             }
@@ -313,6 +349,13 @@ namespace AppClientTurbo
             if (cashList.save()) updateView();
             updateRef();
         }
+        private void deleteCash_Click(object sender, EventArgs e)
+        {
+            var dialogResult = new Form2("Вы действительно хотите удалить запись из списка?").ShowDialog();
+            if (dialogResult == DialogResult.Yes) cashList.delete(comboBoxRefs.Text);
+            Refs_SelectedIndexChanged(sender, e);
+            updateRef();
+        }
         private void loadCash()
         {
             var temp = tbJsonFile.Text;
@@ -356,12 +399,6 @@ namespace AppClientTurbo
             btnDeleteCash.Enabled = false;
         }
 
-        private void deleteCash_Click(object sender, EventArgs e)
-        {
-            new Form2(cashList.listCash,"Вы действительно хотите удалить запись из списка?",comboBoxRefs.Text).ShowDialog();
-            Refs_SelectedIndexChanged(sender, e);
-            saveCash_Click(sender, e);
-        }
 
         private void Form1_Activated(object sender, EventArgs e)
         {
@@ -385,14 +422,14 @@ namespace AppClientTurbo
         #region ФАЙЛОВЫЙ МЕНЕДЖЕР
         ImageList _imageList = new ImageList();
         // как будто константы
-        string cPathLoc = Directory.GetCurrentDirectory() + "\\Collections";
-        const string cPathServ = "\\\\172.17.18.50\\Users\\Public\\AppClientTurbo\\Collections";
+        string cPathLoc = Directory.GetCurrentDirectory() + @"\Collections";
+        const string cPathServ = @"\\172.17.18.50\Users\Public\AppClientTurbo\Collections";
         //переменные
         bool IsServ;
         string pathLoc;
         string pathServ;
         string pathBuff;
-        string pathTempBuff = Directory.GetCurrentDirectory() + "\\TempBuff";
+        string pathTempBuff = Directory.GetCurrentDirectory() + @"\TempBuff";
         TreeNode lastServNode;
         TreeNode lastLocNode;
         void Init_FileExplorer()
@@ -417,7 +454,7 @@ namespace AppClientTurbo
         }
         void loadPicture() //подружаем иконки
         {
-            string placeSource = "source\\image\\";
+            string placeSource = @"source\image\";
             _imageList.Images.Add(Image.FromFile(placeSource + "folder.ico"));
             _imageList.Images.Add(Image.FromFile(placeSource + "original.ico"));
             _imageList.Images.Add(Image.FromFile(placeSource + "arrow.ico"));
@@ -526,7 +563,7 @@ namespace AppClientTurbo
                 {
                     TreeNode curTn = tnc.Add("Нет данных");
                     curTn.ImageIndex = 3;
-                    curTn.Name = path + "\\Нет данных";
+                    curTn.Name = path + @"\Нет данных";
                 }
             }
             catch (Exception ex)
@@ -809,7 +846,7 @@ namespace AppClientTurbo
         }
         void changeCurCollection(TreeNode curTn)
         {
-            var newTn = (curTn.PrevNode != null) ? curTn.PrevNode : curTn.NextNode;
+            var newTn = (curTn.PrevNode != null && curTn.PrevNode.ImageIndex!=0) ? curTn.PrevNode : curTn.NextNode;
             var path = newTn?.Name;
             if ((curTn.Name == tbJsonFile.Text) && (newTn != null))
             {
@@ -1066,5 +1103,7 @@ namespace AppClientTurbo
             this.listView.Sort();
         }
         #endregion
+
+
     }
 }

@@ -10,6 +10,17 @@ using System.Threading;
 
 namespace AppClientTurbo
 {   
+    class Info
+    {
+        public string NameClient { get; set; }
+        public string Version    { get; set; }
+
+        public Info(string nameClient, string version)
+        {
+            this.NameClient = nameClient;
+            this.Version = version;
+        }
+    }             
     class CashList
     {
         public List<Cash> listCash;
@@ -41,14 +52,19 @@ namespace AppClientTurbo
             File.WriteAllText(path, json);
             return result;
         }
+        public void  delete(string record)
+        {
+            listCash.Remove(listCash.Find(x => x.Name == record));
+            save();
+        }
     }
     class Cash
     {
-        public string Name { get; set; }
-        public string Method { get; set; }
+        public string Name       { get; set; }
+        public string Method     { get; set; }
         public string PreRequest { get; set; }
-        public string Request { get; set; }
-        public string DataReq { get; set; }
+        public string Request    { get; set; }
+        public string DataReq    { get; set; }
         public Cash(string name, string method, string preRequest, string request, string dataReq)
         {
             Name = name;
@@ -69,18 +85,18 @@ namespace AppClientTurbo
         }
         public Method method;
         public Req(Method method = Req.Method.POST,
-                   string data = "",
+                   string adrS       = "127.0.0.1",
+                   string adrP       = "81",
                    string preRequest = "/api/xcom/userAuth/",
-                   string request = "login",
-                   string adrS = "127.0.0.1",
-                   string adrP = "81")
+                   string request    = "login",
+                   string data       = "")
         {
-            this.method = method;
-            this.data = data;
+            this.method     = method;
+            this.adrServer  = adrS;
+            this.adrPort    = adrP;
             this.preRequest = preRequest;
-            this.request = request;
-            this.adrServer = adrS;
-            this.adrPort = adrP;
+            this.request    = request;
+            this.data       = data;
         }
 
         string _adrServer;
@@ -89,10 +105,10 @@ namespace AppClientTurbo
         string _preRequest;
         string _data;
         StringContent _content;
-        public string adrServer { get { return _adrServer; } set { _adrServer = value; } }
-        public string adrPort { get { return _adrPort; } set { _adrPort = value; } }
+        public string adrServer  { get { return _adrServer;  } set { _adrServer = value; } }
+        public string adrPort    { get { return _adrPort;    } set { _adrPort = value; } }
         public string preRequest { get { return _preRequest; } set { _preRequest = value; } }
-        public string request { get { return _request; } set { _request = value; } }
+        public string request    { get { return _request;    } set { _request = value; } }
         public string data
         {
             get { return _data; }
@@ -111,7 +127,7 @@ namespace AppClientTurbo
         {
             if (method == Req.Method.POST)
             {
-                return client.PostAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, content, token);
+                return client.PostAsync  (@"http://" + adrServer + ":" + adrPort + preRequest + request, content, token);
             }
             else if (method == Req.Method.DELETE)
             {
@@ -119,11 +135,11 @@ namespace AppClientTurbo
             }
             else if (method == Req.Method.GET)
             {
-                return client.GetAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, token);
+                return client.GetAsync   (@"http://" + adrServer + ":" + adrPort + preRequest + request, token);
             }
             else if (method == Req.Method.PUT)
             {
-                return client.PutAsync(@"http://" + adrServer + ":" + adrPort + preRequest + request, content, token);
+                return client.PutAsync   (@"http://" + adrServer + ":" + adrPort + preRequest + request, content, token);
             }
             else
             {
