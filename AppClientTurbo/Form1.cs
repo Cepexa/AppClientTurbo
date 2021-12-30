@@ -21,8 +21,6 @@ namespace AppClientTurbo
         Info infoThis = new Info("AppClientTurbo","v2.4");
         Info infoUpdate;
         DialogResult updateNow;
-        
-
 
         Req req;
         int myTime = -1;
