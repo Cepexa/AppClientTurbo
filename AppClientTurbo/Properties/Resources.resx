@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="210" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\210.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="eyeGreen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eyeGreen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="180" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="120" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\120.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\300.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,11 +136,11 @@
   <data name="clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eye2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnRedOnTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnRedOnTest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnGreenOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnGreenOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="360" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\360.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eyeGreen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eyeGreen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,8 +151,8 @@
   <data name="240" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\240.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="360" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\360.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="210" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\210.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="330" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\330.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +160,14 @@
   <data name="60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnGreenOnTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnGreenOnTest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="eye1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,19 +175,19 @@
   <data name="btnRedOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnRedOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnGreenOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnGreenOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="150" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\150.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="90" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eye2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnRedOnTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnRedOnTest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnGreenOnTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnGreenOnTest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="120" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\120.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

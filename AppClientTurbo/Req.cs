@@ -10,6 +10,31 @@ using System.Threading;
 
 namespace AppClientTurbo
 {   
+   public class EntityPage
+    {
+        public string FullPath { get; set; }
+        public string Collection { get; set; }
+        public string Header { get; set; }
+        public string Method { get; set; }
+        public bool BoolSave { get; set; }
+        public string Prefix { get; set; }
+        public string Request { get; set; }
+        public string DataReq { get; set; }
+        public string Response { get; set; }
+        public EntityPage(string fullPath,string collection,string header, string method,bool bSave,string prefix, string request, string dataReq, string response)
+        {
+            FullPath = fullPath;
+            Collection = collection;
+            Header = header;
+            Method = method;
+            BoolSave = bSave;
+            Prefix = prefix;
+            Request = request;
+            DataReq = dataReq;
+            Response = response;
+        }
+    }
+
     class Info
     {
         public string NameClient { get; set; }

@@ -13,12 +13,15 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
+
 namespace AppClientTurbo
 {
     
     public partial class Form1 : Form
     {
-        Info infoThis = new Info("AppClientTurbo","v2.4");
+        Info infoThis = new Info("AppClientTurbo","v3.0");
         Info infoUpdate;
         DialogResult updateNow;
 
@@ -54,6 +57,8 @@ namespace AppClientTurbo
             // to the ListView control.
             lvwColumnSorter = new ListViewColumnSorter();
             this.listView.ListViewItemSorter = lvwColumnSorter;
+
+            loadTabControl();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -208,6 +213,7 @@ namespace AppClientTurbo
                 comboBoxRefs.Enabled = flag;
                 linkLabel1.Visible = !flag;
                 splitContainer2.Panel1.Enabled = flag;
+                tabControl1.Enabled = flag;
             }
             else
             {
@@ -373,6 +379,10 @@ namespace AppClientTurbo
             }
             btnSaveCash.Enabled = false;
             btnDeleteCash.Enabled = true;
+            if ((listPages != null) && (!switchingPage))
+            {
+                listPages[tabControl1.SelectedIndex].BoolSave = btnSaveCash.Enabled;
+            }
         }
 
         private void Refs_SelectedIndexChanged(object sender, EventArgs e)
@@ -387,6 +397,12 @@ namespace AppClientTurbo
                 fctbDataReq.Text = cash.DataReq;
                 btnSaveCash.Enabled = false;
                 btnDeleteCash.Enabled = true;
+                if ((listPages != null)&& (!switchingPage))
+                {
+                    tabControl1.SelectedTab.Text = comboBoxRefs.Text;
+                    listPages[tabControl1.SelectedIndex].Header = comboBoxRefs.Text;
+                    listPages[tabControl1.SelectedIndex].BoolSave = btnSaveCash.Enabled;
+                }
             }
             catch{}
         }
@@ -395,6 +411,14 @@ namespace AppClientTurbo
         {
             btnSaveCash.Enabled = true;
             btnDeleteCash.Enabled = false;
+            if ((listPages != null)&& (!switchingPage))
+            {
+                listPages[tabControl1.SelectedIndex].Prefix = tbPreRequest.Text;
+                listPages[tabControl1.SelectedIndex].Request = tbRequest.Text;
+                listPages[tabControl1.SelectedIndex].DataReq = fctbDataReq.Text;
+                listPages[tabControl1.SelectedIndex].Header = comboBoxRefs.Text;
+                listPages[tabControl1.SelectedIndex].BoolSave = btnSaveCash.Enabled;
+            }
         }
 
 
@@ -408,6 +432,9 @@ namespace AppClientTurbo
             {
                 loadCash();
                 Refs_SelectedIndexChanged(sender, e);
+                if ((listPages != null) && (!switchingPage))
+                    listPages[tabControl1.SelectedIndex].FullPath = tbJsonFile.Text;
+                
             }
             catch (Exception ex)
             {
@@ -1102,6 +1129,149 @@ namespace AppClientTurbo
         }
         #endregion
 
+        #region Система вкладок
 
+        public List<EntityPage>  listPages;
+        void loadTabControl()
+        {
+            this.tabControl1.TabPages[this.tabControl1.TabCount - 1].Text = "";
+            this.tabControl1.Padding = new Point(12, 4);
+            this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.HandleCreated += tabControl1_HandleCreated;
+            listPages = new List<EntityPage>(5);
+            
+            addPage();
+            this.tabControl1.TabPages[0].Text = listPages[0].Header;
+            for (int i = 1; i < listPages.Count; i++)
+            {
+                this.tabControl1.TabPages.Insert(i, listPages[i].Header);
+            }
+        }
+        void addPage()
+        {
+            listPages.Add(new EntityPage(fullPath: tbJsonFile.Text,
+                                         collection: grBЗапросыВКоллекции.Text,
+                                         header: comboBoxRefs.Text,
+                                         method: comboBoxMethod.Text,
+                                         bSave: btnSaveCash.Enabled,
+                                         prefix: tbPreRequest.Text,
+                                         request: tbRequest.Text,
+                                         dataReq: fctbDataReq.Text,
+                                         response: fctbResponse.Text));
+        }
+        void loadPage(int index)
+        {
+            var curPage = listPages[index];
+            tbJsonFile.Text = curPage.FullPath;
+            comboBoxRefs.Text = curPage.Header;
+            comboBoxMethod.Text = curPage.Method;
+            tbPreRequest.Text = curPage.Prefix;
+            tbRequest.Text = curPage.Request;
+            fctbDataReq.Text = curPage.DataReq;
+            fctbResponse.Text = curPage.Response;
+
+            grBЗапросыВКоллекции.Text = curPage.Collection;
+            btnSaveCash.Enabled = curPage.BoolSave;
+            btnDeleteCash.Enabled = !curPage.BoolSave;
+        }
+        void closePage(int index)
+        {
+            listPages.RemoveAt(index);
+        }
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+        private const int TCM_SETMINTABWIDTH = 0x1300 + 49;
+        private void tabControl1_HandleCreated(object sender, EventArgs e)
+        {
+            SendMessage(this.tabControl1.Handle, TCM_SETMINTABWIDTH, IntPtr.Zero, (IntPtr)16);
+        }
+        bool switchingPage = false;
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPageIndex == this.tabControl1.TabCount - 1)
+                e.Cancel = true;
+
+            switchingPage = true;
+            loadPage(this.tabControl1.SelectedIndex);
+            switchingPage = false;
+        }
+        private void tabControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+            var lastIndex = this.tabControl1.TabCount - 1;
+            if (this.tabControl1.GetTabRect(lastIndex).Contains(e.Location))
+            {
+                addPage();
+                this.tabControl1.TabPages.Insert(lastIndex, listPages[lastIndex].Header);
+                this.tabControl1.SelectedIndex = lastIndex;
+                //this.tabControl1.TabPages[lastIndex].UseVisualStyleBackColor = true;
+            }
+            else
+            {
+                for (var i = 0; i < this.tabControl1.TabPages.Count; i++)
+                {
+                    var tabRect = this.tabControl1.GetTabRect(i);
+                    tabRect.Inflate(-2, -2);
+                    var closeImage = Properties.Resources.Close;
+                    var imageRect = new Rectangle(
+                        (tabRect.Right - closeImage.Width),
+                        tabRect.Top + (tabRect.Height - closeImage.Height) / 2,
+                        closeImage.Width,
+                        closeImage.Height);
+                    if ((imageRect.Contains(e.Location)) && this.tabControl1.TabPages.Count > 2)
+                    {
+                        closePage(i);
+                        this.tabControl1.TabPages.RemoveAt(i);
+                        break;
+                    }
+                }
+                
+            }
+        }
+        
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if(e.Index == 0) 
+            e.Graphics.FillRegion(new SolidBrush(SystemColors.ControlDarkDark), new Region());
+            string text = tabControl1.TabPages[e.Index].Text;
+            SizeF sz = e.Graphics.MeasureString(text, e.Font);
+            bool bSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+            using (SolidBrush b = new SolidBrush(bSelected ? SystemColors.GradientActiveCaption : SystemColors.Control))
+                e.Graphics.FillRectangle(b, e.Bounds);
+            if (tabControl1.SelectedIndex == e.Index) e.DrawFocusRectangle();
+            var tabRect = this.tabControl1.GetTabRect(e.Index);
+            tabRect.Inflate(-2, -2);
+            var image = (e.Index == this.tabControl1.TabCount - 1) ? Properties.Resources.Add : ((this.tabControl1.TabPages.Count > 2) ? Properties.Resources.Close:null);
+            if (image!=null)
+            e.Graphics.DrawImage(image,
+                (tabRect.Right - image.Width),
+                tabRect.Top + (tabRect.Height - image.Height) / 2);
+            using (SolidBrush b = new SolidBrush(bSelected ? SystemColors.HighlightText : SystemColors.ControlText))
+                e.Graphics.DrawString(text, e.Font, b, e.Bounds.X + 2, e.Bounds.Y + (e.Bounds.Height - sz.Height) / 2);
+
+        }
+
+        private void comboBoxMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnSaveCash.Enabled = true;
+            btnDeleteCash.Enabled = false;
+            if ((listPages != null) && (!switchingPage))
+            {
+                listPages[tabControl1.SelectedIndex].Method = comboBoxMethod.Text;
+                listPages[tabControl1.SelectedIndex].BoolSave = btnSaveCash.Enabled;
+            }
+        }
+
+        private void fctbResponse_TextChangedDelayed(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
+        {
+            if ((listPages != null) && (!switchingPage))
+                listPages[tabControl1.SelectedIndex].Response = fctbResponse.Text;
+        }
+
+        private void grBЗапросыВКоллекции_TextChanged(object sender, EventArgs e)
+        {
+            if ((listPages != null) && (!switchingPage))
+                listPages[tabControl1.SelectedIndex].Collection = grBЗапросыВКоллекции.Text;
+        }
+        #endregion Система вкладок
     }
 }

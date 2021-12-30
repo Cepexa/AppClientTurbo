@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon0.ico" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\Add.png" />
     <None Include="Resources\btnGreenOnTest.png" />
     <None Include="Resources\btnRedOnTest.png" />
     <None Include="Resources\btnGreenOff.png" />
