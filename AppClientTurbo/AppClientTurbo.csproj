@@ -114,9 +114,6 @@
     <None Include="Resources\btnRedOnTest.png" />
     <None Include="Resources\btnGreenOff.png" />
     <None Include="Resources\btnRedOff.png" />
-    <None Include="Resources\eyeGreen3.png" />
-    <None Include="Resources\eyeGreen2.png" />
-    <None Include="Resources\eyeGreen1.png" />
     <None Include="Resources\eye21.png" />
     <None Include="Resources\eye11.png" />
     <None Include="Resources\clear2.png" />
@@ -133,8 +130,6 @@
     <None Include="Resources\60.png" />
     <None Include="Resources\30.png" />
     <None Include="Resources\360.png" />
-    <None Include="Resources\eye2.png" />
-    <None Include="Resources\eye1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

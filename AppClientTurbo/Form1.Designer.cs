@@ -351,6 +351,7 @@ namespace AppClientTurbo
             this.tbRequest.TabIndex = 11;
             this.tbRequest.Text = "Select";
             this.tbRequest.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.tbRequest.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbRequest_KeyDown);
             // 
             // btnSend
             // 
@@ -451,6 +452,7 @@ namespace AppClientTurbo
             this.comboBoxMethod.TabIndex = 7;
             this.comboBoxMethod.Text = "POST";
             this.comboBoxMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxMethod_SelectedIndexChanged);
+            this.comboBoxMethod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxMethod_KeyPress);
             // 
             // comboBoxRefs
             // 
@@ -468,6 +470,8 @@ namespace AppClientTurbo
             this.comboBoxRefs.Text = "-";
             this.comboBoxRefs.SelectedIndexChanged += new System.EventHandler(this.Refs_SelectedIndexChanged);
             this.comboBoxRefs.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.comboBoxRefs.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxRefs_KeyDown);
+            this.comboBoxRefs.Leave += new System.EventHandler(this.comboBoxRefs_Leave);
             // 
             // btnSaveCash
             // 
@@ -679,6 +683,7 @@ namespace AppClientTurbo
             this.tbPreRequest.TabIndex = 10;
             this.tbPreRequest.Text = "/api/xcom/RepairService/";
             this.tbPreRequest.TextChanged += new System.EventHandler(this.request_TextChanged);
+            this.tbPreRequest.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPreRequest_KeyDown);
             // 
             // splitContainer2
             // 
@@ -1230,7 +1235,8 @@ namespace AppClientTurbo
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabControl1.ItemSize = new System.Drawing.Size(5, 28);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1238,6 +1244,7 @@ namespace AppClientTurbo
             this.tabControl1.TabIndex = 31;
             this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
             // 
             // tabPage1
@@ -1247,7 +1254,7 @@ namespace AppClientTurbo
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(942, 0);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "-";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2

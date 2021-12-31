@@ -41,29 +41,22 @@ namespace AppClientTurbo
             var psd = Properties.Settings.Default; 
             if  (psd.adrServer != "")  tbAdrServer   .Text = psd.adrServer;
             if  (psd.adrPort != "")    tbAdrPort     .Text = psd.adrPort;
-            if  (psd.methodBox != "")  comboBoxMethod.Text = psd.methodBox;
             if  (psd.user != "")       tbUser        .Text = psd.user;
             if  (psd.password != "")   tbPassword    .Text = psd.password;
-            if  (psd.Refs != "")       comboBoxRefs  .Text = psd.Refs;
-            if  (psd.dataReq != "")    fctbDataReq   .Text = psd.dataReq;
-            if  (psd.request != "")    tbRequest     .Text = psd.request;
-            if  (psd.preRequest != "") tbPreRequest  .Text = psd.preRequest;
-            if  (psd.ЗапросыВКоллекции != "") grBЗапросыВКоллекции.Text = psd.ЗапросыВКоллекции;
-            if ((psd.file != "")&&File.Exists(psd.file)) tbJsonFile  .Text = psd.file; 
             
             loadCash();
 
-            // Create an instance of a ListView column sorter and assign it
-            // to the ListView control.
             lvwColumnSorter = new ListViewColumnSorter();
             this.listView.ListViewItemSorter = lvwColumnSorter;
-
             loadTabControl();
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = $"{infoThis.NameClient} {infoThis.Version}";
             updateClient();
+            loadTabControl_LoadForm();
+
         }
         string pathUpdate = @"\\172.17.18.50\Users\Public\AppClientTurbo\Update";
         string pathExeUpdate = Directory.GetCurrentDirectory() + @"\Update.exe";
@@ -92,17 +85,11 @@ namespace AppClientTurbo
             }
 
             var psd = Properties.Settings.Default;
-            psd.dataReq = fctbDataReq.Text;
-            psd.preRequest = tbPreRequest.Text;
-            psd.request = tbRequest.Text;
+
             psd.adrServer = tbAdrServer.Text;
             psd.adrPort = tbAdrPort.Text;
-            psd.methodBox = comboBoxMethod.Text;
             psd.user = tbUser.Text;
             psd.password = tbPassword.Text;
-            psd.Refs = comboBoxRefs.Text;
-            psd.file = tbJsonFile.Text;
-            psd.ЗапросыВКоллекции = grBЗапросыВКоллекции.Text;
 
             #region для файлового менеджера
             psd.pathLocSv = pathLoc;
@@ -111,7 +98,7 @@ namespace AppClientTurbo
             #endregion
 
             psd.Save();
-
+            saveListPagesFormClosed();
         }
         static bool canClick = true;
         private async void send_Click(object sender, EventArgs e)
@@ -406,7 +393,15 @@ namespace AppClientTurbo
             }
             catch{}
         }
-
+        private void comboBoxRefs_Leave(object sender, EventArgs e)
+        {
+            if ((listPages != null) && (!switchingPage))
+            {
+                tabControl1.SelectedTab.Text = comboBoxRefs.Text;
+                listPages[tabControl1.SelectedIndex].Header = comboBoxRefs.Text;
+                listPages[tabControl1.SelectedIndex].BoolSave = btnSaveCash.Enabled;
+            }
+        }
         private void request_TextChanged(object sender, EventArgs e)
         {
             btnSaveCash.Enabled = true;
@@ -440,6 +435,10 @@ namespace AppClientTurbo
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void comboBoxMethod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
         /// <summary>
         /// ФАЙЛОВЫЙ МЕНЕДЖЕР
@@ -699,6 +698,10 @@ namespace AppClientTurbo
             var curTn = ((TreeView)sender).SelectedNode;
             if (curTn.ImageIndex == 1)
             {
+                addPage();
+                var selectPage = listPages.Count - 1;
+                tabControl1.TabPages.Insert(selectPage, listPages[selectPage].Header);
+                tabControl1.SelectedIndex = selectPage;
                 var curFile = curTn.Name;
                 if (File.Exists(curFile))
                 {
@@ -1100,6 +1103,22 @@ namespace AppClientTurbo
         {
             await Вход_Выход();
         }
+        private void comboBoxRefs_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbPreRequest.Focus();
+        }
+        private void tbPreRequest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbRequest.Focus();
+        }
+        private void tbRequest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Enter)&& canClick)
+            send_Click(sender, e);
+        }
+        
         #endregion
 
         #region сортировка колонок
@@ -1132,22 +1151,47 @@ namespace AppClientTurbo
         #region Система вкладок
 
         public List<EntityPage>  listPages;
+        string pathSavePages = "cash.json";
         void loadTabControl()
         {
+
             this.tabControl1.TabPages[this.tabControl1.TabCount - 1].Text = "";
             this.tabControl1.Padding = new Point(12, 4);
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             this.tabControl1.HandleCreated += tabControl1_HandleCreated;
-            listPages = new List<EntityPage>(5);
-            
-            addPage();
-            this.tabControl1.TabPages[0].Text = listPages[0].Header;
-            for (int i = 1; i < listPages.Count; i++)
+         
+        }
+        void loadTabControl_LoadForm()
+        {
+            if (File.Exists(pathSavePages))
+                listPages = JsonConvert.DeserializeObject<List<EntityPage>>(File.ReadAllText(pathSavePages));
+            else
+                File.Create(pathSavePages).Close();
+
+            if (listPages == null)
             {
-                this.tabControl1.TabPages.Insert(i, listPages[i].Header);
+                listPages = new List<EntityPage>(5);
+                addPage();
+            }
+            else
+            {
+                this.tabControl1.TabPages[0].Text = listPages[0].Header;
+                listPages[0].Request = "";
+                for (int i = 1; i < listPages.Count; i++)
+                {
+                    this.tabControl1.TabPages.Insert(i, listPages[i].Header);
+                    listPages[i].Request = "";
+                }
+                loadPage(0);
             }
         }
-        void addPage()
+        void saveListPagesFormClosed()
+        {
+            string json = JsonConvert.SerializeObject(listPages, Formatting.Indented);
+            if(!File.Exists(pathSavePages)) File.Create(pathSavePages).Close();
+            File.WriteAllText(pathSavePages, json);
+        }
+        void addPage(bool includeResponse = false)
         {
             listPages.Add(new EntityPage(fullPath: tbJsonFile.Text,
                                          collection: grBЗапросыВКоллекции.Text,
@@ -1157,7 +1201,7 @@ namespace AppClientTurbo
                                          prefix: tbPreRequest.Text,
                                          request: tbRequest.Text,
                                          dataReq: fctbDataReq.Text,
-                                         response: fctbResponse.Text));
+                                         response: (includeResponse)? fctbResponse.Text:""));
         }
         void loadPage(int index)
         {
@@ -1190,6 +1234,9 @@ namespace AppClientTurbo
         {
             if (e.TabPageIndex == this.tabControl1.TabCount - 1)
                 e.Cancel = true;
+        }
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
 
             switchingPage = true;
             loadPage(this.tabControl1.SelectedIndex);
@@ -1272,6 +1319,9 @@ namespace AppClientTurbo
             if ((listPages != null) && (!switchingPage))
                 listPages[tabControl1.SelectedIndex].Collection = grBЗапросыВКоллекции.Text;
         }
+
+
         #endregion Система вкладок
+
     }
 }

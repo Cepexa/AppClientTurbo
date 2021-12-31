@@ -26,30 +26,6 @@ namespace AppClientTurbo.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string dataReq {
-            get {
-                return ((string)(this["dataReq"]));
-            }
-            set {
-                this["dataReq"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string request {
-            get {
-                return ((string)(this["request"]));
-            }
-            set {
-                this["request"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string adrServer {
             get {
                 return ((string)(this["adrServer"]));
@@ -68,18 +44,6 @@ namespace AppClientTurbo.Properties {
             }
             set {
                 this["adrPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string methodBox {
-            get {
-                return ((string)(this["methodBox"]));
-            }
-            set {
-                this["methodBox"] = value;
             }
         }
         
@@ -110,42 +74,6 @@ namespace AppClientTurbo.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Refs {
-            get {
-                return ((string)(this["Refs"]));
-            }
-            set {
-                this["Refs"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string file {
-            get {
-                return ((string)(this["file"]));
-            }
-            set {
-                this["file"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string preRequest {
-            get {
-                return ((string)(this["preRequest"]));
-            }
-            set {
-                this["preRequest"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string pathServSv {
             get {
                 return ((string)(this["pathServSv"]));
@@ -164,18 +92,6 @@ namespace AppClientTurbo.Properties {
             }
             set {
                 this["pathLocSv"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ЗапросыВКоллекции {
-            get {
-                return ((string)(this["ЗапросыВКоллекции"]));
-            }
-            set {
-                this["ЗапросыВКоллекции"] = value;
             }
         }
     }
