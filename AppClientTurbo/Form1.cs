@@ -1154,12 +1154,10 @@ namespace AppClientTurbo
         string pathSavePages = "cash.json";
         void loadTabControl()
         {
-
             this.tabControl1.TabPages[this.tabControl1.TabCount - 1].Text = "";
             this.tabControl1.Padding = new Point(12, 4);
             this.tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             this.tabControl1.HandleCreated += tabControl1_HandleCreated;
-         
         }
         void loadTabControl_LoadForm()
         {
@@ -1176,11 +1174,11 @@ namespace AppClientTurbo
             else
             {
                 this.tabControl1.TabPages[0].Text = listPages[0].Header;
-                listPages[0].Request = "";
+                listPages[0].Response = "";
                 for (int i = 1; i < listPages.Count; i++)
                 {
                     this.tabControl1.TabPages.Insert(i, listPages[i].Header);
-                    listPages[i].Request = "";
+                    listPages[i].Response = "";
                 }
                 loadPage(0);
             }
@@ -1205,6 +1203,7 @@ namespace AppClientTurbo
         }
         void loadPage(int index)
         {
+            switchingPage = true;
             var curPage = listPages[index];
             tbJsonFile.Text = curPage.FullPath;
             comboBoxRefs.Text = curPage.Header;
@@ -1217,6 +1216,7 @@ namespace AppClientTurbo
             grBЗапросыВКоллекции.Text = curPage.Collection;
             btnSaveCash.Enabled = curPage.BoolSave;
             btnDeleteCash.Enabled = !curPage.BoolSave;
+            switchingPage = false;
         }
         void closePage(int index)
         {
@@ -1237,10 +1237,7 @@ namespace AppClientTurbo
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-
-            switchingPage = true;
-            loadPage(this.tabControl1.SelectedIndex);
-            switchingPage = false;
+            loadPage(tabControl1.SelectedIndex);
         }
         private void tabControl1_MouseDown(object sender, MouseEventArgs e)
         {
