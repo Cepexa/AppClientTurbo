@@ -181,7 +181,7 @@ namespace AppClientTurbo
             this.labelПорт.AutoSize = true;
             this.labelПорт.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelПорт.ForeColor = System.Drawing.Color.Linen;
-            this.labelПорт.Location = new System.Drawing.Point(230, 23);
+            this.labelПорт.Location = new System.Drawing.Point(223, 23);
             this.labelПорт.Name = "labelПорт";
             this.labelПорт.Size = new System.Drawing.Size(47, 18);
             this.labelПорт.TabIndex = 5;
@@ -328,10 +328,9 @@ namespace AppClientTurbo
             this.tbAdrPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbAdrPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbAdrPort.ForeColor = System.Drawing.Color.Lime;
-            this.tbAdrPort.Location = new System.Drawing.Point(283, 19);
-            this.tbAdrPort.MaxLength = 5;
+            this.tbAdrPort.Location = new System.Drawing.Point(268, 19);
             this.tbAdrPort.Name = "tbAdrPort";
-            this.tbAdrPort.Size = new System.Drawing.Size(59, 26);
+            this.tbAdrPort.Size = new System.Drawing.Size(74, 26);
             this.tbAdrPort.TabIndex = 2;
             this.tbAdrPort.Text = "81";
             this.tbAdrPort.TextChanged += new System.EventHandler(this.Выход);

@@ -21,7 +21,7 @@ namespace AppClientTurbo
     
     public partial class Form1 : Form
     {
-        Info infoThis = new Info("AppClientTurbo","v3.0");
+        Info infoThis = new Info("AppClientTurbo","v3.0.1");
         Info infoUpdate;
         DialogResult updateNow;
 
