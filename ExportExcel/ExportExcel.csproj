@@ -16,4 +16,10 @@
     <PackageReference Include="EPPlus" Version="6.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="GemBox.Spreadsheet">
+      <HintPath>Gembox.spreadsheet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

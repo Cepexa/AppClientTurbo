@@ -1,25 +1,41 @@
 ﻿using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using GemBox.Spreadsheet;
 
 namespace Excel
 {
     public class Excel
     {
-        
+        public static double GetHeightRowByText(OfficeOpenXml.Style.ExcelFont aFont, double aWidth, object aValue = null)
+        {
+            if (aValue == null) return 0.0;
+            SpreadsheetInfo.SetLicense("SN-2023Jun03-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            ExcelFile workbook = new ExcelFile();
+            GemBox.Spreadsheet.ExcelWorksheet worksheet = workbook.Worksheets.Add("Sheet1");
+            worksheet.Columns[1].SetWidth(aWidth, LengthUnit.Millimeter);
+            var tempCell = worksheet.Cells["A1"];
+            tempCell.Style.WrapText = true;
+            tempCell.Style.Font.Name = aFont.Name;
+            tempCell.Style.Font.Size = (int)aFont.Size;
+            tempCell.Value = aValue;
+            worksheet.Rows["1"].AutoFit();
+            return worksheet.Rows["1"].GetHeight(LengthUnit.Millimeter);
+        }
+
         ExcelPackage package;
         ExcelWorksheets sheets;
         public Excel()
         {
+            SpreadsheetInfo.SetLicense("SN-2023Jun03-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;//LicenseContext.Commercial;
             package = new ExcelPackage(new FileInfo("newdoc.xlsx"));
             sheets = package.Workbook.Worksheets;
         }
         public Excel(string FilePath)
         {
+            SpreadsheetInfo.SetLicense("SN-2023Jun03-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;//LicenseContext.Commercial;
             package = new ExcelPackage(new FileInfo(FilePath));
             sheets = package.Workbook.Worksheets;
@@ -64,6 +80,14 @@ namespace Excel
         {
             sheets[sheetsNumber].Cells[aRow, aCol].Value = aValue;
         }        
+        public void SetValueCell(int sheetsNumber, string aCell, object aValue = null)
+        {
+            sheets[sheetsNumber].Cells[aCell].Value = aValue;
+        }        
+        public void SetValueCell(int sheetsNumber, string aCell)
+        {
+            sheets[sheetsNumber].Cells[aCell].Value = null;
+        }        
         public void SetValueCell(int sheetsNumber, int aRow, int aCol)
         {
             sheets[sheetsNumber].Cells[aRow, aCol].Value = null;
@@ -92,6 +116,22 @@ namespace Excel
             {
                 sheets[sheetsNumber].Cells[aRow, aCol + i].Value = aValues[i];
             }
+        }
+        public void GroupRow(int sheetsNumber, int aRow, int aOutlineLevel = 0)
+        {
+            sheets[sheetsNumber].Row(aRow).OutlineLevel = aOutlineLevel;
+        }
+        public void GroupCol(int sheetsNumber, int aCol, int aOutlineLevel = 0)
+        {
+            sheets[sheetsNumber].Column(aCol).OutlineLevel = aOutlineLevel;
+        }
+        public void SettingSummaryData(int sheetsNumber, bool aSummaryBelow = true, 
+                                                         bool aSummaryRight = true, 
+                                                         bool aApplyStyle   = false)
+        {
+            sheets[sheetsNumber].OutLineSummaryBelow = aSummaryBelow;
+            sheets[sheetsNumber].OutLineSummaryRight = aSummaryRight;
+            sheets[sheetsNumber].OutLineApplyStyle   = aApplyStyle;
         }
         public int RowsCount(int sheetsNumber)
         {
@@ -125,10 +165,36 @@ namespace Excel
         public void FreezePanes(int sheetsNumber, int aRow, int aCol)
         {
             sheets[sheetsNumber].View.FreezePanes(aRow, aCol);
-        }        
+        }
         public void SetWrapText(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol, bool flag)
         {
             sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.WrapText = flag;
+        }
+        public void SetRowHeight(int sheetsNumber, int aRow, double aHeight)
+        {
+            sheets[sheetsNumber].Row(aRow).Height = aHeight;
+        }
+        public void SetRowHeight(int sheetsNumber, string aCell, double aHeight)
+        {
+            sheets[sheetsNumber].Row(sheets[sheetsNumber].Cells[aCell].Start.Row).Height = aHeight;
+        }
+        public double MeasureTextHeight(int sheetsNumber, string aCell , object aValue = null)
+        {
+            if (aValue == null) return 0.0;
+            double vWidth = 0;
+            for (int i = 0; i < sheets[sheetsNumber].Cells[aCell].Columns; i++)
+                vWidth += sheets[sheetsNumber].Column(i + 1).Width;
+
+            string tempSheetName = "_~TempSheet~_";
+            OfficeOpenXml.ExcelWorksheet tempSheet = sheets.Add(tempSheetName);
+            tempSheet.Column(1).Width = vWidth;
+            ExcelRange tempCell = tempSheet.Cells["A1"];
+            tempCell.Style.WrapText = true;
+            tempCell.Style.Font = sheets[sheetsNumber].Cells[aCell].Style.Font;
+            tempCell.Value = aValue;
+            double result = tempSheet.Row(1).Height;
+            sheets.Delete(tempSheetName);
+            return result;
         }
         public void SetMergeCells(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol, bool flag)
         {
@@ -173,6 +239,22 @@ namespace Excel
                 sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.Font.UnderLine = false;
             }
         }
+        public void SetFontSize(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol ,double aSize)
+        {
+             sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.Font.Size = (float)aSize;
+        }
+        public void SetFontSize(int sheetsNumber, string aCell , double aSize)
+        {
+             sheets[sheetsNumber].Cells[aCell].Style.Font.Size = (float)aSize;
+        }
+        public void SetFont(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol ,string aNameFont)
+        {
+             sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.Font.Name = aNameFont;
+        }
+        public void SetFont(int sheetsNumber, string aCell, string aNameFont)
+        {
+             sheets[sheetsNumber].Cells[aCell].Style.Font.Name = aNameFont;
+        }
         public void SetAlignmentCells(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol, string style)
         {
             sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.HorizontalAlignment =
@@ -181,9 +263,25 @@ namespace Excel
               style.Equals("Right") ? ExcelHorizontalAlignment.Right :
                                        ExcelHorizontalAlignment.General;
         }
+        public void SetVertAlignmentCells(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol, string style)
+        {
+            sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.VerticalAlignment =
+              style.Equals("Bottom") ? ExcelVerticalAlignment.Bottom :
+              style.Equals("Center") ? ExcelVerticalAlignment.Center :
+              style.Equals("Distributed") ? ExcelVerticalAlignment.Distributed :
+              style.Equals("Top") ? ExcelVerticalAlignment.Top :
+                                       ExcelVerticalAlignment.Justify;
+        }
         public void SetFormatCell(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol, string format = null)
         {
-            sheets[sheetsNumber].Cells[fromRow, fromCol,  toRow, toCol].Style.Numberformat.Format = format;
+            sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.Numberformat.Format = format;
+        }
+        public void SetFormatCell(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol, int format )
+        {
+            if (format == 1)
+            {
+                sheets[sheetsNumber].Cells[fromRow, fromCol, toRow, toCol].Style.Numberformat.Format = "# ##0.00";
+            }
         }
         public void SetFormatCell(int sheetsNumber, int fromRow, int fromCol, int toRow, int toCol)
         {
@@ -338,7 +436,8 @@ namespace Excel
         }
         public void AddRowTable(int sheetsNumber, string aName)
         {
-            sheets[sheetsNumber].Tables[aName].AddRow();
+            string adr = GetAddressTable(sheetsNumber, aName);
+            sheets[sheetsNumber].Tables[aName].AddRow().CopyStyles(sheets[sheetsNumber].Cells[adr]);
         }
         public void AddRowTable(int sheetsNumber, string aName, int rows = 1)
         {
@@ -388,12 +487,30 @@ namespace Excel
         {
             try
             {
-                File.WriteAllBytes(fullPath, package.GetAsByteArray());
+                package.SaveAs(fullPath);
+                //File.WriteAllBytes(fullPath, package.GetAsByteArray());
             }
             finally
             {
                 package.Dispose();
             }
+        }
+        public void ConvertExcelToPDF(string fullPath, string fullPathPDF)
+        {
+            ExcelFile workbook = ExcelFile.Load(fullPath);
+            workbook.Save(fullPathPDF, new PdfSaveOptions() { SelectionType = SelectionType.EntireFile });
+            ////этот код работает только при установленом MS Excel
+            //Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+            //try
+            //{
+            //    Microsoft.Office.Interop.Excel.Workbook workbook = app.Workbooks.Open(fullPath); //к вашей книге
+            //    app.ActiveWorkbook.ExportAsFixedFormat(Microsoft.Office.Interop.Excel.XlFixedFormatType.xlTypePDF, fullPathPDF);//куда сохраняете
+            //    workbook.Close();
+            //}
+            //finally
+            //{
+            //    app.Quit();
+            //}
         }
 
     }

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\..\..\..\Turbo\dev1051\Libs\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging">
+      <HintPath>..\..\..\..\Turbo\dev1051\Libs\System.IO.Packaging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
